@@ -16,4 +16,9 @@ public class GameInput : MonoBehaviour
     {
         return playerInputActions.Player.Move.ReadValue<Vector2>().normalized;
     }
+
+    public bool IsJumpPressed()
+    {
+        return playerInputActions.Player.Jump.triggered;
+    }
 }

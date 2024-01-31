@@ -16,9 +16,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        Move();  
+        Move();
+        Jump();
     }
 
+    // Simple Movement with rotation and relative to the camera orientation
     private void Move()
     {
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
@@ -43,6 +45,16 @@ public class Player : MonoBehaviour
         {
             Quaternion toRotation = Quaternion.LookRotation(movementVector);
             playerBody.MoveRotation(Quaternion.RotateTowards(playerBody.rotation, toRotation, rotationSpeed * Time.deltaTime));
+        }
+    }
+
+    // Simple Jump
+    // TODO: Add raycast to check if the player is grounded
+    private void Jump()
+    {   
+        if (gameInput.IsJumpPressed())
+        {
+            playerBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
 }
