@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
-{
-    [SerializeField] private float movementSpeed = 5f;
+{   
+    
+    [SerializeField] private float runningSpeed = 15f;
+    [SerializeField] private float walkingSpeed = 5f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float rotationSpeed = 5f;
 
@@ -12,13 +14,25 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private Rigidbody playerBody;
 
-    private bool isWalking;
+    // True if the player is walking, false if the player is running
+    // Character is running by default
+    private bool isWalking = false;
+    private float movementSpeed;
 
-    void Update()
+    private void Awake()
     {
-        Move();  
+        // Set the movement speed to running speed by default
+        movementSpeed = runningSpeed;
     }
 
+    private void FixedUpdate()
+    {
+        ToggleWalk();
+        Move();
+        Jump();
+    }
+
+    // Simple Movement with rotation and relative to the camera orientation
     private void Move()
     {
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
@@ -43,6 +57,28 @@ public class Player : MonoBehaviour
         {
             Quaternion toRotation = Quaternion.LookRotation(movementVector);
             playerBody.MoveRotation(Quaternion.RotateTowards(playerBody.rotation, toRotation, rotationSpeed * Time.deltaTime));
+        }
+    }
+
+    // Simple Jump
+    // TODO: Add raycast to check if the player is grounded
+    private void Jump()
+    {   
+        if (gameInput.IsJumpPressed())
+        {
+            playerBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+    }
+
+    // Simple Toggle between walking and running
+    // No detection for jump or other actions
+    private void ToggleWalk()
+    {
+        if (gameInput.IsWalkTogglePressed())
+        {
+            isWalking = !isWalking;
+            // Change the movement speed only if WalkToggle is pressed
+            movementSpeed = isWalking ? runningSpeed : walkingSpeed;
         }
     }
 }
