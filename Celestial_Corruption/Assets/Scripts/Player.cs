@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
         movementSpeed = runningSpeed;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         ToggleWalk();
         Move();
