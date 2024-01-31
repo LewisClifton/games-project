@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
-{
-    [SerializeField] private float movementSpeed = 5f;
+{   
+    
+    [SerializeField] private float runningSpeed = 15f;
+    [SerializeField] private float walkingSpeed = 5f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float rotationSpeed = 5f;
 
@@ -12,10 +14,14 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private Rigidbody playerBody;
 
-    private bool isWalking;
+    // True if the player is walking, false if the player is running
+    // Character is running by default
+    private bool isWalking = false;
+    private float movementSpeed;
 
     void Update()
     {
+        ToggleWalk();
         Move();
         Jump();
     }
@@ -55,6 +61,15 @@ public class Player : MonoBehaviour
         if (gameInput.IsJumpPressed())
         {
             playerBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+    }
+
+    private void ToggleWalk()
+    {
+        if (gameInput.IsWalkTogglePressed())
+        {
+            isWalking = !isWalking;
+            movementSpeed = isWalking ? runningSpeed : walkingSpeed;
         }
     }
 }

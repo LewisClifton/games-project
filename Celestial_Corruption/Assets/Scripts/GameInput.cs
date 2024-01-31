@@ -21,4 +21,9 @@ public class GameInput : MonoBehaviour
     {
         return playerInputActions.Player.Jump.triggered;
     }
+
+    public bool IsWalkTogglePressed()
+    {
+        return playerInputActions.Player.WalkToggle.triggered;
+    }
 }
