@@ -19,7 +19,13 @@ public class Player : MonoBehaviour
     private bool isWalking = false;
     private float movementSpeed;
 
-    void Update()
+    private void Awake()
+    {
+        // Set the movement speed to running speed by default
+        movementSpeed = runningSpeed;
+    }
+
+    private void Update()
     {
         ToggleWalk();
         Move();
@@ -64,11 +70,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    // Simple Toggle between walking and running
+    // No detection for jump or other actions
     private void ToggleWalk()
     {
         if (gameInput.IsWalkTogglePressed())
         {
             isWalking = !isWalking;
+            // Change the movement speed only if WalkToggle is pressed
             movementSpeed = isWalking ? runningSpeed : walkingSpeed;
         }
     }
