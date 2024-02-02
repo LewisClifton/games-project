@@ -55,11 +55,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _InteractonDistance: 4
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Scale: 0.5
     - _Smoothness: 0.112
-    - _Speed: 0.5
+    - _Speed: 1
+    - _VertexStrength: 3
     m_Colors:
-    - _Albedo: {r: 0.22857015, g: 0.2735849, b: 0.22583659, a: 0}
+    - _Albedo: {r: 0.38474548, g: 0.6226415, b: 0.38474548, a: 0}
   m_BuildTextureStacks: []
