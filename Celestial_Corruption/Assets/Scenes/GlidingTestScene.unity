@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -169,12 +169,12 @@ PrefabInstance:
     - target: {fileID: 454877774262029291, guid: a7212aa1b24b01f1385170ba196910bf,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017311645
+      value: -0.000000017311645
       objectReference: {fileID: 0}
     - target: {fileID: 454877774262029291, guid: a7212aa1b24b01f1385170ba196910bf,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 9.961788e-10
+      value: -9.961788e-10
       objectReference: {fileID: 0}
     - target: {fileID: 1490668146469228227, guid: a7212aa1b24b01f1385170ba196910bf,
         type: 3}
@@ -602,6 +602,11 @@ MonoBehaviour:
   cameraTransform: {fileID: 961739753}
   ThrustFactor: 80
   rigidBody: {fileID: 596864129}
+  isGrounded: 0
+  groundedCheckDistance: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!54 &596864129 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 5645606208790265347, guid: a7212aa1b24b01f1385170ba196910bf,
