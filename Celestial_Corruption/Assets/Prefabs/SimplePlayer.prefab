@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1417807388792785905}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09619639, y: 0.7892674, z: -0.12808044, w: 0.59278893}
+  m_LocalRotation: {x: 0.0961964, y: 0.7892674, z: -0.12808047, w: 0.59278893}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -391,6 +391,7 @@ GameObject:
   - component: {fileID: 993939348493746711}
   - component: {fileID: 5645606208790265347}
   - component: {fileID: 4379172547800911823}
+  - component: {fileID: 4903856375289645348}
   m_Layer: 0
   m_Name: PlayerObject
   m_TagString: Untagged
@@ -532,6 +533,29 @@ MonoBehaviour:
   gameInput: {fileID: 2432094801642311022}
   cameraTransform: {fileID: 0}
   playerBody: {fileID: 5645606208790265347}
+--- !u!114 &4903856375289645348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3959536423204770851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b33140206e0f13245bc743ae2a6367fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BaseSpeed: 30
+  MaxThrustSpeed: 400
+  MinThrustSpeed: 5
+  cameraTransform: {fileID: 0}
+  ThrustFactor: 80
+  rigidBody: {fileID: 5645606208790265347}
+  isGrounded: 0
+  groundedCheckDistance: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &6329383400175808808
 GameObject:
   m_ObjectHideFlags: 0

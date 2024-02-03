@@ -13,7 +13,7 @@ public class Gliding : MonoBehaviour
     // Minimum speed required for gliding thrust
     [SerializeField] private float MinThrustSpeed;
 
-    // Camera
+    // Camera, set to Main Camera
     [SerializeField] private Transform cameraTransform;
 
     // Used to determine thrust force
