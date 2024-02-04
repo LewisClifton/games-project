@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Shader.SetGlobalVector("_Player", transform.position);
         ToggleWalk();
         Move();
         Jump();
