@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -8,23 +9,36 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private Rigidbody playerBody;
 
+    // Layermask doesn't have to be only ground, it can be any layer you want the player to be able to stand on
+    [SerializeField] private LayerMask groundLayer;
+
     // Normal movement variables 
+
     [SerializeField] private float runningSpeed = 15f;
     [SerializeField] private float walkingSpeed = 5f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float rotationSpeed = 5f;
 
+
     // Gliding movement variables
 
-
-    // True if the player is walking, false if the player is running
-    // Character is running by default
-    private bool isWalking = false;
-
-    // True if the player is gliding
-    private bool isGliding = false;
-
+    [SerializeField] private float BaseSpeed = 30;
+    // Max thrust force
+    [SerializeField] private float MaxThrustSpeed = 400;
+    // Minimum speed required for gliding thrust
+    [SerializeField] private float MinThrustSpeed = 10;
+    [SerializeField] private float ThrustFactor = 80;
+    private float groundedCheckDistance = 1.1f;
+    private float bufferCheckDistance = 0.5f;
+    
     private float movementSpeed;
+    private float CurrentThrustSpeed;
+    
+    // Player flags
+    private bool isWalking = false;
+    public bool isGliding = false;
+    public bool isGrounded = false;
+
 
     private void Awake()
     {
@@ -32,17 +46,85 @@ public class Player : MonoBehaviour
         movementSpeed = runningSpeed;
     }
 
+    private void Start()
+    {
+        // Makes cursor invisible and locks it to centre of screen (esc during play mode to display it again)
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     private void Update()
     {
-
+        checkGroundStatus();
     }
 
     private void FixedUpdate()
     {
         Shader.SetGlobalVector("_Player", transform.position);
+        ToggleGlide();
+        if (isGliding)
+        {
+            GlidingMovement();
+            ManageRotation();
+        }
+        else
+        {
+            NormalMovement();
+        }
+    }
+
+    private void NormalMovement()
+    {
         ToggleWalk();
         Move();
         Jump();
+    }
+
+    private void GlidingMovement()
+    {
+        float pitchInRads = transform.eulerAngles.x * Mathf.Deg2Rad;
+        //Pitch gets mapped to a value between -1 and 1 using Sin and multiplied by the thrust factor.
+        //If the "nose" of the character points up then it slows down, if it points down then it speeds up.
+        float mappedPitch=Mathf.Sin(pitchInRads) *ThrustFactor;
+        Vector3 glidingForce = Vector3.forward * CurrentThrustSpeed;
+        //Time.deltaTime is used to account for changes in framerate/frametime
+        CurrentThrustSpeed += mappedPitch * Time.deltaTime;
+        //Forces the CurrentThrustSpeed to be between 0 and MaxThrustSpeed
+        CurrentThrustSpeed = Mathf.Clamp(CurrentThrustSpeed, 0, MaxThrustSpeed);
+        //Checks if the speed of the player is high enough for gliding forces to be applied
+        if (playerBody.velocity.magnitude >= MinThrustSpeed)
+        {
+            //Applies glidingForce to the direction the player is pointing
+            playerBody.AddRelativeForce(glidingForce);
+        }
+        else
+        {
+            //If the player is below the threshold speed then the CurrentThrustSpeed is reset to 0
+            CurrentThrustSpeed = 0;
+        }
+
+        // Vector2 inputVector = gameInput.GetMovementVectorNormalized();
+        // Vector3 forward = cameraTransform.forward;
+        // Vector3 right = cameraTransform.right;
+        // forward.y = 0f;
+        // right.y = 0f;
+        // forward.Normalize();
+        // right.Normalize();
+        // Vector3 movementVector = (forward * inputVector.y + right * inputVector.x).normalized;
+        // movementVector *= movementSpeed * Time.deltaTime;
+        // playerBody.MovePosition(playerBody.position + movementVector);
+        // if (movementVector != Vector3.zero)
+        // {
+        //     Quaternion toRotation = Quaternion.LookRotation(movementVector);
+        //     playerBody.MoveRotation(Quaternion.RotateTowards(playerBody.rotation, toRotation, rotationSpeed * Time.deltaTime));
+        // }
+    }
+
+    //Uses camera rotation to dictate character rotation and direction for forces to be applied
+    private void ManageRotation()
+    {
+        Quaternion targetRotation = Quaternion.Euler(cameraTransform.eulerAngles.x, cameraTransform.eulerAngles.y, cameraTransform.eulerAngles.z);
+        transform.rotation = targetRotation;
     }
 
     // Simple Movement with rotation and relative to the camera orientation
@@ -77,14 +159,13 @@ public class Player : MonoBehaviour
     // TODO: Add raycast to check if the player is grounded
     private void Jump()
     {   
-        if (gameInput.IsJumpPressed())
+        if (gameInput.IsJumpPressed() && isGrounded)
         {
             playerBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
-
+    
     // Simple Toggle between walking and running
-    // No detection for jump or other actions
     private void ToggleWalk()
     {
         if (gameInput.IsWalkTogglePressed())
@@ -93,5 +174,48 @@ public class Player : MonoBehaviour
             // Change the movement speed only if WalkToggle is pressed
             movementSpeed = isWalking ? runningSpeed : walkingSpeed;
         }
+    }
+
+    private void ToggleGlide()
+    {
+        if (gameInput.IsJumpPressed() && !isGrounded)
+        {
+            isGliding = !isGliding;
+            // Change the movement speed only if GlideToggle is pressed
+            movementSpeed = isGliding ? BaseSpeed : runningSpeed;
+        }
+    }
+
+    //This function activates when isGrounded goes from False to True
+    private void onLand()
+    {
+        //Makes player stand up
+        transform.rotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, cameraTransform.eulerAngles.z);
+        isGliding = false;
+    }
+
+    //Function used to check if the player is grounded
+    private void checkGroundStatus()
+    {
+        groundedCheckDistance = (GetComponent<CapsuleCollider>().height / 2) + bufferCheckDistance; //Replace the capsule collider code with the height of the collider once the player model is changed.
+        //Debug.Log(groundedCheckDistance);
+        RaycastHit hit;
+        Vector3 rayStart = transform.position;
+        Vector3 rayDirection = Vector3.down;
+        //out hit means we store the information in hit, and groundCheckDistance is how far the raycast goes
+        if (Physics.Raycast(rayStart, rayDirection, out hit, groundedCheckDistance, groundLayer))
+        {
+            //Checks if the player has "landed"
+            if (!isGrounded)
+            {
+                onLand();
+            }
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
+        //Debug.DrawRay(rayStart, rayDirection * groundedCheckDistance, isGrounded ? Color.green : Color.red);
     }
 }
