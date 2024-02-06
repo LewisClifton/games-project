@@ -4,25 +4,37 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {   
-    
+    [SerializeField] private GameInput gameInput;
+    [SerializeField] private Transform cameraTransform;
+    [SerializeField] private Rigidbody playerBody;
+
+    // Normal movement variables 
     [SerializeField] private float runningSpeed = 15f;
     [SerializeField] private float walkingSpeed = 5f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float rotationSpeed = 5f;
 
-    [SerializeField] private GameInput gameInput;
-    [SerializeField] private Transform cameraTransform;
-    [SerializeField] private Rigidbody playerBody;
+    // Gliding movement variables
+
 
     // True if the player is walking, false if the player is running
     // Character is running by default
     private bool isWalking = false;
+
+    // True if the player is gliding
+    private bool isGliding = false;
+
     private float movementSpeed;
 
     private void Awake()
     {
         // Set the movement speed to running speed by default
         movementSpeed = runningSpeed;
+    }
+
+    private void Update()
+    {
+
     }
 
     private void FixedUpdate()

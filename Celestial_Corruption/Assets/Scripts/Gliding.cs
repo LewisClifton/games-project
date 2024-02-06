@@ -23,9 +23,10 @@ public class Gliding : MonoBehaviour
     public bool isGrounded = false;
     public float groundedCheckDistance;
     private float bufferCheckDistance = 0.5f;
+    
+    // Layermask doesn't have to be only ground, it can be any layer you want the player to be able to stand on
     public LayerMask groundLayer;
     
-    // Start is called before the first frame update
     private void Start()
     {
         // Makes cursor invisible and locks it to centre of screen (esc during play mode to display it again)
@@ -45,11 +46,6 @@ public class Gliding : MonoBehaviour
             //transform.rotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, cameraTransform.eulerAngles.z);
 
         }
-    }
-    // Update is called once per frame
-    private void Update()
-    {
-        
     }
 
     //This function activates when isGrounded goes from False to True
