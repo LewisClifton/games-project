@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameInput gameInput;
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private Rigidbody playerBody;
+    [SerializeField] private Collider playerCollider;
 
     // Layermask doesn't have to be only ground, it can be any layer you want the player to be able to stand on
     [SerializeField] private LayerMask groundLayer;
@@ -26,13 +27,14 @@ public class Player : MonoBehaviour
     // Max thrust force
     [SerializeField] private float MaxThrustSpeed = 400;
     // Minimum speed required for gliding thrust
-    [SerializeField] private float MinThrustSpeed = 10;
+    [SerializeField] private float MinThrustSpeed = 0;
     [SerializeField] private float ThrustFactor = 80;
     private float groundedCheckDistance = 1.1f;
     private float bufferCheckDistance = 0.5f;
     
     private float movementSpeed;
     private float CurrentThrustSpeed;
+    private float colliderHeight;
     
     // Player flags
     private bool isWalking = false;
@@ -44,23 +46,26 @@ public class Player : MonoBehaviour
     {
         // Set the movement speed to running speed by default
         movementSpeed = runningSpeed;
+
+        // Makes cursor invisible and locks it to centre of screen (esc during play mode to display it again)
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        colliderHeight = playerCollider.bounds.size.y;
     }
 
     private void Start()
     {
-        // Makes cursor invisible and locks it to centre of screen (esc during play mode to display it again)
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
     {
-        checkGroundStatus();
     }
 
     private void FixedUpdate()
     {
         Shader.SetGlobalVector("_Player", transform.position);
+        checkGroundStatus();
         ToggleGlide();
         if (isGliding)
         {
@@ -102,22 +107,6 @@ public class Player : MonoBehaviour
             //If the player is below the threshold speed then the CurrentThrustSpeed is reset to 0
             CurrentThrustSpeed = 0;
         }
-
-        // Vector2 inputVector = gameInput.GetMovementVectorNormalized();
-        // Vector3 forward = cameraTransform.forward;
-        // Vector3 right = cameraTransform.right;
-        // forward.y = 0f;
-        // right.y = 0f;
-        // forward.Normalize();
-        // right.Normalize();
-        // Vector3 movementVector = (forward * inputVector.y + right * inputVector.x).normalized;
-        // movementVector *= movementSpeed * Time.deltaTime;
-        // playerBody.MovePosition(playerBody.position + movementVector);
-        // if (movementVector != Vector3.zero)
-        // {
-        //     Quaternion toRotation = Quaternion.LookRotation(movementVector);
-        //     playerBody.MoveRotation(Quaternion.RotateTowards(playerBody.rotation, toRotation, rotationSpeed * Time.deltaTime));
-        // }
     }
 
     //Uses camera rotation to dictate character rotation and direction for forces to be applied
@@ -197,12 +186,12 @@ public class Player : MonoBehaviour
     //Function used to check if the player is grounded
     private void checkGroundStatus()
     {
-        groundedCheckDistance = (GetComponent<CapsuleCollider>().height / 2) + bufferCheckDistance; //Replace the capsule collider code with the height of the collider once the player model is changed.
-        //Debug.Log(groundedCheckDistance);
-        RaycastHit hit;
+        groundedCheckDistance = (colliderHeight / 2) + bufferCheckDistance;
+        
         Vector3 rayStart = transform.position;
         Vector3 rayDirection = Vector3.down;
-        //out hit means we store the information in hit, and groundCheckDistance is how far the raycast goes
+        
+        RaycastHit hit;
         if (Physics.Raycast(rayStart, rayDirection, out hit, groundedCheckDistance, groundLayer))
         {
             //Checks if the player has "landed"
@@ -216,6 +205,5 @@ public class Player : MonoBehaviour
         {
             isGrounded = false;
         }
-        //Debug.DrawRay(rayStart, rayDirection * groundedCheckDistance, isGrounded ? Color.green : Color.red);
     }
 }

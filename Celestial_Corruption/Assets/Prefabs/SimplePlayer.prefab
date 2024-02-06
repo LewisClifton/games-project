@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1417807388792785905}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0961964, y: 0.7892674, z: -0.12808047, w: 0.59278893}
+  m_LocalRotation: {x: 0.09619639, y: 0.7892674, z: -0.12808044, w: 0.59278893}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -71,6 +71,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -526,13 +533,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b65b80c1e437fa07a2cf501af26d897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameInput: {fileID: 2432094801642311022}
+  cameraTransform: {fileID: 0}
+  playerBody: {fileID: 5645606208790265347}
+  playerCollider: {fileID: 993939348493746711}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
   runningSpeed: 15
   walkingSpeed: 5
   jumpForce: 5
   rotationSpeed: 5
-  gameInput: {fileID: 2432094801642311022}
-  cameraTransform: {fileID: 0}
-  playerBody: {fileID: 5645606208790265347}
+  BaseSpeed: 30
+  MaxThrustSpeed: 400
+  MinThrustSpeed: 10
+  ThrustFactor: 80
+  isGliding: 0
+  isGrounded: 0
 --- !u!114 &4903856375289645348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -754,6 +771,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -833,6 +857,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -942,6 +973,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
