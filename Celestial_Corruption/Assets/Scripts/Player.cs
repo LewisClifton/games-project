@@ -65,6 +65,10 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (isGrounded && !isGliding)
+        {
+            Jump();
+        }
     }
 
     private void FixedUpdate()
@@ -74,8 +78,10 @@ public class Player : MonoBehaviour
         ToggleGlide();
         if (isGliding)
         {
-            GlidingMovement();
-            ManageRotation();
+            // GlidingMovement();
+            // ManageRotation();
+            // UpLift();
+            GlideMove(); 
             UpLift();
         }
         else
@@ -88,7 +94,6 @@ public class Player : MonoBehaviour
     {
         ToggleWalk();
         Move();
-        Jump();
     }
 
     private void GlidingMovement()
@@ -96,8 +101,8 @@ public class Player : MonoBehaviour
         float pitchInRads = transform.eulerAngles.x * Mathf.Deg2Rad;
         //Pitch gets mapped to a value between -1 and 1 using Sin and multiplied by the thrust factor.
         //If the "nose" of the character points up then it slows down, if it points down then it speeds up.
-        float mappedPitch=Mathf.Sin(pitchInRads) *ThrustFactor;
-        Vector3 glidingForce = Vector3.forward * CurrentThrustSpeed;
+        float mappedPitch=Mathf.Sin(pitchInRads) * ThrustFactor;
+        Vector3 glidingForce = cameraTransform.forward * CurrentThrustSpeed;
         //Time.deltaTime is used to account for changes in framerate/frametime
         CurrentThrustSpeed += mappedPitch * Time.deltaTime;
         //Forces the CurrentThrustSpeed to be between 0 and MaxThrustSpeed
@@ -123,12 +128,6 @@ public class Player : MonoBehaviour
     {
         Quaternion targetRotation = Quaternion.Euler(cameraTransform.eulerAngles.x, cameraTransform.eulerAngles.y, cameraTransform.eulerAngles.z);
         transform.rotation = targetRotation;
-
-        // Calculate the target rotation based only on the camera's yaw to avoid tilting the character forward/backward with the camera pitch
-        // Quaternion targetRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
-
-        // // Smoothly interpolate the character's rotation towards the target rotation
-        // transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
     }
 
     // Provides a constant uplift force to the player when gliding
@@ -138,6 +137,34 @@ public class Player : MonoBehaviour
         //The force is applied in the direction the player is facing
         Vector3 upLift = Vector3.up * (playerBody.mass * upliftForce);
         playerBody.AddRelativeForce(upLift);
+    }
+
+    private void GlideMove()
+    {
+        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
+
+        // Convert the input vector to a movement vector relative to the camera orientation
+        Vector3 forward = cameraTransform.forward;
+        Vector3 right = cameraTransform.right;
+        forward.y = 0f;
+        right.y = 0f;
+        forward.Normalize();
+        right.Normalize();
+
+        // Adjusted movement vector
+        Vector3 movementVector = (forward * inputVector.y + right * inputVector.x).normalized;
+        movementVector *= movementSpeed * Time.deltaTime;
+
+        // Move the player 
+        // playerBody.MovePosition(playerBody.position + movementVector);
+        playerBody.AddForce(movementVector, ForceMode.VelocityChange);
+
+        // Rotate the player
+        if (movementVector != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(movementVector);
+            playerBody.MoveRotation(Quaternion.RotateTowards(playerBody.rotation, toRotation, rotationSpeed * Time.deltaTime));
+        }
     }
 
     // Simple Movement with rotation and relative to the camera orientation
