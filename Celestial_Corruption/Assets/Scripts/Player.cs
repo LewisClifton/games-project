@@ -25,13 +25,18 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float BaseSpeed = 30;
     // Max thrust force
-    [SerializeField] private float MaxThrustSpeed = 400;
+    [SerializeField] private float MaxThrustSpeed = 30;
     // Minimum speed required for gliding thrust
     [SerializeField] private float MinThrustSpeed = 0;
-    [SerializeField] private float ThrustFactor = 80;
+    [SerializeField] private float ThrustFactor = 20;
+    // Uplift force
+    [SerializeField] private float upliftForce = 10;
+
+    [SerializeField] private float maxSpeed = 30;
+
     private float groundedCheckDistance = 1.1f;
     private float bufferCheckDistance = 0.5f;
-    
+
     private float movementSpeed;
     private float CurrentThrustSpeed;
     private float colliderHeight;
@@ -99,10 +104,11 @@ public class Player : MonoBehaviour
         CurrentThrustSpeed = Mathf.Clamp(CurrentThrustSpeed, 0, MaxThrustSpeed);
 
         //Checks if the speed of the player is high enough for gliding forces to be applied
-        if (playerBody.velocity.magnitude >= MinThrustSpeed)
+        if (playerBody.velocity.magnitude >= MinThrustSpeed && playerBody.velocity.magnitude <= maxSpeed)
         {
             //Applies glidingForce to the direction the player is pointing
             playerBody.AddRelativeForce(glidingForce);
+            // playerBody.AddForce(glidingForce, ForceMode.VelocityChange);
         }
         else
         {
@@ -117,6 +123,12 @@ public class Player : MonoBehaviour
     {
         Quaternion targetRotation = Quaternion.Euler(cameraTransform.eulerAngles.x, cameraTransform.eulerAngles.y, cameraTransform.eulerAngles.z);
         transform.rotation = targetRotation;
+
+        // Calculate the target rotation based only on the camera's yaw to avoid tilting the character forward/backward with the camera pitch
+        // Quaternion targetRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
+
+        // // Smoothly interpolate the character's rotation towards the target rotation
+        // transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
     }
 
     // Provides a constant uplift force to the player when gliding
@@ -124,7 +136,7 @@ public class Player : MonoBehaviour
     {
         //This function is used to apply a force upwards to the player to simulate lift
         //The force is applied in the direction the player is facing
-        Vector3 upLift = Vector3.up * (playerBody.mass * 9.81f);
+        Vector3 upLift = Vector3.up * (playerBody.mass * upliftForce);
         playerBody.AddRelativeForce(upLift);
     }
 
