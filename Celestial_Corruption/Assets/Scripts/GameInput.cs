@@ -26,4 +26,9 @@ public class GameInput : MonoBehaviour
     {
         return playerInputActions.Player.WalkToggle.triggered;
     }
+
+    public bool IsDashPressed()
+    {
+        return playerInputActions.Player.Dash.triggered;
+    }
 }
