@@ -71,6 +71,7 @@ public class Player : MonoBehaviour
         {
             GlidingMovement();
             ManageRotation();
+            UpLift();
         }
         else
         {
@@ -96,6 +97,7 @@ public class Player : MonoBehaviour
         CurrentThrustSpeed += mappedPitch * Time.deltaTime;
         //Forces the CurrentThrustSpeed to be between 0 and MaxThrustSpeed
         CurrentThrustSpeed = Mathf.Clamp(CurrentThrustSpeed, 0, MaxThrustSpeed);
+
         //Checks if the speed of the player is high enough for gliding forces to be applied
         if (playerBody.velocity.magnitude >= MinThrustSpeed)
         {
@@ -109,11 +111,21 @@ public class Player : MonoBehaviour
         }
     }
 
+
     //Uses camera rotation to dictate character rotation and direction for forces to be applied
     private void ManageRotation()
     {
         Quaternion targetRotation = Quaternion.Euler(cameraTransform.eulerAngles.x, cameraTransform.eulerAngles.y, cameraTransform.eulerAngles.z);
         transform.rotation = targetRotation;
+    }
+
+    // Provides a constant uplift force to the player when gliding
+    private void UpLift()
+    {
+        //This function is used to apply a force upwards to the player to simulate lift
+        //The force is applied in the direction the player is facing
+        Vector3 upLift = Vector3.up * (playerBody.mass * 9.81f);
+        playerBody.AddRelativeForce(upLift);
     }
 
     // Simple Movement with rotation and relative to the camera orientation
@@ -172,15 +184,23 @@ public class Player : MonoBehaviour
             isGliding = !isGliding;
             // Change the movement speed only if GlideToggle is pressed
             movementSpeed = isGliding ? BaseSpeed : runningSpeed;
-        }
+
+            // Adjust the drag for gliding
+            // playerBody.drag = isGliding ? 40f : 0;
+        } 
     }
 
-    //This function activates when isGrounded goes from False to True
+    // This function activates when isGrounded goes from False to True
     private void onLand()
     {
-        //Makes player stand up
+        // Makes player stand up
         transform.rotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, cameraTransform.eulerAngles.z);
         isGliding = false;
+
+        // Reset the drag to 0
+        // playerBody.drag = 0;
+        // Reset the movement speed to running speed
+        movementSpeed = runningSpeed;
     }
 
     //Function used to check if the player is grounded
