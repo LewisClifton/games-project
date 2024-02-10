@@ -8,14 +8,19 @@ public class PlayerMovement2 : MonoBehaviour
 {
     [Header("Controls")]
     [SerializeField] private GameInput gameInput;
-    
 
     [Header("Movement")]
+    [Header("Walking")]
     public float moveSpeed;
     public Transform orientation;
+    [Header("Jumping")]
     [SerializeField] private float jumpForce = 5f;
     Rigidbody playerBody;
     Vector2 moveInput;
+    [Header("Dash")]
+    public float dashForce;
+    public float dashUpwardForce;
+    public float dashDuration;
 
     [Header("Player State")]
     public bool isGrounded = false;
@@ -41,6 +46,10 @@ public class PlayerMovement2 : MonoBehaviour
     {
         MovePlayer();
         Jump();
+        if (gameInput.IsDashPressed())
+        {
+            Dash();
+        }
     }
 
     private void FixedUpdate()
@@ -53,6 +62,7 @@ public class PlayerMovement2 : MonoBehaviour
         Vector3 playerVelocity = orientation.forward * moveInput.y * moveSpeed + orientation.right * moveInput.x * moveSpeed;
         playerBody.AddForce(playerVelocity, ForceMode.Force);
         //playerBody.velocity = transform.TransformDirection(playerVelocity);
+        
     }
 
     //Function gets moveInput value, it is run but vscode just can't tell.
@@ -106,5 +116,26 @@ public class PlayerMovement2 : MonoBehaviour
         {
             isGrounded = false;
         }
+    }
+
+    //Function that executes the dash
+    private void Dash()
+    {
+        Vector3 forceToApply = Vector3.zero;
+        if (moveInput != Vector2.zero)
+        {
+            forceToApply = orientation.transform.forward * dashForce * moveInput.y + orientation.transform.right * dashForce * moveInput.x;
+        }
+        else
+        {
+            forceToApply = orientation.transform.forward * dashForce + orientation.transform.up * dashUpwardForce;
+        }
+        playerBody.AddForce(forceToApply, ForceMode.Impulse);
+        Invoke(nameof(ResetDash), dashDuration);
+    }
+
+    private void ResetDash()
+    {
+
     }
 }
