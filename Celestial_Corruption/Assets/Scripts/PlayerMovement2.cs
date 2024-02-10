@@ -33,6 +33,7 @@ public class PlayerMovement2 : MonoBehaviour
     void Update()
     {
         MovePlayer();
+        Jump();
     }
 
     private void MovePlayer() { 
@@ -41,6 +42,7 @@ public class PlayerMovement2 : MonoBehaviour
         //playerBody.velocity = transform.TransformDirection(playerVelocity);
     }
 
+    //Function gets moveInput value, it is run but vscode just can't tell.
     private void OnMove(InputValue value)
     {
         moveInput=value.Get<Vector2>();
