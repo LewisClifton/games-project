@@ -12,55 +12,53 @@ public enum PlayerState
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody playerBody;
     private PlayerState playerState;
 
-    [SerializeField] private GameObject NormalMovement;
-    [SerializeField] private GameObject GlidingMovement;
-    [SerializeField] private GameObject DashingMovement;
+    [SerializeField] private MonoBehaviour normalMovement;
+    [SerializeField] private MonoBehaviour glidingMovement;
+    [SerializeField] private MonoBehaviour dashingMovement;
 
     private void Awake()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
-        DashingMovement.SetActive(true);
-        NormalMovement.SetActive(true);
+        dashingMovement.enabled = true;
+        normalMovement.enabled = true;
     }   
 
     private void Start()
     {
         playerState = PlayerState.Normal;
-        playerBody = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
-        switch (playerState)
-        {
-            case PlayerState.Normal:
-                NormalMovement.SetActive(true);
-                break;
-            case PlayerState.Gliding:
-                GlidingMovement.SetActive(true);
-                break;
-            case PlayerState.Dashing:
-                DashingMovement.SetActive(true);
-                break;
-        }
+
     }
 
     private void DeactivateAllMovements()
     {
-        NormalMovement.SetActive(false);
-        GlidingMovement.SetActive(false);
+        normalMovement.enabled = false;
+        glidingMovement.enabled = false;
         // Dashing can be active all the time
-        // DashingMovement.SetActive(false);
+        // dashingMovement.enenabled = false;
     }
 
     public void SetPlayerState(PlayerState state)
     {
         DeactivateAllMovements();
-        playerState = state;
+        switch (state)
+        {
+            case PlayerState.Normal:
+                normalMovement.enabled = true;
+                break;
+            case PlayerState.Gliding:
+                glidingMovement.enabled = true;
+                break;
+            case PlayerState.Dashing:
+                dashingMovement.enabled = true;
+                break;
+        }
     }
 }

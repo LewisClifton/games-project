@@ -1831,6 +1831,22 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1473817547}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 81bb9eea30387e442899949a80011e55,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1473817551}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 81bb9eea30387e442899949a80011e55,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1473817550}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 81bb9eea30387e442899949a80011e55,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1473817549}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 81bb9eea30387e442899949a80011e55,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1473817548}
   m_SourcePrefab: {fileID: 100100000, guid: 81bb9eea30387e442899949a80011e55, type: 3}
 --- !u!1 &1473817545 stripped
 GameObject:
@@ -1871,6 +1887,88 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1473817548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473817545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 263dee2631e8850db9e1618205dce18d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orientation: {fileID: 0}
+  cameraTransform: {fileID: 961739753}
+  playerBody: {fileID: 1473817547}
+  dashForce: 0
+  dashUpwardForce: 0
+  dashDuration: 0
+  dashCd: 0
+  gameInput: {fileID: 1641117572}
+--- !u!114 &1473817549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473817545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b852ca8a0b8b9cc558b7af5f05a00bc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BaseSpeed: 10
+  MaxThrustSpeed: 50
+  MinThrustSpeed: 5
+  cameraTransform: {fileID: 961739753}
+  ThrustFactor: 10
+  rigidBody: {fileID: 1473817547}
+  isGrounded: 0
+  groundedCheckDistance: 2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+--- !u!114 &1473817550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473817545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df751a58c5f53fa79938ce63568823d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 1473817551}
+  gameInput: {fileID: 1641117572}
+  cameraTransform: {fileID: 961739753}
+  playerBody: {fileID: 1473817547}
+  playerCollider: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  runningSpeed: 15
+  walkingSpeed: 5
+  jumpForce: 5
+  rotationSpeed: 5
+--- !u!114 &1473817551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473817545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cecd6237d481f2b79b270b42176a402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalMovement: {fileID: 1473817550}
+  glidingMovement: {fileID: 1473817549}
+  dashingMovement: {fileID: 1473817548}
 --- !u!1 &1522530910
 GameObject:
   m_ObjectHideFlags: 3

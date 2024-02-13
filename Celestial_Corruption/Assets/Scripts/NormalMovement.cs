@@ -60,22 +60,29 @@ public class NormalMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        // Get the input from the player
-        float horizontalInput = gameInput.GetHorizontalInput();
-        float verticalInput = gameInput.GetVerticalInput();
+        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
 
-        // Get the direction the player is facing
-        Vector3 moveDirection = cameraTransform.forward * verticalInput + cameraTransform.right * horizontalInput;
-        moveDirection.y = 0;
+        // Convert the input vector to a movement vector relative to the camera orientation
+        Vector3 forward = cameraTransform.forward;
+        Vector3 right = cameraTransform.right;
+        forward.y = 0f;
+        right.y = 0f;
+        forward.Normalize();
+        right.Normalize();
 
-        // Rotate the player to face the direction they are moving
-        if (moveDirection != Vector3.zero)
+        // Adjusted movement vector
+        Vector3 movementVector = (forward * inputVector.y + right * inputVector.x).normalized;
+        movementVector *= movementSpeed * Time.deltaTime;
+
+        // Move the player 
+        playerBody.MovePosition(playerBody.position + movementVector);
+
+        // Rotate the player
+        if (movementVector != Vector3.zero)
         {
-            playerBody.transform.rotation = Quaternion.Slerp(playerBody.transform.rotation, Quaternion.LookRotation(moveDirection), rotationSpeed * Time.deltaTime);
+            Quaternion toRotation = Quaternion.LookRotation(movementVector);
+            playerBody.MoveRotation(Quaternion.RotateTowards(playerBody.rotation, toRotation, rotationSpeed * Time.deltaTime));
         }
-
-        // Move the player
-        playerBody.velocity = moveDirection * movementSpeed + new Vector3(0, playerBody.velocity.y, 0);
     }
 
     private void Jump()
