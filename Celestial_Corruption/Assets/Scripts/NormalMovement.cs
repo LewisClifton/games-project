@@ -51,7 +51,7 @@ public class NormalMovement : MonoBehaviour
         } else 
         {
             // If player is not grounded and the jump button is pressed, set the player state to gliding
-            if (gameInput.IsJumpPressed() && !isGrounded())
+            if (gameInput.IsJumpPressed())
             {
                 playerController.SetPlayerState(PlayerState.Gliding);
             }

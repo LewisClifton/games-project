@@ -12,7 +12,7 @@ public enum PlayerState
 
 public class PlayerController : MonoBehaviour
 {
-    private PlayerState playerState;
+    public PlayerState playerState;
 
     [SerializeField] private MonoBehaviour normalMovement;
     [SerializeField] private MonoBehaviour glidingMovement;
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
-        dashingMovement.enabled = true;
+        // dashingMovement.enabled = true;
         normalMovement.enabled = true;
     }   
 
@@ -51,12 +51,15 @@ public class PlayerController : MonoBehaviour
         switch (state)
         {
             case PlayerState.Normal:
+                playerState = PlayerState.Normal;
                 normalMovement.enabled = true;
                 break;
             case PlayerState.Gliding:
+                playerState = PlayerState.Gliding;
                 glidingMovement.enabled = true;
                 break;
             case PlayerState.Dashing:
+                playerState = PlayerState.Dashing;
                 dashingMovement.enabled = true;
                 break;
         }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GlidingMovement : MonoBehaviour
 {
+    [SerializeField] private PlayerController playerController;
     [SerializeField] private float BaseSpeed;
 
     // Max thrust force
@@ -43,7 +44,7 @@ public class GlidingMovement : MonoBehaviour
         {
             //Debug.Log("Grounded");
             //transform.rotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, cameraTransform.eulerAngles.z);
-
+            playerController.SetPlayerState(PlayerState.Normal);
         }
     }
 
