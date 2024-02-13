@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class NormalMovement : MonoBehaviour
 {
+    [SerializeField] private PlayerController playerController;
     [SerializeField] private GameInput gameInput;
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private Rigidbody playerBody;
@@ -31,6 +32,7 @@ public class NormalMovement : MonoBehaviour
 
         movementSpeed = runningSpeed;
         // colliderHeight = playerCollider.bounds.size.y;
+        colliderHeight = 2.0f;
     }
 
     private void Start()
@@ -40,8 +42,20 @@ public class NormalMovement : MonoBehaviour
 
     private void Update()
     {
-        MovePlayer();
-        Jump();
+        // Check if the player is grounded
+        if (isGrounded())
+        {
+            MovePlayer();
+            Jump();
+            SetWalking();
+        } else 
+        {
+            // If player is not grounded and the jump button is pressed, set the player state to gliding
+            if (gameInput.IsJumpPressed() && !isGrounded())
+            {
+                playerController.SetPlayerState(PlayerState.Gliding);
+            }
+        }
     }
 
     private void MovePlayer()
@@ -72,22 +86,18 @@ public class NormalMovement : MonoBehaviour
         }
     }
 
+    public void SetWalking()
+    {
+        if (gameInput.IsWalkTogglePressed())
+        {
+            isWalking = !isWalking;
+            // Change the movement speed only if WalkToggle is pressed
+            movementSpeed = isWalking ? runningSpeed : walkingSpeed;
+        }
+    }
+
     private bool isGrounded()
     {
         return Physics.Raycast(playerBody.transform.position, Vector3.down, colliderHeight / 2 + groundedCheckDistance, groundLayer);
     }
-
-    public void SetMovementSpeed(float speed)
-    {
-        movementSpeed = speed;
-    }
-
-    public void SetWalking(bool walking)
-    {
-        isWalking = walking;
-        movementSpeed = isWalking ? walkingSpeed : runningSpeed;
-    }
-
-
-
 }

@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        DashingMovement.SetActive(true);
+        NormalMovement.SetActive(true);
     }   
 
     private void Start()
@@ -51,7 +54,8 @@ public class PlayerController : MonoBehaviour
     {
         NormalMovement.SetActive(false);
         GlidingMovement.SetActive(false);
-        DashingMovement.SetActive(false);
+        // Dashing can be active all the time
+        // DashingMovement.SetActive(false);
     }
 
     public void SetPlayerState(PlayerState state)
