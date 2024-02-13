@@ -17,7 +17,7 @@ public class NormalMovement : MonoBehaviour
     [SerializeField] private float rotationSpeed = 5f;
 
     private float groundedCheckDistance = 1.1f;
-    private float bufferCheckDistance = 0.5f;
+    private float bufferCheckDistance = 0.3f;
 
     private float movementSpeed;
     private float colliderHeight;
@@ -42,6 +42,7 @@ public class NormalMovement : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(isGrounded());
         // Check if the player is grounded
         if (isGrounded())
         {
@@ -105,6 +106,18 @@ public class NormalMovement : MonoBehaviour
 
     private bool isGrounded()
     {
-        return Physics.Raycast(playerBody.transform.position, Vector3.down, colliderHeight / 2 + groundedCheckDistance, groundLayer);
+        // Raycast to check if the player is grounded
+        RaycastHit hit;
+        Vector3 rayStart = transform.position;
+
+        // Debug log what gets hit
+        Debug.DrawRay(rayStart, Vector3.down * groundedCheckDistance, Color.red);
+
+
+        if (Physics.Raycast(rayStart, Vector3.down, out hit, groundedCheckDistance, groundLayer))
+        {
+            return true;
+        }
+        return false;
     }
 }
