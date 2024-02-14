@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using UnityEngine;
 
-public class Gliding : MonoBehaviour
+public class GlidingMovement : MonoBehaviour
 {
+    [SerializeField] private PlayerController playerController;
     [SerializeField] private float BaseSpeed;
 
     // Max thrust force
@@ -37,14 +37,14 @@ public class Gliding : MonoBehaviour
     {   
         checkGroundStatus();
         if (!isGrounded) {
-            GlidingMovement();
+            GlidingMovementF();
             ManageRotation();
         };
         if (isGrounded)
         {
             //Debug.Log("Grounded");
             //transform.rotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, cameraTransform.eulerAngles.z);
-
+            playerController.SetPlayerState(PlayerState.Normal);
         }
     }
 
@@ -79,7 +79,7 @@ public class Gliding : MonoBehaviour
         //Debug.DrawRay(rayStart, rayDirection * groundedCheckDistance, isGrounded ? Color.green : Color.red);
     }
     //Calculates the forces that get applied during gliding
-    private void GlidingMovement()
+    private void GlidingMovementF()
     {
         float pitchInRads = transform.eulerAngles.x * Mathf.Deg2Rad;
         //Pitch gets mapped to a value between -1 and 1 using Sin and multiplied by the thrust factor.
@@ -108,7 +108,4 @@ public class Gliding : MonoBehaviour
         Quaternion targetRotation = Quaternion.Euler(cameraTransform.eulerAngles.x, cameraTransform.eulerAngles.y, cameraTransform.eulerAngles.z);
         transform.rotation = targetRotation;
     }
-
-    
-
 }
