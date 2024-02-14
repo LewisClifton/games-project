@@ -13,7 +13,7 @@ public class NormalMovement : MonoBehaviour
 
     [SerializeField] private float runningSpeed = 15f;
     [SerializeField] private float walkingSpeed = 5f;
-    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float jumpForce = 50f;
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private float moveForce = 50f;
 
@@ -22,6 +22,7 @@ public class NormalMovement : MonoBehaviour
 
     private float movementSpeed;
     private float colliderHeight;
+    private bool inJump = false;
 
     private bool isWalking = false;
 
@@ -43,10 +44,11 @@ public class NormalMovement : MonoBehaviour
 
     private void Update()
     {
+        MovePlayer();
         // Check if the player is grounded
         if (isGrounded())
         {
-            MovePlayer();
+            inJump = false;
             Jump();
             SetWalking();
         } else 
@@ -54,6 +56,7 @@ public class NormalMovement : MonoBehaviour
             // If player is not grounded and the jump button is pressed, set the player state to gliding
             if (gameInput.IsJumpPressed())
             {
+                inJump = false;
                 playerController.SetPlayerState(PlayerState.Gliding);
             }
         }
@@ -91,6 +94,7 @@ public class NormalMovement : MonoBehaviour
     {
         if (gameInput.IsJumpPressed() && isGrounded())
         {
+            inJump = true;
             playerBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
