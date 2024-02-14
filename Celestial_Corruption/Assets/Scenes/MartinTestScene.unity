@@ -975,7 +975,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961739749}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18580887, y: 0.79997575, z: -0.3105812, w: 0.47859487}
+  m_LocalRotation: {x: 0.18580887, y: 0.7999759, z: -0.31058118, w: 0.47859496}
   m_LocalPosition: {x: -1.5420058, y: 2.2, z: 0.8274768}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1285,9 +1285,34 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 328344997532891247, guid: eccdb42cb50c4bef49f5f4901193a5b8,
         type: 3}
+      propertyPath: rotationSpeed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 328344997532891247, guid: eccdb42cb50c4bef49f5f4901193a5b8,
+        type: 3}
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 961739753}
+    - target: {fileID: 670193077863894845, guid: eccdb42cb50c4bef49f5f4901193a5b8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5086362
+      objectReference: {fileID: 0}
+    - target: {fileID: 670193077863894845, guid: eccdb42cb50c4bef49f5f4901193a5b8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.06976646
+      objectReference: {fileID: 0}
+    - target: {fileID: 670193077863894845, guid: eccdb42cb50c4bef49f5f4901193a5b8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.8501899
+      objectReference: {fileID: 0}
+    - target: {fileID: 670193077863894845, guid: eccdb42cb50c4bef49f5f4901193a5b8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.116615266
+      objectReference: {fileID: 0}
     - target: {fileID: 907093691702499957, guid: eccdb42cb50c4bef49f5f4901193a5b8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1348,6 +1373,21 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 961739753}
+    - target: {fileID: 5962399063862209689, guid: eccdb42cb50c4bef49f5f4901193a5b8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.47859502
+      objectReference: {fileID: 0}
+    - target: {fileID: 5962399063862209689, guid: eccdb42cb50c4bef49f5f4901193a5b8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.18580887
+      objectReference: {fileID: 0}
+    - target: {fileID: 5962399063862209689, guid: eccdb42cb50c4bef49f5f4901193a5b8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.31058115
+      objectReference: {fileID: 0}
     - target: {fileID: 7021852066843719802, guid: eccdb42cb50c4bef49f5f4901193a5b8,
         type: 3}
       propertyPath: cameraTransform

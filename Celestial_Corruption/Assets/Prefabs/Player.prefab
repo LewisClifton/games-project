@@ -272,7 +272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3754697784729391405}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18580885, y: 0.7999758, z: -0.31058118, w: 0.47859496}
+  m_LocalRotation: {x: 0.18580887, y: 0.7999758, z: -0.31058115, w: 0.47859502}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -656,7 +656,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5942623433456007674}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.06976648, y: 0.85018986, z: -0.11661526, w: 0.5086361}
+  m_LocalRotation: {x: 0.06976646, y: 0.8501899, z: -0.116615266, w: 0.5086362}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1067,7 +1067,7 @@ MonoBehaviour:
   runningSpeed: 15
   walkingSpeed: 5
   jumpForce: 10
-  rotationSpeed: 5
+  rotationSpeed: 0
   moveForce: 50
 --- !u!114 &7021852066843719802
 MonoBehaviour:
