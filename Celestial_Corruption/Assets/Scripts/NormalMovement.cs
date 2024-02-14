@@ -42,7 +42,6 @@ public class NormalMovement : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(isGrounded());
         // Check if the player is grounded
         if (isGrounded())
         {
@@ -109,9 +108,7 @@ public class NormalMovement : MonoBehaviour
         // Raycast to check if the player is grounded
         RaycastHit hit;
         // Vector3 rayStart = transform.position;
-        Vector3 rayStart = transform.position + Vector3.up * (-colliderHeight / 2 + 0.1f);
-
-        Debug.DrawRay(rayStart, Vector3.down * groundedCheckDistance, Color.red);
+        Vector3 rayStart = transform.position + Vector3.up * (colliderHeight / 2);
 
         if (Physics.Raycast(rayStart, Vector3.down, out hit, groundedCheckDistance, groundLayer))
         {
