@@ -15,6 +15,7 @@ public class NormalMovement : MonoBehaviour
     [SerializeField] private float walkingSpeed = 5f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float rotationSpeed = 5f;
+    [SerializeField] private float moveForce = 50f;
 
     private float groundedCheckDistance = 1.1f;
     private float bufferCheckDistance = 0.3f;
@@ -75,7 +76,8 @@ public class NormalMovement : MonoBehaviour
         movementVector *= movementSpeed * Time.deltaTime;
 
         // Move the player 
-        playerBody.MovePosition(playerBody.position + movementVector);
+        // playerBody.MovePosition(playerBody.position + movementVector);
+        playerBody.AddForce(movementVector*moveForce, ForceMode.Force);
 
         // Rotate the player
         if (movementVector != Vector3.zero)

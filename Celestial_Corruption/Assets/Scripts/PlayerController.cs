@@ -10,6 +10,8 @@ public enum PlayerState
     Dashing
 }
 
+// Basically a state machine with additional functionality
+// TODO: Add common functionality from other movement scripts
 public class PlayerController : MonoBehaviour
 {
     public PlayerState playerState;
