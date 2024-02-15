@@ -45,15 +45,15 @@ public class Enemy : MonoBehaviour
         GameObject bulletObj = Instantiate(enemyBullet, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
         Rigidbody bulletRig = bulletObj.GetComponent<Rigidbody>();
         //bulletRig.AddForce(bulletRig.transform.forward * enemySpeed);
-        
-        // 计算子弹移动方向，从子弹位置指向玩家位置
+
+        // Calculate the direction of the bullet's movement, from the bullet's position to the player's position
         Vector3 moveDirection = (Player.position - spawnPoint.position).normalized;
 
-        // 朝向玩家
+        // Face to the Player
         Quaternion rotation = Quaternion.LookRotation(moveDirection);
         bulletObj.transform.rotation = rotation;
 
-        // 给子弹添加初速度使其直线发射
+        // Add initial velocity to the bullet to make it shoot in a straight line
         bulletRig.velocity = moveDirection * enemySpeed;
 
         Destroy(bulletObj, 5f);

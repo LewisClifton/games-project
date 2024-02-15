@@ -859,32 +859,12 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!1 &1352939151 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8899124071156562735, guid: 3aaead118d472e04abcea1161a67b746,
-    type: 3}
-  m_PrefabInstance: {fileID: 7543709784788003332}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1352939152 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2024263657507735006, guid: 3aaead118d472e04abcea1161a67b746,
     type: 3}
   m_PrefabInstance: {fileID: 7543709784788003332}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1352939158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1352939151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 602fb68e05b63cc40b4bf29376ed0ca1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHealth: {fileID: 1827351914}
-  damage: 10
 --- !u!1 &1776143256
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,19 +973,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2183367242367986382}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1827351908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1827351905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eba11dca9f6e5834289d3a7bd41cd629, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 7
 --- !u!54 &1827351910
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1074,6 +1041,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1078355626}
   healthAmount: 100
+--- !u!114 &1827351916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827351905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1326e413a3f297c4b8dbef4cf125ff96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
 --- !u!1001 &2183367242367986382
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1177,11 +1157,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 41f081d5c6d286c47a33bed3f84de79a,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1827351908}
+      addedObject: {fileID: 1827351914}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 41f081d5c6d286c47a33bed3f84de79a,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1827351914}
+      addedObject: {fileID: 1827351916}
   m_SourcePrefab: {fileID: 100100000, guid: 41f081d5c6d286c47a33bed3f84de79a, type: 3}
 --- !u!1001 &7543709784788003332
 PrefabInstance:
@@ -1258,6 +1238,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9053048888948548334, guid: 3aaead118d472e04abcea1161a67b746,
         type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053048888948548334, guid: 3aaead118d472e04abcea1161a67b746,
+        type: 3}
       propertyPath: PlayerHealth
       value: 
       objectReference: {fileID: 0}
@@ -1269,11 +1254,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8899124071156562735, guid: 3aaead118d472e04abcea1161a67b746,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1352939158}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3aaead118d472e04abcea1161a67b746, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

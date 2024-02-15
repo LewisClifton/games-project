@@ -1,6 +1,3 @@
-/* This piece of code is used for the test_cube as an enemy
-   This can be the foundation of future enemy behavior
-*/
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;

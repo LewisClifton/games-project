@@ -8,13 +8,15 @@ public class BulletScript : MonoBehaviour
     public int damage = 10;
     private void Start()
     {
-        // 获取 PlayerHealth 组件并赋值给 PlayerHealth 变量
+        // Get the PlayerHealth component and assign it to the PlayerHealth variable
+        // Need this line to make the damage work
         playerHealth = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
+
     }
 
     private void Update()
     {
-        
+        Debug.Log(damage);
     }
 
     // Destory the bullet if it touches the player
@@ -23,7 +25,7 @@ public class BulletScript : MonoBehaviour
         if (other.name.Equals("Player"))
         {
             playerHealth.TakeDamage(damage);
-            Debug.Log("Trigger or not");
+            
             Destroy(gameObject);
         }
     }

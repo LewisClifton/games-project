@@ -12,21 +12,22 @@ public class PlayerHealth : MonoBehaviour
     {
         if (healthAmount <= 0)
         {
-            Application.LoadLevel(Application.loadedLevel);
-        }
-        
-/*      Just the Keypress to test if the health bar works
- 
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            TakeDamage(20);
+            Application.LoadLevel(Application.loadedLevel); // Reload the secene I guess
         }
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Healing(10);
-        }
-*/
+        
+        /*      Just the Keypress to test if the health bar works
+
+                if (Input.GetKeyDown(KeyCode.J))
+                {
+                    TakeDamage(20);
+                }
+
+                if (Input.GetKeyDown(KeyCode.K))
+                {
+                    Healing(10);
+                }
+        */
 
     }
 
