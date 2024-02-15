@@ -12,7 +12,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (healthAmount <= 0)
         {
-            Application.LoadLevel(Application.loadedLevel); // Reload the secene I guess
+            // Reload the secene I guess
+            Application.LoadLevel(Application.loadedLevel); 
         }
 
         

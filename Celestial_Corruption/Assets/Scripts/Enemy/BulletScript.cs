@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     public PlayerHealth playerHealth;
-    [SerializeField] private int damage = 10;
+    public int damage;
     private void Start()
     {
         // Get the PlayerHealth component and assign it to the PlayerHealth variable

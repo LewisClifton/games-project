@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private float timer = 5;
 
+    [SerializeField] float dis;
+
     private float bulletTime;
 
     public GameObject enemyBullet;
@@ -31,7 +33,13 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ShootAtPlayer();
+        dis = Vector3.Distance(transform.position, Player.position);
+
+        if (dis <= 10f)
+        {
+            ShootAtPlayer();
+        }
+        //ShootAtPlayer();
     }
 
     void ShootAtPlayer()
