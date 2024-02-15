@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Health : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
     public Image healthBar;
     public float healthAmount = 100;
@@ -14,7 +14,9 @@ public class Health : MonoBehaviour
         {
             Application.LoadLevel(Application.loadedLevel);
         }
-
+        
+/*      Just the Keypress to test if the health bar works
+ 
         if (Input.GetKeyDown(KeyCode.J))
         {
             TakeDamage(20);
@@ -24,6 +26,8 @@ public class Health : MonoBehaviour
         {
             Healing(10);
         }
+*/
+
     }
 
     public void TakeDamage(float Damage)

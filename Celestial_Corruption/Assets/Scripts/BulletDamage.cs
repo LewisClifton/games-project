@@ -2,29 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletScript : MonoBehaviour
+public class BulletDamage : MonoBehaviour
 {
     public PlayerHealth playerHealth;
     public int damage = 10;
-    private void Start()
-    {
-        // 获取 PlayerHealth 组件并赋值给 PlayerHealth 变量
-        playerHealth = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
-    }
 
-    private void Update()
+    // Start is called before the first frame update
+    void Start()
     {
         
     }
 
-    // Destory the bullet if it touches the player
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.name.Equals("Player"))
         {
             playerHealth.TakeDamage(damage);
             Debug.Log("Trigger or not");
-            Destroy(gameObject);
         }
     }
 }
