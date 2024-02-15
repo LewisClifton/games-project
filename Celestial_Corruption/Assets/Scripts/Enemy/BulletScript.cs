@@ -5,12 +5,15 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     public PlayerHealth playerHealth;
-    public int damage = 10;
+    [SerializeField] private int damage = 10;
     private void Start()
     {
         // Get the PlayerHealth component and assign it to the PlayerHealth variable
         // Need this line to make the damage work
         playerHealth = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
+
+        // this line here is just to change the damage figure
+        damage = 5;
 
     }
 
