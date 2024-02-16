@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
     {
         dis = Vector3.Distance(transform.position, Player.position);
 
-        if (dis <= 10f)
+        if (dis <= 40f)
         {
             ShootAtPlayer();
         }
