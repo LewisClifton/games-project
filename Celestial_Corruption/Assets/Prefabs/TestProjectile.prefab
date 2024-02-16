@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4034316653448540939}
   - component: {fileID: 2211152799916836009}
   - component: {fileID: 5667422717286116955}
-  - component: {fileID: 9053048888948548334}
+  - component: {fileID: -8588836137021508017}
   m_Layer: 0
   m_Name: TestProjectile
   m_TagString: Untagged
@@ -134,7 +134,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &9053048888948548334
+--- !u!114 &-8588836137021508017
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,3 +146,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5baccb034c31d744ba293d9f36a34bdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealth: {fileID: 0}
+  damage: 10

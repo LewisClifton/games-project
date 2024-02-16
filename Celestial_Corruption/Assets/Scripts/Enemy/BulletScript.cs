@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
+    // Change damage figure in the prefab
     public PlayerHealth playerHealth;
-    public int damage;
+    [SerializeField] int damage;
     private void Start()
     {
         // Get the PlayerHealth component and assign it to the PlayerHealth variable
@@ -13,13 +14,13 @@ public class BulletScript : MonoBehaviour
         playerHealth = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
 
         // this line here is just to change the damage figure
-        damage = 5;
+        //damage = 5;
 
     }
 
     private void Update()
     {
-        Debug.Log(damage);
+        
     }
 
     // Destory the bullet if it touches the player
