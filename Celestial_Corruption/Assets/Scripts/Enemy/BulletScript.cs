@@ -20,13 +20,13 @@ public class BulletScript : MonoBehaviour
 
     private void Update()
     {
-        
+
     }
 
     // Destory the bullet if it touches the player
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name.Equals("Player"))
+        if (other.name.Equals("Banana Man"))
         {
             playerHealth.TakeDamage(damage);
             
