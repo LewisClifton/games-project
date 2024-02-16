@@ -20,7 +20,7 @@ MonoBehaviour:
     x: 188
     y: -578
     width: 3847
-    height: 2431
+    height: 2412
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1397,7 +1397,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614613}
   - {fileID: 8926484042661614617}
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
+  m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_MasterSlot: {fileID: 8926484042661614608}
   m_MasterData:
@@ -1406,7 +1406,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.Transform, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"position":{"x":0.0,"y":0.0,"z":0.0},"angles":{"x":0.0,"y":0.0,"z":0.0},"scale":{"x":1.0,"y":1.0,"z":1.0}}'
+      m_SerializableObject: '{"position":{"x":0.0,"y":0.0,"z":0.0},"angles":{"x":0.0,"y":0.0,"z":0.0},"scale":{"x":0.800000011920929,"y":0.800000011920929,"z":0.800000011920929}}'
     m_Space: 0
   m_Property:
     name: transform
@@ -3744,7 +3744,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.12
+      m_SerializableObject: 0
     m_Space: 2147483647
   m_Property:
     name: A
@@ -3778,7 +3778,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.24
+      m_SerializableObject: 0.12
     m_Space: 2147483647
   m_Property:
     name: B
@@ -3814,7 +3814,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.AABox, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":45.15983963012695,"y":4.900000095367432,"z":31.21150016784668},"size":{"x":200.0,"y":10.0,"z":200.0}}'
+      m_SerializableObject: '{"center":{"x":2000.0,"y":5.0,"z":1200.0},"size":{"x":4100.0,"y":10.0,"z":2500.0}}'
     m_Space: 0
   m_Property:
     name: bounds
@@ -4293,7 +4293,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614936}
   - {fileID: 8926484042661614940}
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
+  m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_MasterSlot: {fileID: 8926484042661614935}
   m_MasterData:
@@ -4302,7 +4302,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.AABox, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":45.0,"y":5.0,"z":30.0},"size":{"x":200.0,"y":5.0,"z":200.0}}'
+      m_SerializableObject: '{"center":{"x":2000.0,"y":5.0,"z":1200.0},"size":{"x":4100.0,"y":10.0,"z":2500.0}}'
     m_Space: 0
   m_Property:
     name: bounds
@@ -10403,7 +10403,7 @@ MonoBehaviour:
   positionMode: 0
   spawnMode: 0
   mode: 1
-  placementMode: 0
+  placementMode: 2
   surfaceCoordinates: 1
   sourceMesh: 1
   skinnedTransform: 1
@@ -10471,7 +10471,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.Transform, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"position":{"x":0.0,"y":0.0,"z":0.0},"angles":{"x":0.0,"y":0.0,"z":0.0},"scale":{"x":1.0,"y":1.0,"z":1.0}}'
+      m_SerializableObject: '{"position":{"x":0.0,"y":0.0,"z":0.0},"angles":{"x":0.0,"y":0.0,"z":0.0},"scale":{"x":0.5,"y":0.5,"z":0.5}}'
     m_Space: 0
   m_Property:
     name: transform
@@ -11502,7 +11502,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.5
+      m_SerializableObject: 1
     m_Space: 2147483647
   m_Property:
     name: A
@@ -11536,7 +11536,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 1
+      m_SerializableObject: 2
     m_Space: 2147483647
   m_Property:
     name: B
