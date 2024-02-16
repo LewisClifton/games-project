@@ -44,6 +44,8 @@ public class PlayerMovement2 : MonoBehaviour
     
     void Update()
     {
+        Shader.SetGlobalVector("_Player", transform.position);
+
         MovePlayer();
         Jump();
         if (gameInput.IsDashPressed())
