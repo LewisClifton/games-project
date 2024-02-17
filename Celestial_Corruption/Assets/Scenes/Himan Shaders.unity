@@ -671,6 +671,35 @@ MonoBehaviour:
     minMaxHeight: {x: 0.5, y: 1}
     minMaxWidth: {x: 0.8, y: 1.2}
     noiseSize: 0.1
+  - enabled: 1
+    name: Wheat
+    seed: 8310
+    probability: 25
+    collisionCheck: 0
+    rejectUnderwater: 0
+    heightRange: {x: 0, y: 1000}
+    slopeRange: {x: 0, y: 60}
+    curvatureRange: {x: 0, y: 1}
+    layerMasks: []
+    instanceCount: 0
+    index: 1
+    type: 0
+    renderAsBillboard: 0
+    prefab: {fileID: 7417814763152840698, guid: 42fa4a47959db62479d36a81b7f4c04b,
+      type: 3}
+    gpuInstancing: 1
+    holeEdgePadding: 2
+    alignToGround: 100
+    positionJitter: 0
+    useDensityScaling: 1
+    density: 0
+    billboard: {fileID: 0}
+    mainColor: {r: 1, g: 1, b: 1, a: 1}
+    secondaryColor: {r: 1, g: 1, b: 1, a: 1}
+    linkColors: 1
+    minMaxHeight: {x: 0.5, y: 1}
+    minMaxWidth: {x: 0.8, y: 1.2}
+    noiseSize: 0.1
   terrainSettings:
     drawTreesAndFoliage: 1
     preservePrefabLayer: 1
@@ -839,7 +868,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: a6560a915ef98420e9faacc1c7438823, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 4052c80fb9629414287730756de15f13, type: 2}
 --- !u!4 &419572501
 Transform:
   m_ObjectHideFlags: 0
@@ -1479,10 +1508,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameInput: {fileID: 263857876}
-  moveSpeed: 50
+  moveSpeed: 150
   orientation: {fileID: 1431621623}
-  jumpForce: 30
-  dashForce: 20
+  jumpForce: 80
+  dashForce: 250
   dashUpwardForce: 0
   dashDuration: 1
   isGrounded: 1
