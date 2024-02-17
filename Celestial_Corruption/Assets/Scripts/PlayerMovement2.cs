@@ -13,8 +13,10 @@ public class PlayerMovement2 : MonoBehaviour
     [Header("Walking")]
     public float moveSpeed;
     public Transform orientation;
+    public int walkingDrag;
     [Header("Jumping")]
     [SerializeField] private float jumpForce = 5f;
+    public int airDrag;
     Rigidbody playerBody;
     Vector2 moveInput;
     [Header("Free Dash")]
@@ -104,8 +106,12 @@ public class PlayerMovement2 : MonoBehaviour
         // playerBody.drag = 0;
         // Reset the movement speed to running speed
         //movementSpeed = runningSpeed;
+        playerBody.drag = walkingDrag;
     }
-
+    private void onTakingAir()
+    {
+        playerBody.drag = airDrag;
+    }
 
     //Ran every FixedUpdate, checks if the player is on the ground.
     private void checkGroundStatus()
@@ -127,9 +133,15 @@ public class PlayerMovement2 : MonoBehaviour
         }
         else
         {
+            if (isGrounded)
+            {
+                onTakingAir();
+            }
             isGrounded = false;
         }
     }
+
+    
 
     //Function that executes the dash
     private void FreeDash()
@@ -155,7 +167,7 @@ public class PlayerMovement2 : MonoBehaviour
     private void AttackDash()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        float closestDistance = -1;
+        float closestDistance = Mathf.Infinity;
         Transform closestEnemy = null;
 
         foreach (GameObject enemy in enemies)
@@ -167,13 +179,18 @@ public class PlayerMovement2 : MonoBehaviour
                 closestEnemy = enemy.transform;
             }
         }
-        if (closestDistance < detectionRange && closestDistance >= 0)
+        if (closestDistance < detectionRange)
         {
             Vector3 forceToApply = Vector3.zero;
             Vector3 vectorToEnemy = closestEnemy.transform.position - orientation.transform.position;
             //vectorToEnemy= vectorToEnemy.normalized;
             forceToApply = vectorToEnemy * attackDashForce;
+            //Debug.Log(vectorToEnemy);
             playerBody.AddForce(forceToApply, ForceMode.Impulse);
+        }
+        else
+        {
+            Debug.Log(closestDistance);
         }
         
     }

@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 362695489}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1681,12 +1681,14 @@ MonoBehaviour:
   gameInput: {fileID: 935677464}
   moveSpeed: 50
   orientation: {fileID: 318079073}
+  walkingDrag: 5
   jumpForce: 15
+  airDrag: 1
   freeDashForce: 50
   dashUpwardForce: 0
   dashDuration: 0.25
-  attackDashForce: 3
-  detectionRange: 50
+  attackDashForce: 5
+  detectionRange: 25
   isGrounded: 1
   groundLayer:
     serializedVersion: 2
@@ -2714,7 +2716,7 @@ GameObject:
   - component: {fileID: 1970063249}
   m_Layer: 0
   m_Name: test_cube
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
