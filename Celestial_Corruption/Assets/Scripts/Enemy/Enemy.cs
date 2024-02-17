@@ -55,7 +55,9 @@ public class Enemy : MonoBehaviour
         //bulletRig.AddForce(bulletRig.transform.forward * enemySpeed);
 
         // Calculate the direction of the bullet's movement, from the bullet's position to the player's position
-        Vector3 moveDirection = (Player.position - spawnPoint.position).normalized;
+        Vector3 playerPos = Player.position;
+        playerPos.y += 3;
+        Vector3 moveDirection = (playerPos - spawnPoint.position).normalized;
 
         // Face to the Player
         Quaternion rotation = Quaternion.LookRotation(moveDirection);

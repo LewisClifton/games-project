@@ -19,7 +19,9 @@ public class test_cube : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(Player);
+        //only target the player's x and z position
+        Vector3 targetPostition = new Vector3(Player.position.x, this.transform.position.y, Player.position.z);
+        transform.LookAt(targetPostition);
        
     }
 

@@ -839,7 +839,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: a6560a915ef98420e9faacc1c7438823, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 4052c80fb9629414287730756de15f13, type: 2}
 --- !u!4 &419572501
 Transform:
   m_ObjectHideFlags: 0
@@ -1479,10 +1479,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameInput: {fileID: 263857876}
-  moveSpeed: 50
+  moveSpeed: 150
   orientation: {fileID: 1431621623}
-  jumpForce: 30
-  dashForce: 20
+  jumpForce: 80
+  dashForce: 250
   dashUpwardForce: 0
   dashDuration: 1
   isGrounded: 1
@@ -2541,7 +2541,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1353979076}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.00025311133, y: 0.99033266, z: -0.13870098, w: -0.0018072288}
+  m_LocalRotation: {x: -0.00025310894, y: 0.99033266, z: -0.13870098, w: -0.0018072117}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

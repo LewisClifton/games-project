@@ -7,6 +7,7 @@ public class BulletScript : MonoBehaviour
     // Change damage figure in the prefab
     public PlayerHealth playerHealth;
     [SerializeField] int damage;
+    public ParticleSystem deathParticles;
     private float initializationTime;
     float timeSinceInitialization;
     private void Start()
@@ -23,6 +24,7 @@ public class BulletScript : MonoBehaviour
 
     private void Update()
     {
+        //calculating how long this object has been instantiated
         timeSinceInitialization = Time.timeSinceLevelLoad - initializationTime;
     }
 
@@ -33,7 +35,19 @@ public class BulletScript : MonoBehaviour
         {
             playerHealth.TakeDamage(damage);
 
-            Destroy(gameObject);
-        } else if(timeSinceInitialization > 0.1) { Destroy(gameObject, 0.2f); }
+            Destroy(0f);
+
+        } else if(timeSinceInitialization > 0.1) //colsion with other objects after it has left the collision range with itself
+        {
+            Destroy(0.2f);
+        }
+    }
+
+    public void Destroy(float timer)
+    {
+        //create a death particle
+        Instantiate(deathParticles, transform.position, Quaternion.identity);
+        //destroy this spehere
+        Destroy(gameObject, timer);
     }
 }
