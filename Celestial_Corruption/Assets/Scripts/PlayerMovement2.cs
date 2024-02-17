@@ -181,10 +181,13 @@ public class PlayerMovement2 : MonoBehaviour
         }
         if (closestDistance < detectionRange)
         {
+            Vector3 playerVelocity=playerBody.velocity;
+            float playerSpeed = playerVelocity.magnitude;
+            playerBody.AddForce(playerVelocity * -1, ForceMode.Impulse);
             Vector3 forceToApply = Vector3.zero;
             Vector3 vectorToEnemy = closestEnemy.transform.position - orientation.transform.position;
             //vectorToEnemy= vectorToEnemy.normalized;
-            forceToApply = vectorToEnemy * attackDashForce;
+            forceToApply = vectorToEnemy * (attackDashForce) + vectorToEnemy.normalized*playerSpeed;
             //Debug.Log(vectorToEnemy);
             playerBody.AddForce(forceToApply, ForceMode.Impulse);
         }
