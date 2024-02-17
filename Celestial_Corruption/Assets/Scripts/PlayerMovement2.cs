@@ -29,7 +29,9 @@ public class PlayerMovement2 : MonoBehaviour
     //public Transform enemy;
     public float attackDashForce;
     public float detectionRange;
-    private Transform currentTarget;
+    public GameObject playerObject;
+    public float dashTime;
+    LayerMask originalLayer;
     [Header("Player State")]
     public bool isGrounded = false;
     public bool isGliding = false;
@@ -50,10 +52,11 @@ public class PlayerMovement2 : MonoBehaviour
     [SerializeField] private float glideRunSpeed;
     [SerializeField] private bool glidingEnabled;
     private float CurrentThrustSpeed;
-
+    
 
     void Start()
     {
+        originalLayer = playerObject.layer;
         playerBody = GetComponent<Rigidbody>();
         playerBody.freezeRotation = true;
         colliderHeight = playerCollider.bounds.size.y;
@@ -208,6 +211,7 @@ public class PlayerMovement2 : MonoBehaviour
         }
         if (closestDistance < detectionRange)
         {
+            playerObject.layer = LayerMask.NameToLayer("Dashing");
             Vector3 playerVelocity=playerBody.velocity;
             float playerSpeed = playerVelocity.magnitude;
             playerBody.AddForce(playerVelocity * -1, ForceMode.Impulse);
@@ -217,6 +221,7 @@ public class PlayerMovement2 : MonoBehaviour
             forceToApply = vectorToEnemy * (attackDashForce) + vectorToEnemy.normalized*playerSpeed;
             //Debug.Log(vectorToEnemy);
             playerBody.AddForce(forceToApply, ForceMode.Impulse);
+            Invoke("setLayer",dashTime);
         }
         else
         {
@@ -224,7 +229,11 @@ public class PlayerMovement2 : MonoBehaviour
         }
         
     }
-
+    
+    private void setLayer()
+    {
+        playerObject.layer = originalLayer;
+    }
     private void GlidingMovement()
     {
         
