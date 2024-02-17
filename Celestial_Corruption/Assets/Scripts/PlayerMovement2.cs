@@ -12,6 +12,8 @@ public class PlayerMovement2 : MonoBehaviour
     [Header("Movement")]
     [Header("Walking")]
     public float moveSpeed;
+    private float runSpeed;
+    
     public Transform orientation;
     public int walkingDrag;
     [Header("Jumping")]
@@ -30,14 +32,24 @@ public class PlayerMovement2 : MonoBehaviour
     private Transform currentTarget;
     [Header("Player State")]
     public bool isGrounded = false;
-
+    public bool isGliding = false;
+    
     [Header("Player State Checking")]
     private float groundedCheckDistance = 1.5f;
     private float colliderHeight;
     private float bufferCheckDistance = 0.1f;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Collider playerCollider;
-
+    [Header("Gliding")]
+    [SerializeField] private float BaseSpeed;
+    [SerializeField] private float MaxThrustSpeed;// Max thrust force
+    [SerializeField] private float MinThrustSpeed;// Minimum speed required for gliding thrust
+    [SerializeField] private Transform cameraTransform;// Camera, set to Main Camera
+    [SerializeField] private float ThrustFactor;// Used to determine thrust force
+    [SerializeField] private Vector3 upwardForce; // Force that is applied to player continuously when gliding. To immitate lower gravity.
+    [SerializeField] private float glideRunSpeed;
+    [SerializeField] private bool glidingEnabled;
+    private float CurrentThrustSpeed;
 
 
     void Start()
@@ -45,6 +57,7 @@ public class PlayerMovement2 : MonoBehaviour
         playerBody = GetComponent<Rigidbody>();
         playerBody.freezeRotation = true;
         colliderHeight = playerCollider.bounds.size.y;
+        runSpeed = moveSpeed;
     }
 
     
@@ -68,10 +81,14 @@ public class PlayerMovement2 : MonoBehaviour
     {
         MovePlayer();
         checkGroundStatus();
-        
-        
-    }
+        if (!isGrounded && isGliding && glidingEnabled)
+        {
+            GlidingMovement();
+            ManageRotation();
+        };
 
+    }
+    
 
     private void MovePlayer() { 
         Vector3 playerVelocity = orientation.forward * moveInput.y * moveSpeed + orientation.right * moveInput.x * moveSpeed;
@@ -89,9 +106,24 @@ public class PlayerMovement2 : MonoBehaviour
     //Ran every frame. Checks if player begins a jump.
     private void Jump()
     {
-        if (gameInput.IsJumpPressed() && isGrounded)
+        if (gameInput.IsJumpPressed())
         {
-            playerBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            if (isGrounded)
+            {
+                playerBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            }
+            else
+            {
+                if (isGliding)
+                {
+                    moveSpeed = runSpeed;
+                }
+                else
+                {
+                    moveSpeed = glideRunSpeed;
+                }
+                isGliding = !isGliding;
+            }
         }
     }
 
@@ -99,14 +131,15 @@ public class PlayerMovement2 : MonoBehaviour
     private void onLand()
     {
         // Makes player stand up
-        //transform.rotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, cameraTransform.eulerAngles.z);
-        //isGliding = false;
+        transform.rotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, cameraTransform.eulerAngles.z);
+        isGliding = false;
 
         // Reset the drag to 0
         // playerBody.drag = 0;
         // Reset the movement speed to running speed
         //movementSpeed = runningSpeed;
         playerBody.drag = walkingDrag;
+        moveSpeed = runSpeed;
     }
     private void onTakingAir()
     {
@@ -156,12 +189,6 @@ public class PlayerMovement2 : MonoBehaviour
             forceToApply = orientation.transform.forward * freeDashForce + orientation.transform.up * dashUpwardForce;
         }
         playerBody.AddForce(forceToApply, ForceMode.Impulse);
-        Invoke(nameof(ResetDash), dashDuration);
-    }
-
-    private void ResetDash()
-    {
-
     }
 
     private void AttackDash()
@@ -196,5 +223,37 @@ public class PlayerMovement2 : MonoBehaviour
             Debug.Log(closestDistance);
         }
         
+    }
+
+    private void GlidingMovement()
+    {
+        
+        float pitchInRads = transform.eulerAngles.x * Mathf.Deg2Rad;
+        //Pitch gets mapped to a value between -1 and 1 using Sin and multiplied by the thrust factor.
+        //If the "nose" of the character points up then it slows down, if it points down then it speeds up.
+        float mappedPitch = Mathf.Sin(pitchInRads) * ThrustFactor;
+        Vector3 glidingForce = Vector3.forward * CurrentThrustSpeed;
+        //Time.deltaTime is used to account for changes in framerate/frametime
+        CurrentThrustSpeed += mappedPitch * Time.deltaTime;
+        //Forces the CurrentThrustSpeed to be between 0 and MaxThrustSpeed
+        CurrentThrustSpeed = Mathf.Clamp(CurrentThrustSpeed, 0, MaxThrustSpeed);
+        //Checks if the speed of the player is high enough for gliding forces to be applied
+        if (playerBody.velocity.magnitude >= MinThrustSpeed)
+        {
+            //Applies glidingForce to the direction the player is pointing
+            playerBody.AddRelativeForce(glidingForce);
+        }
+        else
+        {
+            //If the player is below the threshold speed then the CurrentThrustSpeed is reset to 0
+            CurrentThrustSpeed = 0;
+        }
+        playerBody.AddForce(upwardForce, ForceMode.Force);
+    }
+
+    private void ManageRotation()
+    {
+        Quaternion targetRotation = Quaternion.Euler(cameraTransform.eulerAngles.x, cameraTransform.eulerAngles.y, cameraTransform.eulerAngles.z);
+        transform.rotation = targetRotation;
     }
 }
