@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.026965763, g: 0.00814408, b: 0.062138468, a: 1}
+  m_IndirectSpecularColor: {r: 0.02696573, g: 0.00814407, b: 0.06213843, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1685,6 +1685,7 @@ MonoBehaviour:
   dashForce: 20
   dashUpwardForce: 0
   dashDuration: 1
+  enemy: {fileID: 1970063248}
   isGrounded: 1
   groundLayer:
     serializedVersion: 2
@@ -1730,7 +1731,7 @@ Rigidbody:
   m_GameObject: {fileID: 1308907199}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 5
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}

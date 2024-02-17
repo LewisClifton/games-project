@@ -17,11 +17,13 @@ public class PlayerMovement2 : MonoBehaviour
     [SerializeField] private float jumpForce = 5f;
     Rigidbody playerBody;
     Vector2 moveInput;
-    [Header("Dash")]
-    public float dashForce;
+    [Header("Free Dash")]
+    public float freeDashForce;
     public float dashUpwardForce;
     public float dashDuration;
-
+    [Header("Attack Dash")]
+    public Transform enemy;
+    public float attackDashForce;
     [Header("Player State")]
     public bool isGrounded = false;
 
@@ -46,17 +48,23 @@ public class PlayerMovement2 : MonoBehaviour
     {
         Shader.SetGlobalVector("_Player", transform.position);
 
-        MovePlayer();
+        
         Jump();
-        if (gameInput.IsDashPressed())
-        {
-            Dash();
-        }
+        
     }
 
     private void FixedUpdate()
     {
+        MovePlayer();
         checkGroundStatus();
+        if (gameInput.IsFreeDashPressed())
+        {
+            FreeDash();
+        }
+        if (gameInput.IsAttackDashPressed())
+        {
+            AttackDash();
+        }
     }
 
 
@@ -121,16 +129,16 @@ public class PlayerMovement2 : MonoBehaviour
     }
 
     //Function that executes the dash
-    private void Dash()
+    private void FreeDash()
     {
         Vector3 forceToApply = Vector3.zero;
         if (moveInput != Vector2.zero)
         {
-            forceToApply = orientation.transform.forward * dashForce * moveInput.y + orientation.transform.right * dashForce * moveInput.x;
+            forceToApply = orientation.transform.forward * freeDashForce * moveInput.y + orientation.transform.right * freeDashForce * moveInput.x;
         }
         else
         {
-            forceToApply = orientation.transform.forward * dashForce + orientation.transform.up * dashUpwardForce;
+            forceToApply = orientation.transform.forward * freeDashForce + orientation.transform.up * dashUpwardForce;
         }
         playerBody.AddForce(forceToApply, ForceMode.Impulse);
         Invoke(nameof(ResetDash), dashDuration);
@@ -139,5 +147,14 @@ public class PlayerMovement2 : MonoBehaviour
     private void ResetDash()
     {
 
+    }
+
+    private void AttackDash()
+    {
+        Vector3 forceToApply = Vector3.zero;
+        Vector3 vectorToEnemy = enemy.transform.position - orientation.transform.position;
+        //vectorToEnemy= vectorToEnemy.normalized;
+        forceToApply = vectorToEnemy * attackDashForce;
+        playerBody.AddForce(forceToApply, ForceMode.Impulse);
     }
 }

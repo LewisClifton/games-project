@@ -45,7 +45,7 @@ public class Dashing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameInput.IsDashPressed())
+        if (gameInput.IsFreeDashPressed())
         {
             Dash();
         }

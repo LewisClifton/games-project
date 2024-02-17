@@ -27,8 +27,13 @@ public class GameInput : MonoBehaviour
         return playerInputActions.Player.WalkToggle.triggered;
     }
 
-    public bool IsDashPressed()
+    public bool IsFreeDashPressed()
     {
         return playerInputActions.Player.Dash.triggered;
+    }
+
+    public bool IsAttackDashPressed()
+    {
+        return playerInputActions.Player.AttackDash.triggered;
     }
 }
