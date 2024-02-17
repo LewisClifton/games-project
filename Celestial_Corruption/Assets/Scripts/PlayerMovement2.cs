@@ -22,8 +22,10 @@ public class PlayerMovement2 : MonoBehaviour
     public float dashUpwardForce;
     public float dashDuration;
     [Header("Attack Dash")]
-    public Transform enemy;
+    //public Transform enemy;
     public float attackDashForce;
+    public float detectionRange;
+    private Transform currentTarget;
     [Header("Player State")]
     public bool isGrounded = false;
 
@@ -48,7 +50,14 @@ public class PlayerMovement2 : MonoBehaviour
     {
         Shader.SetGlobalVector("_Player", transform.position);
 
-        
+        if (gameInput.IsAttackDashPressed())
+        {
+            AttackDash();
+        }
+        if (gameInput.IsFreeDashPressed())
+        {
+            FreeDash();
+        }
         Jump();
         
     }
@@ -57,14 +66,8 @@ public class PlayerMovement2 : MonoBehaviour
     {
         MovePlayer();
         checkGroundStatus();
-        if (gameInput.IsFreeDashPressed())
-        {
-            FreeDash();
-        }
-        if (gameInput.IsAttackDashPressed())
-        {
-            AttackDash();
-        }
+        
+        
     }
 
 
@@ -151,10 +154,27 @@ public class PlayerMovement2 : MonoBehaviour
 
     private void AttackDash()
     {
-        Vector3 forceToApply = Vector3.zero;
-        Vector3 vectorToEnemy = enemy.transform.position - orientation.transform.position;
-        //vectorToEnemy= vectorToEnemy.normalized;
-        forceToApply = vectorToEnemy * attackDashForce;
-        playerBody.AddForce(forceToApply, ForceMode.Impulse);
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        float closestDistance = -1;
+        Transform closestEnemy = null;
+
+        foreach (GameObject enemy in enemies)
+        {
+            float distance = Vector3.Distance(orientation.transform.position, enemy.transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestEnemy = enemy.transform;
+            }
+        }
+        if (closestDistance < detectionRange && closestDistance >= 0)
+        {
+            Vector3 forceToApply = Vector3.zero;
+            Vector3 vectorToEnemy = closestEnemy.transform.position - orientation.transform.position;
+            //vectorToEnemy= vectorToEnemy.normalized;
+            forceToApply = vectorToEnemy * attackDashForce;
+            playerBody.AddForce(forceToApply, ForceMode.Impulse);
+        }
+        
     }
 }

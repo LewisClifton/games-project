@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 362695489}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1685,8 +1685,8 @@ MonoBehaviour:
   freeDashForce: 50
   dashUpwardForce: 0
   dashDuration: 0.25
-  enemy: {fileID: 1970063248}
   attackDashForce: 3
+  detectionRange: 50
   isGrounded: 1
   groundLayer:
     serializedVersion: 2
@@ -1897,7 +1897,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1342832144}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.00025311133, y: 0.99033266, z: -0.13870098, w: -0.0018072288}
+  m_LocalRotation: {x: -0.00025310894, y: 0.99033266, z: -0.13870098, w: -0.0018072117}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
