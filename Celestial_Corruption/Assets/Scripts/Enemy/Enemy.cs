@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] GameObject playerObject;
+
     [SerializeField] Transform Player;
 
     [SerializeField] Transform enemy;
@@ -23,6 +25,7 @@ public class Enemy : MonoBehaviour
 
     public float enemySpeed;
 
+    public float deathDistance;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,11 +36,18 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        dis = Vector3.Distance(transform.position, Player.position);
+        dis = Vector3.Distance(enemy.position, Player.position);
 
         if (dis <= 60f)
         {
             ShootAtPlayer();
+        }
+        if (playerObject.layer == LayerMask.NameToLayer("Dashing"))
+        {
+            if (dis <= deathDistance) {
+                Debug.Log("Died!");
+                Destroy(gameObject);
+            }
         }
         //ShootAtPlayer();
     }
@@ -68,4 +78,5 @@ public class Enemy : MonoBehaviour
 
         Destroy(bulletObj, 5f);
     }
+
 }
