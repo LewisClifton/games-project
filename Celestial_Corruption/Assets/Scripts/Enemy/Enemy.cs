@@ -26,6 +26,11 @@ public class Enemy : MonoBehaviour
     public float enemySpeed;
 
     public float deathDistance;
+
+    public int enemyHealth;
+
+    private float invincibilityTime;
+    public float maxInvincibilityTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +41,15 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (invincibilityTime != 0)
+        {
+            Debug.Log(invincibilityTime);
+            invincibilityTime -= Time.deltaTime;
+            if (invincibilityTime < 0)
+            {
+                invincibilityTime = 0;
+            }
+        }
         dis = Vector3.Distance(enemy.position, Player.position);
 
         if (dis <= 60f)
@@ -45,11 +59,25 @@ public class Enemy : MonoBehaviour
         if (playerObject.layer == LayerMask.NameToLayer("Dashing"))
         {
             if (dis <= deathDistance) {
-                Debug.Log("Died!");
-                Destroy(gameObject);
+                takeDamage();
             }
         }
         //ShootAtPlayer();
+    }
+
+    private void takeDamage()
+    {
+        if (invincibilityTime == 0)
+        {
+            enemyHealth -= 1;
+            invincibilityTime = maxInvincibilityTime;
+        }
+
+        if (enemyHealth == 0)
+        {
+            Debug.Log("Died!");
+            Destroy(gameObject);
+        }
     }
 
     void ShootAtPlayer()

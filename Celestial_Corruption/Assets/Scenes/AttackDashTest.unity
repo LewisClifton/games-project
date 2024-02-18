@@ -347,6 +347,8 @@ MonoBehaviour:
   spawnPoint: {fileID: 1271152305}
   enemySpeed: 100
   deathDistance: 3
+  enemyHealth: 3
+  maxInvincibilityTime: 1
 --- !u!4 &362695490
 Transform:
   m_ObjectHideFlags: 0
@@ -1176,7 +1178,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &949701712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1199,6 +1201,8 @@ MonoBehaviour:
   spawnPoint: {fileID: 1151935936}
   enemySpeed: 100
   deathDistance: 3
+  enemyHealth: 0
+  maxInvincibilityTime: 0
 --- !u!4 &949701713
 Transform:
   m_ObjectHideFlags: 0
@@ -2175,7 +2179,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1656521758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2198,6 +2202,8 @@ MonoBehaviour:
   spawnPoint: {fileID: 10962226}
   enemySpeed: 100
   deathDistance: 3
+  enemyHealth: 0
+  maxInvincibilityTime: 0
 --- !u!4 &1656521759
 Transform:
   m_ObjectHideFlags: 0
