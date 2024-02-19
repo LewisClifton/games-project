@@ -75,6 +75,7 @@ public class Enemy : MonoBehaviour
 
         if (enemyHealth == 0)
         {
+            ScoreManager.instance.AddScore(1);
             Debug.Log("Died!");
             Destroy(gameObject);
         }
