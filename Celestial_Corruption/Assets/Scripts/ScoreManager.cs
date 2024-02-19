@@ -35,7 +35,7 @@ public class ScoreManager : MonoBehaviour
 
     public void AddScore(int amount)
     {
-        score = amount;
+        score += amount;
         UpdateScoreText();
     }
 
