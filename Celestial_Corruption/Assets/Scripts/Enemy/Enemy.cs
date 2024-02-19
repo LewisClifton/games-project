@@ -31,6 +31,8 @@ public class Enemy : MonoBehaviour
 
     private float invincibilityTime;
     public float maxInvincibilityTime;
+
+    public int enemyXP;
     // Start is called before the first frame update
     void Start()
     {
@@ -75,7 +77,7 @@ public class Enemy : MonoBehaviour
 
         if (enemyHealth == 0)
         {
-            ScoreManager.instance.AddScore(1);
+            ScoreManager.instance.AddScore(enemyXP);
             Debug.Log("Died!");
             Destroy(gameObject);
         }
