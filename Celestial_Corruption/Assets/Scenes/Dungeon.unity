@@ -1052,7 +1052,7 @@ PrefabInstance:
     - target: {fileID: -6191168008390487900, guid: fb23fae2bc9f9a645aaeea4a0a1d89a7,
         type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -4859351378524534906, guid: fb23fae2bc9f9a645aaeea4a0a1d89a7,
         type: 3}
@@ -1078,6 +1078,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -259972160606440404, guid: fb23fae2bc9f9a645aaeea4a0a1d89a7,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 635547659545568360, guid: fb23fae2bc9f9a645aaeea4a0a1d89a7,
         type: 3}
@@ -3573,16 +3578,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameInput: {fileID: 935677464}
-  moveSpeed: 100
+  moveSpeed: 70
   orientation: {fileID: 318079073}
   walkingDrag: 3
-  jumpForce: 60
+  jumpForce: 45
   airDrag: 3
-  freeDashForce: 30
+  freeDashForce: 35
   dashUpwardForce: 1
   dashDuration: 1
   attackDashForce: 5
-  detectionRange: 30
+  detectionRange: 20
   playerObject: {fileID: 1308907199}
   dashTime: 1
   isGrounded: 1
@@ -3597,7 +3602,7 @@ MonoBehaviour:
   cameraTransform: {fileID: 1543914954}
   ThrustFactor: 80
   upwardForce: {x: 0, y: 3, z: 0}
-  glideRunSpeed: 250
+  glideRunSpeed: 175
   glidingEnabled: 1
 --- !u!114 &1308907201
 MonoBehaviour:
@@ -5115,7 +5120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 2082681489}
+  playerObject: {fileID: 1308907199}
   Player: {fileID: 2143681455}
   enemy: {fileID: 275786042}
   timer: 2
@@ -5124,10 +5129,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 2060652825}
   enemySpeed: 100
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 9
+  enemyHealth: 5
+  maxInvincibilityTime: 1.5
+  enemyXP: 100
 --- !u!4 &1760182742
 Transform:
   m_ObjectHideFlags: 0

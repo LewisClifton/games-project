@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour
 
         if (enemyHealth == 0)
         {
-            ScoreManager.instance.AddScore(enemyXP);
+            //ScoreManager.instance.AddScore(enemyXP);
             Debug.Log("Died!");
             Destroy(gameObject);
         }
