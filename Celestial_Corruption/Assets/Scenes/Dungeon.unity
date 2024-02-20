@@ -3105,7 +3105,7 @@ MonoBehaviour:
   freeDashForce: 30
   dashUpwardForce: 1
   dashDuration: 1
-  attackDashForce: 30
+  attackDashForce: 5
   detectionRange: 250
   playerObject: {fileID: 1308907199}
   dashTime: 1
@@ -4435,6 +4435,9 @@ MonoBehaviour:
   spawnPoint: {fileID: 2060652825}
   enemySpeed: 100
   deathDistance: 0
+  enemyHealth: 0
+  maxInvincibilityTime: 0
+  enemyXP: 0
 --- !u!4 &1760182742
 Transform:
   m_ObjectHideFlags: 0
