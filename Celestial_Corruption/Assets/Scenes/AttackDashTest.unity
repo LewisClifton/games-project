@@ -2877,6 +2877,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4762430399942140001, guid: b200265dcd7f9af4db844f307b84c8de,
         type: 3}
+      propertyPath: airMoveSpeed
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4762430399942140001, guid: b200265dcd7f9af4db844f307b84c8de,
+        type: 3}
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 1543914954}
