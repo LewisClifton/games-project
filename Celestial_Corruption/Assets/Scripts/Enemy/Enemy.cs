@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour
     {
         if (invincibilityTime != 0)
         {
-            Debug.Log(invincibilityTime);
+            //Debug.Log(invincibilityTime);
             invincibilityTime -= Time.deltaTime;
             if (invincibilityTime < 0)
             {
@@ -77,7 +77,8 @@ public class Enemy : MonoBehaviour
 
         if (enemyHealth == 0)
         {
-            //ScoreManager.instance.AddScore(enemyXP);
+            Debug.Log("Died");
+            ScoreManager.instance.AddScore(enemyXP);
             Debug.Log("Died!");
             Destroy(gameObject);
         }
