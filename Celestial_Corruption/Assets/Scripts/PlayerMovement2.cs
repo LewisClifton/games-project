@@ -21,6 +21,7 @@ public class PlayerMovement2 : MonoBehaviour
     public int airDrag;
     Rigidbody playerBody;
     Vector2 moveInput;
+    public float airMoveSpeed;
     [Header("Free Dash")]
     public float freeDashForce;
     public float dashUpwardForce;
@@ -77,6 +78,17 @@ public class PlayerMovement2 : MonoBehaviour
             FreeDash();
         }
         Jump();
+        if (!isGrounded && !isGliding)
+        {
+            moveSpeed = airMoveSpeed;
+        }
+        else
+        {
+            if (isGrounded)
+            {
+                moveSpeed = runSpeed;
+            }
+        }
         
     }
 
