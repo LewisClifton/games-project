@@ -53,6 +53,10 @@ public class PlayerMovement2 : MonoBehaviour
     [SerializeField] private float glideRunSpeed;
     [SerializeField] private bool glidingEnabled;
     private float CurrentThrustSpeed;
+
+    [Header("Animation")]
+    [SerializeField] private Animator animator;
+    [SerializeField] private GameObject character;
     
 
     void Start()
@@ -109,13 +113,18 @@ public class PlayerMovement2 : MonoBehaviour
         Vector3 playerVelocity = orientation.forward * moveInput.y * moveSpeed + orientation.right * moveInput.x * moveSpeed;
         playerBody.AddForce(playerVelocity, ForceMode.Force);
         //playerBody.velocity = transform.TransformDirection(playerVelocity);
-        
+        if (playerVelocity != Vector3.zero)
+        {
+            character.transform.rotation = Quaternion.LookRotation(playerVelocity);
+        }
     }
 
     //Function gets moveInput value, it is run but vscode just can't tell.
     private void OnMove(InputValue value)
     {
         moveInput=value.Get<Vector2>();
+        animator.SetFloat("movementX", moveInput.normalized.x);
+        animator.SetFloat("movementZ", moveInput.normalized.y);
     }
 
     //Ran every frame. Checks if player begins a jump.
@@ -125,7 +134,9 @@ public class PlayerMovement2 : MonoBehaviour
         {
             if (isGrounded)
             {
+
                 playerBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                animator.SetBool("inAir", true);
             }
             else
             {
@@ -155,6 +166,7 @@ public class PlayerMovement2 : MonoBehaviour
         //movementSpeed = runningSpeed;
         playerBody.drag = walkingDrag;
         moveSpeed = runSpeed;
+        
     }
     private void onTakingAir()
     {
@@ -175,9 +187,12 @@ public class PlayerMovement2 : MonoBehaviour
             //Checks if the player has "landed"
             if (!isGrounded)
             {
+                animator.SetBool("inAir", false);
                 onLand();
             }
             isGrounded = true;
+
+            
         }
         else
         {
@@ -276,5 +291,6 @@ public class PlayerMovement2 : MonoBehaviour
     {
         Quaternion targetRotation = Quaternion.Euler(cameraTransform.eulerAngles.x, cameraTransform.eulerAngles.y, cameraTransform.eulerAngles.z);
         transform.rotation = targetRotation;
+
     }
 }
