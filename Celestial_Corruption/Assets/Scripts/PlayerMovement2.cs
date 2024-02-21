@@ -53,6 +53,7 @@ public class PlayerMovement2 : MonoBehaviour
     [SerializeField] private float glideRunSpeed;
     [SerializeField] private bool glidingEnabled;
     private float CurrentThrustSpeed;
+    private float attackDashCooldown;
 
     [Header("Animation")]
     [SerializeField] private Animator animator;
@@ -71,11 +72,17 @@ public class PlayerMovement2 : MonoBehaviour
     
     void Update()
     {
+        attackDashCooldown=attackDashCooldown-Time.deltaTime;
+        if (attackDashCooldown<0){
+            attackDashCooldown=0;
+        }
         Shader.SetGlobalVector("_Player", transform.position);
 
         if (gameInput.IsAttackDashPressed())
         {
+            if (attackDashCooldown==0){
             AttackDash();
+            }
         }
         if (gameInput.IsFreeDashPressed())
         {
@@ -223,6 +230,7 @@ public class PlayerMovement2 : MonoBehaviour
 
     private void AttackDash()
     {
+        attackDashCooldown=1;
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         float closestDistance = Mathf.Infinity;
         Transform closestEnemy = null;

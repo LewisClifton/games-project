@@ -98,7 +98,7 @@ public class Enemy : MonoBehaviour
 
         // Calculate the direction of the bullet's movement, from the bullet's position to the player's position
         Vector3 playerPos = Player.position;
-        playerPos.y += 3;
+        playerPos.y += 1;
         Vector3 moveDirection = (playerPos - spawnPoint.position).normalized;
 
         // Face to the Player

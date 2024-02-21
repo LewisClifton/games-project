@@ -31,7 +31,7 @@ public class BulletScript : MonoBehaviour
     // Destory the bullet if it touches the player
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name.Equals("Banana Man"))
+        if (other.name.Equals("PlayerObject"))
         {
             playerHealth.TakeDamage(damage);
 
