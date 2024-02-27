@@ -5,6 +5,7 @@ using UnityEngine;
 public class FragmentOrb : MonoBehaviour
 {
     private Rigidbody playerRb;
+    private bool isFrozen = false;
 
     private void Start()
     {
@@ -20,8 +21,18 @@ public class FragmentOrb : MonoBehaviour
             // Make the player immovable
             if (playerRb != null)
             {
-                playerRb.constraints = RigidbodyConstraints.FreezeAll;
+                // playerRb.constraints = RigidbodyConstraints.FreezeAll;
+                StartCoroutine(freezeCoroutine(3f));
             }
         }
+    }
+
+    IEnumerator freezeCoroutine(float seconds)
+    {
+        isFrozen = true;
+        playerRb.constraints = RigidbodyConstraints.FreezeAll;
+        yield return new WaitForSeconds(seconds);
+        playerRb.constraints = RigidbodyConstraints.None;
+        isFrozen = false;
     }
 }
