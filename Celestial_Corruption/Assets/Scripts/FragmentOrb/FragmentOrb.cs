@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class FragmentOrb : MonoBehaviour
 {
-    private Rigidbody rb;
+    private Rigidbody playerRb;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        // Assuming the player has a Rigidbody component
+        playerRb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -16,10 +17,10 @@ public class FragmentOrb : MonoBehaviour
         // Check if the collision is with the player
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Make the collided object immovable
-            if (rb != null)
+            // Make the player immovable
+            if (playerRb != null)
             {
-                rb.constraints = RigidbodyConstraints.FreezeAll;
+                playerRb.constraints = RigidbodyConstraints.FreezeAll;
             }
         }
     }
