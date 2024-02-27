@@ -19,10 +19,11 @@ public class FragmentOrb : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             // Make the player immovable
-            if (playerRb != null)
+            if (playerRb != null && !isFrozen)
             {
-                // playerRb.constraints = RigidbodyConstraints.FreezeAll;
+                Debug.Log("Player collided with the orb");
                 StartCoroutine(freezeCoroutine(3f));
+                Debug.Log("Player is frozen for 3 seconds");
             }
         }
     }
@@ -30,9 +31,10 @@ public class FragmentOrb : MonoBehaviour
     IEnumerator freezeCoroutine(float seconds)
     {
         isFrozen = true;
+        RigidbodyConstraints constraints = playerRb.constraints;
         playerRb.constraints = RigidbodyConstraints.FreezeAll;
         yield return new WaitForSeconds(seconds);
-        playerRb.constraints = RigidbodyConstraints.None;
+        playerRb.constraints = constraints;
         isFrozen = false;
     }
 }
