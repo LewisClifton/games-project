@@ -6,25 +6,33 @@ public class FragmentOrb : MonoBehaviour
 {
     [SerializeField] private Renderer orbRenderer;
     private Rigidbody playerRb;
-    private Collider playerCollider;
+
+    // Currently assuming the player has a Capsule Collider
+    private CapsuleCollider playerCollider;
     private bool isFrozen = false;
 
     private void Start()
     {
         // Assuming the player has a Rigidbody component
         playerRb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
-        playerCollider = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>();
+        playerCollider = GameObject.FindGameObjectWithTag("Player").GetComponent<CapsuleCollider>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player collided with the orb");
-            orbRenderer.material.SetVector("_EnteringObjectPosition", playerCollider.size + playerCollider.center);
-            orbRenderer.material.SetFloat("_ColliderCenter", playerCollider.center);
-            orbRenderer.material.SetFloat("_ColliderSize", playerCollider.size);
-            // orbRenderer.material.SetVector("_EnteringObjectPosition", other.bounds.center);
+            Vector3 worldCenter = transform.TransformPoint(playerCollider.center);
+
+            // For a Capsule Collider, we use radius and height for its size
+            // Transforming radius to world space (assuming uniform scaling for simplicity)
+            float worldRadius = transform.lossyScale.x * playerCollider.radius;
+            float worldHeight = transform.lossyScale.y * playerCollider.height;
+
+            // Send data to the shader
+            orbRenderer.material.SetVector("_ColliderCenter", worldCenter);
+            orbRenderer.material.SetFloat("_ColliderRadius", worldRadius);
+            orbRenderer.material.SetFloat("_ColliderHeight", worldHeight);
         }
     }
 
