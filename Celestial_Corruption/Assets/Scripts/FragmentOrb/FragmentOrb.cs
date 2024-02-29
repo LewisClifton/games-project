@@ -29,6 +29,8 @@ public class FragmentOrb : MonoBehaviour
             float worldRadius = transform.lossyScale.x * playerCollider.radius;
             float worldHeight = transform.lossyScale.y * playerCollider.height;
 
+            Debug.Log("Collider center: " + worldCenter);
+
             // Send data to the shader
             orbRenderer.material.SetVector("_ColliderCenter", worldCenter);
             orbRenderer.material.SetFloat("_ColliderRadius", worldRadius);
