@@ -25,10 +25,10 @@ Material:
     type: 3}
   m_Parent: {fileID: -876546973899608171, guid: ce74129e53243c3739fd6cee2b8c3fdc,
     type: 3}
-  m_ModifiedSerializedProperties: 2
+  m_ModifiedSerializedProperties: 10
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 2
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -37,15 +37,21 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _Main_Texture:
+        m_Texture: {fileID: 8600000, guid: a48f74568d17b4953ac17bb60cf56634, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Edge_Blend: 0.251
-    - _Effect_Radius: 1.9
+    - _Amplitude: 0.02
+    - _Edge_Blend: 0.5
+    - _Effect_Radius: 5
     - _Gradient_Edge: 1
     - _QueueControl: 0
-    - _Ripple_Density: 708
-    - _Ripple_Frequency: 1
+    - _Ripple_Density: 5
+    - _Ripple_Frequency: 3.5
     m_Colors:
-    - _Ripple_Origin: {r: 1, g: 1, b: 0, a: 0}
+    - _Gradient_Color: {r: 0, g: 0, b: 0, a: 0}
+    - _Ripple_Origin: {r: 0, g: 3, b: 0, a: 0}
   m_BuildTextureStacks: []
