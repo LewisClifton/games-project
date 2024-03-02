@@ -51,11 +51,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _InteractOffset: 0.3
+    - _InteractRadius: 1
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _SnowAddedHeight: 0
     - _SnowBrightness: 1
     - _SnowPower: 0.2
-    - _SnowScale: 3
-    - _VertexOffset: 0.6
-    m_Colors: []
+    - _SnowScale: 30
+    - _VertexOffset: 0.5
+    m_Colors:
+    - _PlayerPosition: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
