@@ -8,8 +8,8 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
 
     public TextMeshProUGUI scoreText;
-    private int score;
-
+    private float score;
+    public float scoreMultiplier = 1;
     void Awake()
     {
         // Singleton setup
@@ -22,20 +22,20 @@ public class ScoreManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    void Start()
+
+    public void AddMultiplier(float amount)
     {
-        
+        scoreMultiplier += amount;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ResetMultiplier()
     {
-        
+        scoreMultiplier = 1;
     }
 
     public void AddScore(int amount)
     {
-        score += amount;
+        score += amount*scoreMultiplier;
         UpdateScoreText();
     }
 

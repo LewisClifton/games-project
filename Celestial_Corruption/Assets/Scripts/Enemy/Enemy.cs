@@ -79,6 +79,7 @@ public class Enemy : MonoBehaviour
         {
 
             ScoreManager.instance.AddScore(enemyXP);
+            ScoreManager.instance.AddMultiplier(1);
             Debug.Log("Died!");
             Destroy(gameObject);
         }
