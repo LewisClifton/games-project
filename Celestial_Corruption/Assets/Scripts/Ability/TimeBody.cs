@@ -8,6 +8,7 @@ public class TimeBody : MonoBehaviour
     private Rigidbody rb;
     private Vector3 recordedVelocity;
     private float recordedMagnitude;
+    private Quaternion recordedRotation;
 
     private float TimeBeforeAffectedTimer;
     private bool CanBeAffected;
@@ -41,8 +42,11 @@ public class TimeBody : MonoBehaviour
             
                 recordedVelocity = rb.velocity.normalized; //records direction of movement
                 recordedMagnitude = rb.velocity.magnitude; // records magitude of movement
+                recordedRotation = rb.rotation; //records rotation
+
 
                 rb.velocity = Vector3.zero; //makes the rigidbody stop moving
+                rb.angularVelocity = Vector3.zero; // stop angular velocity
                 rb.isKinematic = true; //not affected by forces
                 IsStopped = true; // prevents this from looping
             
@@ -54,5 +58,6 @@ public class TimeBody : MonoBehaviour
         rb.isKinematic = false;
         IsStopped = false;
         rb.velocity = recordedVelocity * recordedMagnitude; //Adds back the recorded velocity when time continues
+        rb.rotation = recordedRotation; //Restore rotation
     }
 }
