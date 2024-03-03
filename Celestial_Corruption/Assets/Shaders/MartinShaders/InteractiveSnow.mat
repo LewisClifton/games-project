@@ -62,7 +62,7 @@ Material:
     - _SnowAddedHeight: 0.2
     - _SnowBrightness: 1
     - _SnowPower: 0.3
-    - _SnowScale: 6
+    - _SnowScale: 10
     - _VertexOffset: 0.3
     m_Colors:
     - _PlayerPosition: {r: 0, g: 0, b: 0, a: 0}
