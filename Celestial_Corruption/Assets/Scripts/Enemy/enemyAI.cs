@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class enemyAI : MonoBehaviour
 {
@@ -54,13 +55,17 @@ public class enemyAI : MonoBehaviour
     {
             Vector3 direction = (Player.position - transform.position).normalized;
             rb.MovePosition(transform.position + direction * enemySpeed * Time.deltaTime);
-            transform.LookAt(Player);
+            // Only target the player's x and z position
+            Vector3 targetPostition = new Vector3(Player.position.x, this.transform.position.y, Player.position.z);
+            transform.LookAt(targetPostition);
 
     }
 
     void goHome()
     {
-        transform.LookAt (StartPos);
-        transform.position = Vector3.Lerp(transform.position,StartPos,0.002f);
+        Vector3 ReturnToStart = new Vector3(StartPos.x, this.transform.position.y,StartPos.z);
+        transform.LookAt(ReturnToStart); 
+        transform.position += (StartPos - transform.position) * Time.deltaTime * enemySpeed; 
     }
+
 }
