@@ -5,37 +5,57 @@ using UnityEngine;
 public class enemyAI : MonoBehaviour
 {
     [SerializeField] Transform Player;
-    [SerializeField] float enemySpeed, dis;
+    [SerializeField] float enemySpeed;
+    [SerializeField] float distance;
+    private Rigidbody rb;
     Vector3 StartPos;
 
     // Start is called before the first frame update
     void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player").transform;
+        Player = GameObject.Find("Player").transform;
         StartPos = transform.position;
-
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        dis = Vector3.Distance(transform.position, Player.position);
-        if (dis <= 8f ) 
+        distance = Vector3.Distance(transform.position, Player.position);
+        if (distance <= 8f ) 
         {
             // chase
             chase();
         }
-        if (dis > 8f)
+        if (distance > 8f)
         {
             // go back home
             goHome();
         }
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Player")
+        {
+            rb.isKinematic = true; 
+        }
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.name == "Player")
+        {
+            rb.isKinematic = false; 
+        }
+    }
+
 
     void chase()
     {
-        transform.LookAt(Player);
-        transform.Translate(0,0,enemySpeed * Time.deltaTime);
+            Vector3 direction = (Player.position - transform.position).normalized;
+            rb.MovePosition(transform.position + direction * enemySpeed * Time.deltaTime);
+            transform.LookAt(Player);
+
     }
 
     void goHome()
