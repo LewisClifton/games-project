@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class TimeBody : MonoBehaviour
 {
     public float TimeBeforeAffected; //The time after the object spawns until it will be affected by the timestop(for projectiles etc)
@@ -39,25 +40,22 @@ public class TimeBody : MonoBehaviour
 
         if (CanBeAffected && timemanager.TimeIsStopped && !IsStopped)
         {
-            
-                recordedVelocity = rb.velocity.normalized; //records direction of movement
-                recordedMagnitude = rb.velocity.magnitude; // records magitude of movement
-                recordedRotation = rb.rotation; //records rotation
+            recordedVelocity = rb.velocity.normalized; //records direction of movement
+            recordedMagnitude = rb.velocity.magnitude; // records magitude of movement
+            recordedRotation = rb.rotation; //records rotation
 
-
-                rb.velocity = Vector3.zero; //makes the rigidbody stop moving
-                rb.angularVelocity = Vector3.zero; // stop angular velocity
-                rb.isKinematic = true; //not affected by forces
-                IsStopped = true; // prevents this from looping
-            
+            rb.velocity = Vector3.zero; //makes the rigidbody stop moving
+            rb.angularVelocity = Vector3.zero; // stop angular velocity
+            rb.isKinematic = true; //not affected by forces
+            IsStopped = true; // prevents this from looping
         }
-
     }
+
     public void ContinueTime()
     {
         rb.isKinematic = false;
         IsStopped = false;
         rb.velocity = recordedVelocity * recordedMagnitude; //Adds back the recorded velocity when time continues
-        rb.rotation = recordedRotation; //Restore rotation
+        rb.rotation = Quaternion.Normalize(recordedRotation); //Normalize the rotation quaternion before restoring rotation
     }
 }
