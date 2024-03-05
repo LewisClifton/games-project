@@ -59,7 +59,7 @@ Material:
     - _InteractRadius: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _SnowAddedHeight: 0.2
+    - _SnowAddedHeight: 0
     - _SnowBrightness: 1
     - _SnowPower: 0.3
     - _SnowScale: 5
