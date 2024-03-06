@@ -57,14 +57,16 @@ Material:
     m_Floats:
     - _InteractOffset: 0.3
     - _InteractRadius: 1
+    - _PlaneSizeX: 20
+    - _PlaneSizeZ: 20
     - _QueueControl: 0
     - _QueueOffset: 0
     - _SnowAddedHeight: 0
     - _SnowBrightness: 1
     - _SnowPower: 0.3
     - _SnowScale: 5
-    - _VertexOffset: 1
+    - _VertexOffset: 0.5
     m_Colors:
     - _PlayerPosition: {r: 0, g: 0, b: 0, a: 0}
-    - _SnowColor: {r: 0.7490197, g: 0.7490197, b: 0.7490197, a: 1}
+    - _SnowColor: {r: 0.18001515, g: 0.18001515, b: 0.18001515, a: 1}
   m_BuildTextureStacks: []
