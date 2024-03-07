@@ -5,6 +5,8 @@ using UnityEngine;
 public class FragmentOrb : MonoBehaviour
 {
     [SerializeField] private Renderer orbRenderer;
+    private float radius;
+    private Transform playerTransform;
     private Rigidbody playerRb;
 
     // Currently assuming the player has a Capsule Collider
@@ -14,8 +16,34 @@ public class FragmentOrb : MonoBehaviour
     private void Start()
     {
         // Assuming the player has a Rigidbody component
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         playerRb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
         playerCollider = GameObject.FindGameObjectWithTag("Player").GetComponent<CapsuleCollider>();
+        radius = transform.lossyScale.x * playerCollider.radius;
+    }
+
+    private void FixedUpdate()
+    {
+        // Calculate the player's distance from the orb
+        float distance = Vector3.Distance(playerTransform.position, transform.position);
+        float threshold = 10f;
+        Debug.Log("Radius: " + radius);
+
+        // If the player is within a threshold distance from the orb, send the player's position to the shader
+        if (distance < threshold)
+        {
+            // Vector3 playerPositionProjection = Vector3.ProjectOnPlane(playerTransform.position, transform.up);
+            // Vector3 playerPositionProjection = Vector3.ProjectOnPlane(playerTransform.position - transform.position, transform.up) + transform.position;
+
+            // Project player position onto the collider of the orb
+            Vector3 playerPositionProjection = (playerTransform.position - transform.position).normalized * radius;
+
+            Debug.Log("Player position projection: " + playerPositionProjection);
+
+            orbRenderer.material.SetVector("_PlayerPosition", playerPositionProjection);
+        } else {
+            orbRenderer.material.SetVector("_PlayerPosition", new Vector3(0, 0, 0));
+        }
     }
 
     private void OnTriggerEnter(Collider other)

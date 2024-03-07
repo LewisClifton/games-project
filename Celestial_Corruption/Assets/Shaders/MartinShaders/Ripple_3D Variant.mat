@@ -49,9 +49,10 @@ Material:
     - _Effect_Radius: 5
     - _Gradient_Edge: 1
     - _QueueControl: 0
-    - _Ripple_Density: 4
-    - _Ripple_Frequency: 5
+    - _Ripple_Density: 7
+    - _Ripple_Frequency: 4
     m_Colors:
     - _Gradient_Color: {r: 0, g: 0, b: 0, a: 0}
+    - _PlayerPosition: {r: 0, g: 3, b: 0, a: 0}
     - _Ripple_Origin: {r: 0, g: 3, b: 0, a: 0}
   m_BuildTextureStacks: []
