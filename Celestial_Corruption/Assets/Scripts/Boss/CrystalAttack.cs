@@ -4,13 +4,14 @@ public class CrystalAttack : MonoBehaviour
 {
     [SerializeField] GameObject CrystalPrefab;
     [SerializeField] GameObject boss;
-    [SerializeField] float Skyhigh; // the height of the crystal
+    [SerializeField] float height; // the height of the crystal
+    [SerializeField] float crystaldistance; // the distance use to avoid crystals collision problem
     [SerializeField] int minCrystalNumber; // minimum number of crystals to spawn
     [SerializeField] int maxCrystalNumber; // maximum number of crystals to spawn
     [SerializeField] float minSpawnRadius; // Minimum crystal distance from boss
     [SerializeField] float maxSpawnRadius; // Maximum crystal distance from boss
     [SerializeField] float spawnCooldown; // Cooldown time between each crystal spawn
-    [SerializeField] float crystalDestoryTime; // The time for crystal to destory
+    [SerializeField] float crystalDestoryTime; // The time for crystal to destroy
     [SerializeField] float fallSpeed; // Fall speed of the crystals
     [SerializeField] float hovertime; // The time for crystal to hover before falling
     private float lastSpawnTime;
@@ -44,12 +45,33 @@ public class CrystalAttack : MonoBehaviour
             randomDirection.Normalize(); // Normalize it to have a magnitude of 1
             float randomDistance = Random.Range(minSpawnRadius, maxSpawnRadius); // Random distance within range
             Vector3 spawnPosition = boss.transform.position + randomDirection * randomDistance; // Calculate spawn position
-            spawnPosition.y = Skyhigh; // Set the height of the crystal
-            GameObject crystal = Instantiate(CrystalPrefab, spawnPosition, Quaternion.identity) as GameObject; // Instantiate crystal at spawn position
+            spawnPosition.y = height; // Set the height of the crystal
+
+            // Check if there's any crystal too close to the spawn position
+            Collider[] colliders = Physics.OverlapSphere(spawnPosition, crystaldistance); // Adjust the radius as needed
+            bool hasCloseCrystal = false;
+            foreach (var collider in colliders)
+            {
+                if (collider.CompareTag("Crystal"))
+                {
+                    hasCloseCrystal = true;
+                    break;
+                }
+            }
+
+            // If there's a crystal too close, skip this iteration
+            if (hasCloseCrystal)
+            {
+                continue;
+            }
+
+            // Instantiate crystal at spawn position
+            GameObject crystal = Instantiate(CrystalPrefab, spawnPosition, Quaternion.identity) as GameObject;
             crystal.SetActive(true); // Ensure the instance is set to active
+
             // here add the code to disable the gravity and enable it after hovertime
             HoverCrystal(crystal);
-            Destroy(crystal, crystalDestoryTime); // Destroy the crystal after 5 seconds
+            Destroy(crystal, crystalDestoryTime); // Destroy the crystal after a certain time
         }
     }
 
@@ -59,14 +81,14 @@ public class CrystalAttack : MonoBehaviour
         if (crystalRigidbody != null)
         {
             crystalRigidbody.useGravity = false; //Disable gravity for the crystal
-            // Invoke method to restore gravty after hover time
+            // Invoke method to restore gravity after hover time
             Invoke("ApplyFallSpeed", hovertime);
         }
     }
 
     public void ApplyFallSpeed()
     {
-        GameObject[] crystals = GameObject.FindGameObjectsWithTag("Crystal"); // Find all crytsals in the scene
+        GameObject[] crystals = GameObject.FindGameObjectsWithTag("Crystal"); // Find all crystals in the scene
         foreach (GameObject crystal in crystals)
         {
             // Add downward velocity to the crystal
@@ -78,7 +100,7 @@ public class CrystalAttack : MonoBehaviour
             }
         }
     }
-
 }
+
 
 

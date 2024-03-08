@@ -1636,12 +1636,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CrystalPrefab: {fileID: 465481527}
   boss: {fileID: 1861862108}
-  Skyhigh: 10
+  height: 10
+  crystaldistance: 1.5
   minCrystalNumber: 5
   maxCrystalNumber: 10
   minSpawnRadius: 10
   maxSpawnRadius: 15
-  spawnCooldown: 5
+  spawnCooldown: 2
   crystalDestoryTime: 4
   fallSpeed: 10
   hovertime: 2
