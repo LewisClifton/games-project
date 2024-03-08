@@ -502,6 +502,8 @@ MonoBehaviour:
   Player: {fileID: 1827351913}
   enemySpeed: 1
   distance: 0
+  driftMin: 0
+  driftMax: 0
 --- !u!54 &806254924
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -564,7 +566,7 @@ GameObject:
   - component: {fileID: 850152116}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1343,7 +1345,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &1861862110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1450,7 +1452,7 @@ Transform:
   m_GameObject: {fileID: 1861862108}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.84334075, z: -0, w: 0.5373791}
-  m_LocalPosition: {x: 1.171376, y: 7.57, z: 10.26}
+  m_LocalPosition: {x: -0.29, y: 5.02, z: 7.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1482,8 +1484,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1827351913}
-  enemySpeed: 1
+  enemySpeed: 5
   distance: 0
+  driftMin: 0
+  driftMax: 0
 --- !u!1001 &2183367242367986382
 PrefabInstance:
   m_ObjectHideFlags: 0
