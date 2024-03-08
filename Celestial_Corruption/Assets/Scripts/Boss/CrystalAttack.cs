@@ -11,6 +11,7 @@ public class CrystalAttack : MonoBehaviour
     [SerializeField] float maxSpawnRadius; // Maximum crystal distance from boss
     [SerializeField] float spawnCooldown; // Cooldown time between each crystal spawn
     [SerializeField] float crystalDestoryTime; // The time for crystal to destory
+    [SerializeField] float fallSpeed; // Fall speed of the crystals
     private float lastSpawnTime;
 
     // Start is called before the first frame update
@@ -44,6 +45,12 @@ public class CrystalAttack : MonoBehaviour
             Vector3 spawnPosition = boss.transform.position + randomDirection * randomDistance; // Calculate spawn position
             spawnPosition.y = Skyhigh; // Set the height of the crystal
             GameObject crystal = Instantiate(CrystalPrefab, spawnPosition, Quaternion.identity); // Instantiate crystal at spawn position
+            // Add downward velocity to the crystal
+            Rigidbody crystalRigidbody = crystal.GetComponent<Rigidbody>();
+            if (crystalRigidbody != null )
+            {
+                crystalRigidbody.velocity = new Vector3(0,-fallSpeed,0);
+            }
             Destroy(crystal, crystalDestoryTime); // Destroy the crystal after 5 seconds
         }
     }

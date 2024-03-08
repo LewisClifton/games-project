@@ -1643,6 +1643,7 @@ MonoBehaviour:
   maxSpawnRadius: 15
   spawnCooldown: 5
   crystalDestoryTime: 4
+  fallSpeed: 10
 --- !u!1001 &2183367242367986382
 PrefabInstance:
   m_ObjectHideFlags: 0
