@@ -12,6 +12,7 @@ public class CrystalAttack : MonoBehaviour
     [SerializeField] float spawnCooldown; // Cooldown time between each crystal spawn
     [SerializeField] float crystalDestoryTime; // The time for crystal to destory
     [SerializeField] float fallSpeed; // Fall speed of the crystals
+    [SerializeField] float hovertime; // The time for crystal to hover before falling
     private float lastSpawnTime;
 
     // Start is called before the first frame update
@@ -45,15 +46,38 @@ public class CrystalAttack : MonoBehaviour
             Vector3 spawnPosition = boss.transform.position + randomDirection * randomDistance; // Calculate spawn position
             spawnPosition.y = Skyhigh; // Set the height of the crystal
             GameObject crystal = Instantiate(CrystalPrefab, spawnPosition, Quaternion.identity); // Instantiate crystal at spawn position
-            // Add downward velocity to the crystal
-            Rigidbody crystalRigidbody = crystal.GetComponent<Rigidbody>();
-            if (crystalRigidbody != null )
-            {
-                crystalRigidbody.velocity = new Vector3(0,-fallSpeed,0);
-            }
+            // here add the code to disable the gravity and enable it after hovertime
+            HoverCrystal(crystal);
             Destroy(crystal, crystalDestoryTime); // Destroy the crystal after 5 seconds
         }
     }
+
+    public void HoverCrystal(GameObject crystal)
+    {
+        Rigidbody crystalRigidbody = crystal.GetComponent<Rigidbody>();
+        if (crystalRigidbody != null)
+        {
+            crystalRigidbody.useGravity = false; //Disable gravity for the crystal
+            // Invoke method to restore gravty after hover time
+            Invoke("ApplyFallSpeed", hovertime);
+        }
+    }
+
+    public void ApplyFallSpeed()
+    {
+        GameObject[] crystals = GameObject.FindGameObjectsWithTag("Crystal"); // Find all crytsals in the scene
+        foreach (GameObject crystal in crystals)
+        {
+            // Add downward velocity to the crystal
+            Rigidbody crystalRigidbody = crystal.GetComponent<Rigidbody>();
+            if (crystalRigidbody != null)
+            {
+                crystalRigidbody.useGravity = true;
+                crystalRigidbody.velocity = new Vector3(0, -fallSpeed, 0); // Apply falling velocity
+            }
+        }
+    }
+
 }
 
 
