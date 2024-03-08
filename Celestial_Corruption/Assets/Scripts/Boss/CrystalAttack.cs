@@ -45,7 +45,8 @@ public class CrystalAttack : MonoBehaviour
             float randomDistance = Random.Range(minSpawnRadius, maxSpawnRadius); // Random distance within range
             Vector3 spawnPosition = boss.transform.position + randomDirection * randomDistance; // Calculate spawn position
             spawnPosition.y = Skyhigh; // Set the height of the crystal
-            GameObject crystal = Instantiate(CrystalPrefab, spawnPosition, Quaternion.identity); // Instantiate crystal at spawn position
+            GameObject crystal = Instantiate(CrystalPrefab, spawnPosition, Quaternion.identity) as GameObject; // Instantiate crystal at spawn position
+            crystal.SetActive(true); // Ensure the instance is set to active
             // here add the code to disable the gravity and enable it after hovertime
             HoverCrystal(crystal);
             Destroy(crystal, crystalDestoryTime); // Destroy the crystal after 5 seconds
