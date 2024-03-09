@@ -3,8 +3,10 @@ using UnityEngine;
 public class CrystalAttack : MonoBehaviour
 {
     [SerializeField] GameObject CrystalPrefab;
+    [SerializeField] GameObject MagicCirclePrefab; // Prefab for circle
     [SerializeField] GameObject boss;
     [SerializeField] float height; // the height of the crystal
+    [SerializeField] float circleY; // this is to ensure the circle Y location in case some problems
     [SerializeField] float crystaldistance; // the distance use to avoid crystals collision problem
     [SerializeField] int minCrystalNumber; // minimum number of crystals to spawn
     [SerializeField] int maxCrystalNumber; // maximum number of crystals to spawn
@@ -69,9 +71,13 @@ public class CrystalAttack : MonoBehaviour
             GameObject crystal = Instantiate(CrystalPrefab, spawnPosition, Quaternion.identity) as GameObject;
             crystal.SetActive(true); // Ensure the instance is set to active
 
+            // Instantiate circle
+            GameObject circle = Instantiate(MagicCirclePrefab, new Vector3(crystal.transform.position.x, circleY, crystal.transform.position.z),Quaternion.identity);
+            circle.SetActive(true);
             // here add the code to disable the gravity and enable it after hovertime
             HoverCrystal(crystal);
             Destroy(crystal, crystalDestoryTime); // Destroy the crystal after a certain time
+            Destroy(circle, crystalDestoryTime); // Destory the crystal after a certain time
         }
     }
 

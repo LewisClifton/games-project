@@ -1635,11 +1635,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CrystalPrefab: {fileID: 465481527}
+  MagicCirclePrefab: {fileID: 3377181292992421420, guid: 48c5715f9603c3842a353516a8baefbb,
+    type: 3}
   boss: {fileID: 1861862108}
   height: 10
+  circleY: 0
   crystaldistance: 1.5
-  minCrystalNumber: 5
-  maxCrystalNumber: 10
+  minCrystalNumber: 1
+  maxCrystalNumber: 5
   minSpawnRadius: 10
   maxSpawnRadius: 15
   spawnCooldown: 2
