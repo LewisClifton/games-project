@@ -291,7 +291,7 @@ MonoBehaviour:
   freeDashForce: 100
   dashUpwardForce: 1
   dashDuration: 1
-  attackDashForce: 3
+  attackDashForce: 5
   detectionRange: 40
   playerObject: {fileID: 9179735991605814104}
   dashTime: 1
