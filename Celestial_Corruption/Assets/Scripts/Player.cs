@@ -157,7 +157,7 @@ public class Player : MonoBehaviour
 
         // Move the player 
         // playerBody.MovePosition(playerBody.position + movementVector);
-        playerBody.AddForce(movementVector, ForceMode.VelocityChange);
+        playerBody.AddForce(movementVector, ForceMode.Impulse);
 
         // Rotate the player
         if (movementVector != Vector3.zero)

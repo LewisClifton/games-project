@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Attack Dash",
+                    "type": "Button",
+                    "id": "9b6579c7-ba96-4689-be60-af10ec381de7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -123,11 +132,22 @@
                 {
                     "name": "",
                     "id": "53413f3c-5752-4423-90af-c291eef8e9e1",
-                    "path": "<Keyboard>/q",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "484677be-3a14-4803-96ef-f0680a074151",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
