@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-
+        Shader.SetGlobalVector("_Player", transform.position);
     }
 
     private void DeactivateAllMovements()
