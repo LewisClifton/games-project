@@ -7,6 +7,7 @@ public class enemyAI : MonoBehaviour
     [SerializeField] Transform Player;
     [SerializeField] float enemySpeed;
     [SerializeField] float distance;
+    [SerializeField] float chaseDistance; // this is the distance you should modify
     [SerializeField] float driftMin;
     [SerializeField] float driftMax;
     private Rigidbody rb;
@@ -22,12 +23,12 @@ public class enemyAI : MonoBehaviour
     void Update()
     {
         distance = Vector3.Distance(transform.position, Player.position);
-        if (distance <= 8f)
+        if (distance <= chaseDistance)
         {
             // chase
             chase();
         }
-        if (distance > 8f)
+        if (distance > chaseDistance)
         {
             // go back home
             goHome();
@@ -44,6 +45,7 @@ public class enemyAI : MonoBehaviour
         {
             // When it hit the ground it sets velocity to zero
             rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
         }
     }
 

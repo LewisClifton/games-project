@@ -650,6 +650,7 @@ MonoBehaviour:
   Player: {fileID: 1827351913}
   enemySpeed: 1
   distance: 0
+  chaseDistance: 0
   driftMin: 0
   driftMax: 0
 --- !u!54 &806254924
@@ -1635,6 +1636,7 @@ MonoBehaviour:
   Player: {fileID: 1827351913}
   enemySpeed: 5
   distance: 0
+  chaseDistance: 0
   driftMin: 0
   driftMax: 0
 --- !u!114 &1861862118
@@ -1678,7 +1680,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1971614048
 Transform:
   m_ObjectHideFlags: 0
