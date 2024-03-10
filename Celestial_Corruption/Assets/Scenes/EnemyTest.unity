@@ -372,6 +372,7 @@ GameObject:
   - component: {fileID: 465481529}
   - component: {fileID: 465481528}
   - component: {fileID: 465481532}
+  - component: {fileID: 465481533}
   m_Layer: 0
   m_Name: testCrystal
   m_TagString: Crystal
@@ -492,6 +493,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &465481533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465481527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c68bdcc970f7644db33d168d51e3894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerHealth: {fileID: 1827351918}
+  damage: 50
 --- !u!1001 &806254920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1635,14 +1650,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CrystalPrefab: {fileID: 465481527}
-  MagicCirclePrefab: {fileID: 3377181292992421420, guid: 48c5715f9603c3842a353516a8baefbb,
-    type: 3}
+  MagicCirclePrefab: {fileID: 5040108046829208819}
   boss: {fileID: 1861862108}
   height: 10
   circleY: 0
   crystaldistance: 1.5
-  minCrystalNumber: 1
-  maxCrystalNumber: 5
+  minCrystalNumber: 5
+  maxCrystalNumber: 10
   minSpawnRadius: 10
   maxSpawnRadius: 15
   spawnCooldown: 2
@@ -1680,6 +1694,7 @@ Transform:
   m_Children:
   - {fileID: 1861862115}
   - {fileID: 465481531}
+  - {fileID: 4949023242890007878}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2183367242367986382
@@ -1791,6 +1806,91 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1827351918}
   m_SourcePrefab: {fileID: 100100000, guid: 41f081d5c6d286c47a33bed3f84de79a, type: 3}
+--- !u!4 &4949023242890007878 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4812256203799536063, guid: 1c30dce5ab95e234f8364e8d4b499ba8,
+    type: 3}
+  m_PrefabInstance: {fileID: 5432935639443619246}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5040108046829208819 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6197483619416171513, guid: 1c30dce5ab95e234f8364e8d4b499ba8,
+    type: 3}
+  m_PrefabInstance: {fileID: 5432935639443619246}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5432935639443619246
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1971614048}
+    m_Modifications:
+    - target: {fileID: 4812256203799536063, guid: 1c30dce5ab95e234f8364e8d4b499ba8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.750943
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812256203799536063, guid: 1c30dce5ab95e234f8364e8d4b499ba8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.6541681
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812256203799536063, guid: 1c30dce5ab95e234f8364e8d4b499ba8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.213576
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812256203799536063, guid: 1c30dce5ab95e234f8364e8d4b499ba8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812256203799536063, guid: 1c30dce5ab95e234f8364e8d4b499ba8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812256203799536063, guid: 1c30dce5ab95e234f8364e8d4b499ba8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812256203799536063, guid: 1c30dce5ab95e234f8364e8d4b499ba8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812256203799536063, guid: 1c30dce5ab95e234f8364e8d4b499ba8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812256203799536063, guid: 1c30dce5ab95e234f8364e8d4b499ba8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812256203799536063, guid: 1c30dce5ab95e234f8364e8d4b499ba8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197483619416171513, guid: 1c30dce5ab95e234f8364e8d4b499ba8,
+        type: 3}
+      propertyPath: m_Name
+      value: Magic circle 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197483619416171513, guid: 1c30dce5ab95e234f8364e8d4b499ba8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1c30dce5ab95e234f8364e8d4b499ba8, type: 3}
 --- !u!1001 &7543709784788003332
 PrefabInstance:
   m_ObjectHideFlags: 0
