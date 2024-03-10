@@ -63,6 +63,9 @@ public class PlayerMovement2 : MonoBehaviour
     private CinemachineTransposer transposer;
     private GameObject target;
     private bool lockedOn = false;
+    public int lockedOnDistance;
+    public int lockedOnHeight;
+    public int lockOnRange;
     [Header("Animation")]
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject character;
@@ -81,6 +84,10 @@ public class PlayerMovement2 : MonoBehaviour
 
     void Update()
     {
+        if (lockedOn)
+        {
+            AdjustCameraBasedOnPlayerPosition();
+        }
         if (currentAttackDashCooldown != 0)
         {
             currentAttackDashCooldown = currentAttackDashCooldown - Time.deltaTime;
@@ -109,6 +116,7 @@ public class PlayerMovement2 : MonoBehaviour
                 target = null;
                 lockedOn = false;
                 lockOnCamera.enabled = false;
+                lockOnCamera.LookAt=null;
             }
         }
         if (gameInput.IsAttackDashPressed())
@@ -139,10 +147,7 @@ public class PlayerMovement2 : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (lockedOn)
-        {
-            AdjustCameraBasedOnPlayerPosition();
-        }
+        
         MovePlayer();
         checkGroundStatus();
         if (!isGrounded && isGliding && glidingEnabled)
@@ -153,7 +158,10 @@ public class PlayerMovement2 : MonoBehaviour
 
     }
 
-
+    private void LateUpdate()
+    {
+        
+    }
     private void MovePlayer()
     {
         Vector3 playerVelocity = orientation.forward * moveInput.y * moveSpeed + orientation.right * moveInput.x * moveSpeed;
@@ -353,12 +361,8 @@ public class PlayerMovement2 : MonoBehaviour
         float angle = Vector3.SignedAngle(playerToBoss, transform.forward, Vector3.up);
         playerToBoss.Normalize();
         playerToBoss.y = 0;
-        playerToBoss = playerToBoss * 7;
-        playerToBoss.y += 1;
-        // Check if the player is on the opposite side of the boss relative to the camera
-
-        // Force the camera to rotate 180 degrees by adjusting its FollowOffset
-        // This is a simple way to invert the camera's position. Adjust the values based on your game's scale and preferred distances
+        playerToBoss = playerToBoss * lockedOnDistance;
+        playerToBoss.y += lockedOnHeight;
         transposer.m_FollowOffset = new Vector3(-playerToBoss.x, playerToBoss.y, -playerToBoss.z);
     }
     void FindTarget()
@@ -376,9 +380,10 @@ public class PlayerMovement2 : MonoBehaviour
                 closestEnemy = enemy;
             }
         }
-        if (closestDistance < detectionRange)
+        if (closestDistance < lockOnRange)
         {
             target = closestEnemy;
+            lockOnCamera.LookAt = target.transform;
         }
         else
         {
