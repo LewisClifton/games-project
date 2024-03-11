@@ -324,11 +324,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -499,11 +504,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -582,11 +592,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -757,11 +772,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -840,11 +860,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -935,11 +960,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -1018,11 +1048,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -1377,11 +1412,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -1644,11 +1684,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -1727,11 +1772,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -1810,11 +1860,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -2000,7 +2055,7 @@ MonoBehaviour:
     - name: TerrainGrass
       layerID: 0
       threshold: 0
-    instanceCount: 36124707
+    instanceCount: 9032411
     index: 0
     type: 0
     renderAsBillboard: 0
@@ -2011,7 +2066,7 @@ MonoBehaviour:
     alignToGround: 100
     positionJitter: 1
     useDensityScaling: 1
-    density: 1.49
+    density: 2.01
     billboard: {fileID: 2800000, guid: c2f9a528b349eb946836a99b2001e7dd, type: 3}
     mainColor: {r: 1, g: 1, b: 1, a: 1}
     secondaryColor: {r: 1, g: 1, b: 1, a: 1}
@@ -2032,7 +2087,7 @@ MonoBehaviour:
     - name: Grass_Dry_TerrainLayer
       layerID: 2
       threshold: 0
-    instanceCount: 7112661
+    instanceCount: 1777292
     index: 1
     type: 0
     renderAsBillboard: 0
@@ -2072,10 +2127,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   terrainMinMaxHeight: {x: 63.68798, y: 0.0002}
-  detailResolution: 128
-  detailResolutionIndex: 0
-  grassPatchSize: 16
-  grassPatchSizeIndex: 1
+  detailResolution: 512
+  detailResolutionIndex: 2
+  grassPatchSize: 8
+  grassPatchSizeIndex: 0
   tempColliders: []
   waterHeight: 0
   autoRespawnTrees: 1
@@ -2111,11 +2166,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -2194,11 +2254,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -2277,11 +2342,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -2563,11 +2633,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -2646,11 +2721,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -2729,11 +2809,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -2861,11 +2946,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -2944,11 +3034,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -3135,6 +3230,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 3236749874801521193, guid: da23f3d8a9f479744aa2711f099d57e9,
+        type: 3}
+      propertyPath: timerText
+      value: 
+      objectReference: {fileID: 8678050413565447572}
     - target: {fileID: 3427083462071113022, guid: da23f3d8a9f479744aa2711f099d57e9,
         type: 3}
       propertyPath: lockedOnHeight
@@ -3215,6 +3315,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5876517201718802440, guid: da23f3d8a9f479744aa2711f099d57e9,
+        type: 3}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 3122528273942275437}
     - target: {fileID: 6564318949656024488, guid: da23f3d8a9f479744aa2711f099d57e9,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -3228,12 +3333,12 @@ PrefabInstance:
     - target: {fileID: 6564318949656024488, guid: da23f3d8a9f479744aa2711f099d57e9,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017172932
+      value: -0.000000017172932
       objectReference: {fileID: 0}
     - target: {fileID: 6564318949656024488, guid: da23f3d8a9f479744aa2711f099d57e9,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000010723777
+      value: 0.0000000010723777
       objectReference: {fileID: 0}
     - target: {fileID: 6995366217702835296, guid: da23f3d8a9f479744aa2711f099d57e9,
         type: 3}
@@ -3253,17 +3358,17 @@ PrefabInstance:
     - target: {fileID: 6995366217702835296, guid: da23f3d8a9f479744aa2711f099d57e9,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.098537624
+      value: 0.09853762
       objectReference: {fileID: 0}
     - target: {fileID: 6995366217702835296, guid: da23f3d8a9f479744aa2711f099d57e9,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000000042806607
+      value: 0.000000004280661
       objectReference: {fileID: 0}
     - target: {fileID: 6995366217702835296, guid: da23f3d8a9f479744aa2711f099d57e9,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 4.238689e-10
+      value: -4.238689e-10
       objectReference: {fileID: 0}
     - target: {fileID: 7764076229187147102, guid: da23f3d8a9f479744aa2711f099d57e9,
         type: 3}
@@ -3297,7 +3402,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6971736493088601966, guid: da23f3d8a9f479744aa2711f099d57e9, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8803427046832006888, guid: da23f3d8a9f479744aa2711f099d57e9, type: 3}
+    - {fileID: 1692332272609313640, guid: da23f3d8a9f479744aa2711f099d57e9, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8919192161795046056, guid: da23f3d8a9f479744aa2711f099d57e9,
@@ -3322,11 +3429,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -3773,11 +3885,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -4132,11 +4249,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -4215,11 +4337,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -4298,11 +4425,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -4381,11 +4513,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -4464,11 +4601,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -4737,11 +4879,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -4820,11 +4967,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -4903,11 +5055,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -4986,11 +5143,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -5317,11 +5479,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -5492,11 +5659,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -5667,11 +5839,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -5842,11 +6019,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -5925,11 +6107,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -6192,11 +6379,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -6275,11 +6467,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -6364,11 +6561,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -6539,11 +6741,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -6622,11 +6829,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -6797,11 +7009,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -6998,11 +7215,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -7081,11 +7303,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -7440,11 +7667,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -7523,11 +7755,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -7606,11 +7843,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -7689,11 +7931,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -7864,11 +8111,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -8044,8 +8296,8 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0.5
-  m_VerticalDamping: 0.5
+  m_HorizontalDamping: 0
+  m_VerticalDamping: 0
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_DeadZoneWidth: 0
@@ -8791,6 +9043,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1598423262 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8238775212943671302, guid: da23f3d8a9f479744aa2711f099d57e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 456069173}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1613068953
 GameObject:
   m_ObjectHideFlags: 0
@@ -9018,11 +9276,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -9383,11 +9646,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -9466,11 +9734,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -9765,11 +10038,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -9848,11 +10126,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -9931,11 +10214,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -10106,11 +10394,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -10189,11 +10482,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -10272,11 +10570,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -10355,11 +10658,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -10438,11 +10746,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -10521,11 +10834,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -10710,11 +11028,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -11253,11 +11576,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -11336,11 +11664,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -11419,11 +11752,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
@@ -11745,11 +12083,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 206045189}
     - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 1598423262}
+    - target: {fileID: 2874447816256481000, guid: ca98cd1806a47c041be90a31dd7d619f,
+        type: 3}
+      propertyPath: maxInvincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673571235277132300, guid: ca98cd1806a47c041be90a31dd7d619f,
         type: 3}

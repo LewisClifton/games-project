@@ -388,8 +388,13 @@ public class PlayerMovement2 : MonoBehaviour
             float distance = Vector3.Distance(orientation.transform.position, enemy.transform.position);
             if (distance < closestDistance)
             {
-                closestDistance = distance;
-                closestEnemy = enemy;
+                Vector3 vectorToEnemy = enemy.transform.position - transform.position;
+                float angleToEnemy = Vector3.Angle(orientation.forward, vectorToEnemy);
+                if (angleToEnemy <= fieldOfViewAngle / 2)
+                {
+                    closestDistance = distance;
+                    closestEnemy = enemy;
+                }
             }
         }
         if (closestDistance < lockOnRange)
