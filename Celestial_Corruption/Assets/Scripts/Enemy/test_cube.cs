@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -17,11 +18,13 @@ public class test_cube : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //only target the player's x and z position
         Vector3 targetPostition = new Vector3(Player.position.x, this.transform.position.y, Player.position.z);
-        transform.LookAt(targetPostition);
+        Vector3 direction = targetPostition - transform.position;
+        Quaternion toRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 2*Time.deltaTime);
        
     }
 
