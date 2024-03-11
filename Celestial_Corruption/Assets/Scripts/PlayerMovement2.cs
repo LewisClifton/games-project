@@ -32,10 +32,10 @@ public class PlayerMovement2 : MonoBehaviour
     public float attackDashForce;
     public float detectionRange;
     public GameObject playerObject;
-    public float dashTime;
-    public float attackDashCooldown;
+    public float dashTime = 1;
+    public float attackDashCooldown = 1;
     private float currentAttackDashCooldown;
-    public float fieldOfViewAngle;
+    public float fieldOfViewAngle = 140;
 
     LayerMask originalLayer;
     [Header("Player State")]
