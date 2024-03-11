@@ -3239,6 +3239,8 @@ MonoBehaviour:
   detectionRange: 25
   playerObject: {fileID: 733738878}
   dashTime: 1
+  attackDashCooldown: 1
+  fieldOfViewAngle: 150
   isGrounded: 1
   isGliding: 0
   groundLayer:
