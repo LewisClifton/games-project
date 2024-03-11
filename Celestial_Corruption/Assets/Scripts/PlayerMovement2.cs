@@ -86,7 +86,18 @@ public class PlayerMovement2 : MonoBehaviour
     {
         if (lockedOn)
         {
-            AdjustCameraBasedOnPlayerPosition();
+            if (lockOnCamera.LookAt != null)
+            {
+                AdjustCameraBasedOnPlayerPosition();
+            }
+            else
+            {
+                print("HERE");
+                target = null;
+                lockedOn = false;
+                lockOnCamera.enabled = false;
+                lockOnCamera.LookAt = null;
+            }
         }
         if (currentAttackDashCooldown != 0)
         {
@@ -364,6 +375,7 @@ public class PlayerMovement2 : MonoBehaviour
         playerToBoss = playerToBoss * lockedOnDistance;
         playerToBoss.y += lockedOnHeight;
         transposer.m_FollowOffset = new Vector3(-playerToBoss.x, playerToBoss.y, -playerToBoss.z);
+        
     }
     void FindTarget()
     {
