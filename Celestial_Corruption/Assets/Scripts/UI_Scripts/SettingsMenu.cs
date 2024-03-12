@@ -87,11 +87,6 @@ public class SettingsMenu : MonoBehaviour
     //     playerCamera.m_XAxis.m_MaxSpeed = sensitivity;
     // }
 
-    public void ShowSensitivityX()
-    {
-
-    }
-
     public void Save()
     {
         cameraSensitivityXaxis = playerCamera.m_XAxis.m_MaxSpeed;
@@ -102,5 +97,20 @@ public class SettingsMenu : MonoBehaviour
     {
         playerCamera.m_XAxis.m_MaxSpeed = cameraSensitivityXaxis;
         playerCamera.m_YAxis.m_MaxSpeed = cameraSensitivityYaxis;
+    }
+
+    public void InitialSettings()
+    {
+
+    }
+
+    public void Default()
+    {
+        playerCamera.m_XAxis.m_MaxSpeed = 200f;
+        playerCamera.m_YAxis.m_MaxSpeed = 1.3f;
+        sliderValueX.text = playerCamera.m_XAxis.m_MaxSpeed.ToString();
+        sliderValueY.text = playerCamera.m_YAxis.m_MaxSpeed.ToString();
+        sliderX.value = 1;
+        sliderY.value = 1;
     }
 }
