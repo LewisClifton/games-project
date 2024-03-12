@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8831684800239268827
+--- !u!1001 &7929728144011129742
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -11,17 +11,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 29ba35b6d8431d844bbbdfcf4953f142,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2711.9292
+      value: 2608.9626
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29ba35b6d8431d844bbbdfcf4953f142,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 81.147644
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29ba35b6d8431d844bbbdfcf4953f142,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1607.8408
+      value: -1573.9525
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29ba35b6d8431d844bbbdfcf4953f142,
         type: 3}
@@ -66,7 +66,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 29ba35b6d8431d844bbbdfcf4953f142,
         type: 3}
       propertyPath: m_Name
-      value: Jungle_tree_001 Variant
+      value: Jungle_tree_001 Prefab 1
       objectReference: {fileID: 0}
     - target: {fileID: 7071182760956848314, guid: 29ba35b6d8431d844bbbdfcf4953f142,
         type: 3}
@@ -80,30 +80,36 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 29ba35b6d8431d844bbbdfcf4953f142,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2742297042704557239}
+      addedObject: {fileID: 4596855675914521108}
   m_SourcePrefab: {fileID: 100100000, guid: 29ba35b6d8431d844bbbdfcf4953f142, type: 3}
---- !u!23 &1779363621181627233 stripped
+--- !u!23 &877620261619342132 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 7071182760956848314, guid: 29ba35b6d8431d844bbbdfcf4953f142,
     type: 3}
-  m_PrefabInstance: {fileID: 8831684800239268827}
+  m_PrefabInstance: {fileID: 7929728144011129742}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8525625640575520394 stripped
+--- !u!23 &7075711270548057291 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 882129737928793925, guid: 29ba35b6d8431d844bbbdfcf4953f142,
+    type: 3}
+  m_PrefabInstance: {fileID: 7929728144011129742}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7119456992929664735 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 29ba35b6d8431d844bbbdfcf4953f142,
     type: 3}
-  m_PrefabInstance: {fileID: 8831684800239268827}
+  m_PrefabInstance: {fileID: 7929728144011129742}
   m_PrefabAsset: {fileID: 0}
---- !u!205 &2742297042704557239
+--- !u!205 &4596855675914521108
 LODGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8525625640575520394}
+  m_GameObject: {fileID: 7119456992929664735}
   serializedVersion: 2
-  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
-  m_Size: 1
+  m_LocalReferencePoint: {x: -46.882095, y: 9.172082, z: -0.45885944}
+  m_Size: 20.344156
   m_FadeMode: 0
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
@@ -111,8 +117,8 @@ LODGroup:
   - screenRelativeHeight: 0.3
     fadeTransitionWidth: 0
     renderers:
-    - renderer: {fileID: 1779363621181627233}
-    - renderer: {fileID: 8551639539338685598}
+    - renderer: {fileID: 877620261619342132}
+    - renderer: {fileID: 7075711270548057291}
   - screenRelativeHeight: 0.3
     fadeTransitionWidth: 0
     renderers: []
@@ -120,9 +126,3 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers: []
   m_Enabled: 1
---- !u!23 &8551639539338685598 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 882129737928793925, guid: 29ba35b6d8431d844bbbdfcf4953f142,
-    type: 3}
-  m_PrefabInstance: {fileID: 8831684800239268827}
-  m_PrefabAsset: {fileID: 0}
