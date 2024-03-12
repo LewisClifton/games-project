@@ -39,7 +39,7 @@ Material:
     m_TexEnvs:
     - _Main_Normal:
         m_Texture: {fileID: 2800000, guid: 12b880a00c0e4494697794bfcb79db3e, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 10, y: 10}
         m_Offset: {x: 0, y: 0}
     - _Second_Normal:
         m_Texture: {fileID: 2800000, guid: 12b880a00c0e4494697794bfcb79db3e, type: 3}
@@ -60,24 +60,26 @@ Material:
     m_Ints: []
     m_Floats:
     - _Foam_amount: 1
-    - _Foam_cutoff: 0.84
-    - _Foam_depth: 0.17
+    - _Foam_cutoff: 0.81
+    - _Foam_depth: 2.4
     - _Foam_scale: 30
-    - _Foam_size: 96.8
-    - _Foam_speed: 0.02
+    - _Foam_size: 6.86
+    - _Foam_speed: 0.03
     - _Normal_strength: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Smoothness: 0.722
+    - _Underwater_visibility: 1.51
     - _Visibility: 19.81
-    - _Visibility_underwater: 0
-    - _Wave_speed: 24.55
-    - _depth: 4.54
-    - _displacement: 0.15
-    - _strength: 0.09
+    - _Visibility_underwater: 41.4
+    - _Wave_speed: 107.65
+    - _depth: 41.1
+    - _displacement: 0.1
+    - _strength: 273.8
     - _visibility: 9
     m_Colors:
     - _Foam_Colour: {r: 0.6263795, g: 0.8679245, b: 0.8679245, a: 1}
-    - _deep_water_color: {r: 0.3915094, g: 0.7088791, b: 1, a: 0}
-    - _shallow_water_color: {r: 0.26330543, g: 0.60208833, b: 0.9150943, a: 1}
+    - _Wave_size: {r: 40, g: 40, b: 0, a: 0}
+    - _deep_water_color: {r: 0.0025364957, g: 0.28365132, b: 0.5377358, a: 0}
+    - _shallow_water_color: {r: 0, g: 0.31520513, b: 0.6037736, a: 1}
   m_BuildTextureStacks: []
