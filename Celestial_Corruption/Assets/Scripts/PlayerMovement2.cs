@@ -14,6 +14,15 @@ public class PlayerMovement2 : MonoBehaviour
     [Header("Walking")]
     public float moveSpeed;
     private float runSpeed;
+    private float originalRunSpeed;
+    public Dictionary<int, int> multiplierToSpeedConversions = new Dictionary<int, int>
+    {
+        { 1, 0 },
+        { 2, 20 },
+        { 3, 50 },
+        { 4, 100 },
+        { 5, 150 }
+    };
 
     public Transform orientation;
     public int walkingDrag;
@@ -78,6 +87,7 @@ public class PlayerMovement2 : MonoBehaviour
         playerBody.freezeRotation = true;
         colliderHeight = playerCollider.bounds.size.y;
         runSpeed = moveSpeed;
+        originalRunSpeed = runSpeed;
         transposer = lockOnCamera.GetCinemachineComponent<CinemachineTransposer>();
     }
 
@@ -333,6 +343,8 @@ public class PlayerMovement2 : MonoBehaviour
     private void setLayer()
     {
         playerObject.layer = originalLayer;
+        multiplierToSpeedConversions.TryGetValue(ScoreManager.instance.GetMultiplier(), out int currMultAdd);
+        runSpeed = originalRunSpeed + currMultAdd;
     }
     private void GlidingMovement()
     {
