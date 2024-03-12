@@ -3452,7 +3452,7 @@ MonoBehaviour:
     - name: TerrainGrass
       layerID: 0
       threshold: 0
-    instanceCount: 10660
+    instanceCount: 17173
     prefabs:
     - index: 0
       probability: 5
@@ -3474,7 +3474,7 @@ MonoBehaviour:
     - name: TerrainGrass
       layerID: 0
       threshold: 0
-    instanceCount: 2289
+    instanceCount: 3510
     prefabs:
     - index: 1
       probability: 5
@@ -3496,7 +3496,7 @@ MonoBehaviour:
     - name: TerrainGrass
       layerID: 0
       threshold: 0
-    instanceCount: 59149
+    instanceCount: 92931
     prefabs:
     - index: 2
       probability: 100
@@ -3518,7 +3518,7 @@ MonoBehaviour:
     - name: TerrainGrass
       layerID: 0
       threshold: 0
-    instanceCount: 59149
+    instanceCount: 92879
     prefabs:
     - index: 3
       probability: 100
@@ -3540,7 +3540,7 @@ MonoBehaviour:
     - name: TerrainGrass
       layerID: 0
       threshold: 0
-    instanceCount: 29388
+    instanceCount: 45940
     prefabs:
     - index: 4
       probability: 100
@@ -3563,7 +3563,7 @@ MonoBehaviour:
     - name: TerrainGrass
       layerID: 0
       threshold: 0
-    instanceCount: 10240126
+    instanceCount: 10296757
     index: 0
     type: 0
     renderAsBillboard: 0
@@ -3603,8 +3603,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   terrainMinMaxHeight: {x: 117.7074, y: 0.0002}
-  detailResolution: 128
-  detailResolutionIndex: 0
+  detailResolution: 512
+  detailResolutionIndex: 2
   grassPatchSize: 16
   grassPatchSizeIndex: 1
   tempColliders: []
@@ -15149,7 +15149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597730950}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.097851306, y: 0.7018701, z: -0.09829938, w: 0.6986707}
+  m_LocalRotation: {x: 0.09785129, y: 0.70187014, z: -0.0982994, w: 0.6986706}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
