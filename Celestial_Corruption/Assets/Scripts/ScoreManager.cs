@@ -44,6 +44,7 @@ public class ScoreManager : MonoBehaviour
         if (multiplierIncreaseRequirementProgress > multiplierIncreaseRequirement * scoreMultiplier)
         {
             AddMultiplier(1);
+            multiplierIncreaseRequirementProgress -= multiplierIncreaseRequirement * (scoreMultiplier - 1);
         }
         UpdateScoreText();
     }
