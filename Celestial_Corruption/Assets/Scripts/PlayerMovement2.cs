@@ -66,8 +66,8 @@ public class PlayerMovement2 : MonoBehaviour
 
     void Awake()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.visible = false;
+        // Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Start()
