@@ -33,31 +33,50 @@ public class SettingsMenu : MonoBehaviour
 
     void Start()
     {
-        cameraSensitivityXaxis = playerCamera.m_XAxis.m_MaxSpeed;
-        cameraSensitivityYaxis = playerCamera.m_YAxis.m_MaxSpeed;
+        cameraSensitivityXaxis = Settings.cameraSensitivityXaxis;
+        cameraSensitivityYaxis = Settings.cameraSensitivityYaxis;
 
-        cameraSensitivityConstantX = cameraSensitivityXaxis;
-        cameraSensitivityConstantY = cameraSensitivityYaxis;
+        cameraSensitivityConstantX = Settings.cameraSensitivityConstantX;
+        cameraSensitivityConstantY = Settings.cameraSensitivityConstantY;
+
+        if (playerCamera != null)
+        {
+            playerCamera.m_XAxis.m_MaxSpeed = cameraSensitivityXaxis;
+            playerCamera.m_YAxis.m_MaxSpeed = cameraSensitivityYaxis;
+        }
+
+        // cameraSensitivityXaxis = playerCamera.m_XAxis.m_MaxSpeed;
+        // cameraSensitivityYaxis = playerCamera.m_YAxis.m_MaxSpeed;
+
+        // cameraSensitivityConstantX = cameraSensitivityXaxis;
+        // cameraSensitivityConstantY = cameraSensitivityYaxis;
 
         sliderValueX.text = cameraSensitivityXaxis.ToString();
         sliderValueY.text = cameraSensitivityYaxis.ToString();
-
-        Debug.Log("Camera sensitivity X: " + cameraSensitivityXaxis);
-        Debug.Log("Camera sensitivity Y: " + cameraSensitivityYaxis);
     }
 
     public void SetCameraSensitivityX(float sensitivity)
     {
         Debug.Log("Camera sensitivity X set to: " + sensitivity);
-        playerCamera.m_XAxis.m_MaxSpeed = sensitivity * cameraSensitivityConstantX;
-        sliderValueX.text = playerCamera.m_XAxis.m_MaxSpeed.ToString();
+        if (playerCamera != null)
+        {
+            playerCamera.m_XAxis.m_MaxSpeed = sensitivity * cameraSensitivityConstantX;
+        }
+        sliderValueX.text = (sensitivity * cameraSensitivityConstantX).ToString();
+        cameraSensitivityXaxis = sensitivity * cameraSensitivityConstantX;
+        Settings.cameraSensitivityXaxis = cameraSensitivityXaxis;
     }
 
     public void SetCameraSensitivityY(float sensitivity)
     {
         Debug.Log("Camera sensitivity Y set to: " + sensitivity);
-        playerCamera.m_YAxis.m_MaxSpeed = sensitivity * cameraSensitivityConstantY;
-        sliderValueY.text = playerCamera.m_YAxis.m_MaxSpeed.ToString();
+        if (playerCamera != null)
+        {
+            playerCamera.m_YAxis.m_MaxSpeed = sensitivity * cameraSensitivityConstantY;
+        }
+        sliderValueY.text = (sensitivity * cameraSensitivityConstantY).ToString();
+        cameraSensitivityYaxis = sensitivity * cameraSensitivityConstantY;
+        Settings.cameraSensitivityYaxis = cameraSensitivityYaxis;
     }
 
     public void SetCameraSensitivityX(string sensitivity)
@@ -65,9 +84,14 @@ public class SettingsMenu : MonoBehaviour
         float value;
         if (float.TryParse(sensitivity, out value))
         {
-            playerCamera.m_XAxis.m_MaxSpeed = value;
-            sliderValueX.text = playerCamera.m_XAxis.m_MaxSpeed.ToString();
+            if (playerCamera == null)
+            {
+                playerCamera.m_XAxis.m_MaxSpeed = value;
+            }
+            sliderValueX.text = value.ToString();
             sliderX.value = value / cameraSensitivityConstantX;
+            cameraSensitivityXaxis = value;
+            Settings.cameraSensitivityXaxis = cameraSensitivityXaxis;
         }
     }
 
@@ -76,9 +100,15 @@ public class SettingsMenu : MonoBehaviour
         float value;
         if (float.TryParse(sensitivity, out value))
         {
-            playerCamera.m_YAxis.m_MaxSpeed = value;
-            sliderValueY.text = playerCamera.m_YAxis.m_MaxSpeed.ToString();
+            // If there is no player Camera assigned, then don't do anything
+            if (playerCamera != null)
+            {
+                playerCamera.m_YAxis.m_MaxSpeed = value;
+            }
+            sliderValueY.text = value.ToString();
             sliderY.value = value / cameraSensitivityConstantY;
+            cameraSensitivityYaxis = value;
+            Settings.cameraSensitivityYaxis = cameraSensitivityYaxis;
         }
     }
 
@@ -87,12 +117,14 @@ public class SettingsMenu : MonoBehaviour
     //     playerCamera.m_XAxis.m_MaxSpeed = sensitivity;
     // }
 
+    // Not Used
     public void Save()
     {
         cameraSensitivityXaxis = playerCamera.m_XAxis.m_MaxSpeed;
         cameraSensitivityYaxis = playerCamera.m_YAxis.m_MaxSpeed; 
     }
 
+    // Not Used
     public void Cancel()
     {
         playerCamera.m_XAxis.m_MaxSpeed = cameraSensitivityXaxis;
@@ -108,9 +140,13 @@ public class SettingsMenu : MonoBehaviour
     {
         playerCamera.m_XAxis.m_MaxSpeed = 200f;
         playerCamera.m_YAxis.m_MaxSpeed = 1.3f;
+        cameraSensitivityXaxis = playerCamera.m_XAxis.m_MaxSpeed;
+        cameraSensitivityYaxis = playerCamera.m_YAxis.m_MaxSpeed;
         sliderValueX.text = playerCamera.m_XAxis.m_MaxSpeed.ToString();
         sliderValueY.text = playerCamera.m_YAxis.m_MaxSpeed.ToString();
         sliderX.value = 1;
         sliderY.value = 1;
+        Settings.cameraSensitivityXaxis = cameraSensitivityXaxis;
+        Settings.cameraSensitivityYaxis = cameraSensitivityYaxis;
     }
 }
