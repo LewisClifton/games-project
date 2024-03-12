@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class PlayerMovement2 : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class PlayerMovement2 : MonoBehaviour
     [Header("Walking")]
     public float moveSpeed;
     private float runSpeed;
-    
+
     public Transform orientation;
     public int walkingDrag;
     [Header("Jumping")]
@@ -31,16 +32,16 @@ public class PlayerMovement2 : MonoBehaviour
     public float attackDashForce;
     public float detectionRange;
     public GameObject playerObject;
-    public float dashTime;
-    public float attackDashCooldown;
+    public float dashTime = 1;
+    public float attackDashCooldown = 1;
     private float currentAttackDashCooldown;
-    public float fieldOfViewAngle;
-    
+    public float fieldOfViewAngle = 140;
+
     LayerMask originalLayer;
     [Header("Player State")]
     public bool isGrounded = false;
     public bool isGliding = false;
-    
+
     [Header("Player State Checking")]
     private float groundedCheckDistance = 1.5f;
     private float colliderHeight;
@@ -57,12 +58,18 @@ public class PlayerMovement2 : MonoBehaviour
     [SerializeField] private float glideRunSpeed;
     [SerializeField] private bool glidingEnabled;
     private float CurrentThrustSpeed;
-    
-
+    [Header("Camera Lock On")]
+    public CinemachineVirtualCamera lockOnCamera;
+    private CinemachineTransposer transposer;
+    private GameObject target;
+    private bool lockedOn = false;
+    public int lockedOnDistance;
+    public int lockedOnHeight;
+    public int lockOnRange;
     [Header("Animation")]
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject character;
-    
+
 
     void Start()
     {
@@ -71,11 +78,27 @@ public class PlayerMovement2 : MonoBehaviour
         playerBody.freezeRotation = true;
         colliderHeight = playerCollider.bounds.size.y;
         runSpeed = moveSpeed;
+        transposer = lockOnCamera.GetCinemachineComponent<CinemachineTransposer>();
     }
 
-    
+
     void Update()
     {
+        if (lockedOn)
+        {
+            if (lockOnCamera.LookAt != null)
+            {
+                AdjustCameraBasedOnPlayerPosition();
+            }
+            else
+            {
+                print("HERE");
+                target = null;
+                lockedOn = false;
+                lockOnCamera.enabled = false;
+                lockOnCamera.LookAt = null;
+            }
+        }
         if (currentAttackDashCooldown != 0)
         {
             currentAttackDashCooldown = currentAttackDashCooldown - Time.deltaTime;
@@ -87,10 +110,31 @@ public class PlayerMovement2 : MonoBehaviour
         
         Shader.SetGlobalVector("_Player", transform.position);
 
+        if (gameInput.IsLockOnPressed())
+        {
+            if (!lockedOn)
+            {
+
+                FindTarget();
+                if (target != null)
+                {
+                    lockedOn = true;
+                    lockOnCamera.enabled = true;
+                }
+            }
+            else
+            {
+                target = null;
+                lockedOn = false;
+                lockOnCamera.enabled = false;
+                lockOnCamera.LookAt=null;
+            }
+        }
         if (gameInput.IsAttackDashPressed())
         {
-            if (currentAttackDashCooldown==0){
-            AttackDash();
+            if (currentAttackDashCooldown == 0)
+            {
+                AttackDash();
             }
         }
         if (gameInput.IsFreeDashPressed())
@@ -109,11 +153,12 @@ public class PlayerMovement2 : MonoBehaviour
                 moveSpeed = runSpeed;
             }
         }
-        
+
     }
 
     private void FixedUpdate()
     {
+        
         MovePlayer();
         checkGroundStatus();
         if (!isGrounded && isGliding && glidingEnabled)
@@ -123,9 +168,13 @@ public class PlayerMovement2 : MonoBehaviour
         };
 
     }
-    
 
-    private void MovePlayer() { 
+    private void LateUpdate()
+    {
+        
+    }
+    private void MovePlayer()
+    {
         Vector3 playerVelocity = orientation.forward * moveInput.y * moveSpeed + orientation.right * moveInput.x * moveSpeed;
         playerBody.AddForce(playerVelocity, ForceMode.Force);
         //playerBody.velocity = transform.TransformDirection(playerVelocity);
@@ -138,7 +187,7 @@ public class PlayerMovement2 : MonoBehaviour
     //Function gets moveInput value, it is run but vscode just can't tell.
     private void OnMove(InputValue value)
     {
-        moveInput=value.Get<Vector2>();
+        moveInput = value.Get<Vector2>();
         animator.SetFloat("movementX", moveInput.normalized.x);
         animator.SetFloat("movementZ", moveInput.normalized.y);
     }
@@ -182,7 +231,7 @@ public class PlayerMovement2 : MonoBehaviour
         //movementSpeed = runningSpeed;
         playerBody.drag = walkingDrag;
         moveSpeed = runSpeed;
-        
+
     }
     private void onTakingAir()
     {
@@ -208,7 +257,7 @@ public class PlayerMovement2 : MonoBehaviour
             }
             isGrounded = true;
 
-            
+
         }
         else
         {
@@ -220,7 +269,7 @@ public class PlayerMovement2 : MonoBehaviour
         }
     }
 
-    
+
 
     //Function that executes the dash
     private void FreeDash()
@@ -239,16 +288,16 @@ public class PlayerMovement2 : MonoBehaviour
 
     private void AttackDash()
     {
-        
+
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         float closestDistance = Mathf.Infinity;
         Transform closestEnemy = null;
 
         foreach (GameObject enemy in enemies)
         {
-            Vector3 vectorToEnemy = enemy.transform.position-transform.position;
+            Vector3 vectorToEnemy = enemy.transform.position - transform.position;
             float angleToEnemy = Vector3.Angle(orientation.forward, vectorToEnemy);
-            if (angleToEnemy <= fieldOfViewAngle/2)
+            if (angleToEnemy <= fieldOfViewAngle / 2)
             {
                 float distance = Vector3.Distance(orientation.transform.position, enemy.transform.position);
                 if (distance < closestDistance)
@@ -257,37 +306,37 @@ public class PlayerMovement2 : MonoBehaviour
                     closestEnemy = enemy.transform;
                 }
             }
-            
+
         }
         if (closestDistance < detectionRange)
         {
             currentAttackDashCooldown = attackDashCooldown;
             playerObject.layer = LayerMask.NameToLayer("Dashing");
-            Vector3 playerVelocity=playerBody.velocity;
+            Vector3 playerVelocity = playerBody.velocity;
             float playerSpeed = playerVelocity.magnitude;
             playerBody.AddForce(playerVelocity * -1, ForceMode.Impulse);
             Vector3 forceToApply = Vector3.zero;
             Vector3 vectorToEnemy = closestEnemy.transform.position - orientation.transform.position;
             //vectorToEnemy= vectorToEnemy.normalized;
-            forceToApply = vectorToEnemy * (attackDashForce) + vectorToEnemy.normalized*playerSpeed;
+            forceToApply = vectorToEnemy * (attackDashForce) + vectorToEnemy.normalized * playerSpeed;
             //Debug.Log(vectorToEnemy);
             playerBody.AddForce(forceToApply, ForceMode.Impulse);
-            Invoke("setLayer",dashTime);
+            Invoke("setLayer", dashTime);
         }
         else
         {
             Debug.Log(closestDistance);
         }
-        
+
     }
-    
+
     private void setLayer()
     {
         playerObject.layer = originalLayer;
     }
     private void GlidingMovement()
     {
-        
+
         float pitchInRads = transform.eulerAngles.x * Mathf.Deg2Rad;
         //Pitch gets mapped to a value between -1 and 1 using Sin and multiplied by the thrust factor.
         //If the "nose" of the character points up then it slows down, if it points down then it speeds up.
@@ -316,5 +365,46 @@ public class PlayerMovement2 : MonoBehaviour
         Quaternion targetRotation = Quaternion.Euler(cameraTransform.eulerAngles.x, cameraTransform.eulerAngles.y, cameraTransform.eulerAngles.z);
         transform.rotation = targetRotation;
 
+    }
+    void AdjustCameraBasedOnPlayerPosition()
+    {
+        Vector3 playerToBoss = target.transform.position - playerBody.position;
+        float angle = Vector3.SignedAngle(playerToBoss, transform.forward, Vector3.up);
+        playerToBoss.Normalize();
+        playerToBoss.y = 0;
+        playerToBoss = playerToBoss * lockedOnDistance;
+        playerToBoss.y += lockedOnHeight;
+        transposer.m_FollowOffset = new Vector3(-playerToBoss.x, playerToBoss.y, -playerToBoss.z);
+        
+    }
+    void FindTarget()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        float closestDistance = Mathf.Infinity;
+        GameObject closestEnemy = null;
+
+        foreach (GameObject enemy in enemies)
+        {
+            float distance = Vector3.Distance(orientation.transform.position, enemy.transform.position);
+            if (distance < closestDistance)
+            {
+                Vector3 vectorToEnemy = enemy.transform.position - transform.position;
+                float angleToEnemy = Vector3.Angle(orientation.forward, vectorToEnemy);
+                if (angleToEnemy <= fieldOfViewAngle / 2)
+                {
+                    closestDistance = distance;
+                    closestEnemy = enemy;
+                }
+            }
+        }
+        if (closestDistance < lockOnRange)
+        {
+            target = closestEnemy;
+            lockOnCamera.LookAt = target.transform;
+        }
+        else
+        {
+            target = null;
+        }
     }
 }
