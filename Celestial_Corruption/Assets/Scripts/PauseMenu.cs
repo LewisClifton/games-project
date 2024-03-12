@@ -6,13 +6,14 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameInput gameInput;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject settingsMenu;
     private bool isPaused = false;
 
     // Start is called before the first frame update
     void Start()
     {
         pauseMenu.SetActive(false);
-
+        settingsMenu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -51,6 +52,12 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
     }
 
+    public void MainMenu()
+    {
+        Time.timeScale = 1;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+
     public void QuitGame()
     {
         Application.Quit();
@@ -63,5 +70,17 @@ public class PauseMenu : MonoBehaviour
 
         Time.timeScale = 1;
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+
+    public void OpenSettings()
+    {
+        pauseMenu.SetActive(false);
+        settingsMenu.SetActive(true);
+    }
+
+    public void CloseSettings()
+    {
+        settingsMenu.SetActive(false);
+        pauseMenu.SetActive(true);
     }
 }
