@@ -64,6 +64,12 @@ public class PlayerMovement2 : MonoBehaviour
     [SerializeField] private GameObject character;
     
 
+    void Awake()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     void Start()
     {
         originalLayer = playerObject.layer;

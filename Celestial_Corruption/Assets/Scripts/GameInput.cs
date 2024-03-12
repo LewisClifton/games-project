@@ -36,4 +36,9 @@ public class GameInput : MonoBehaviour
     {
         return playerInputActions.Player.AttackDash.triggered;
     }
+
+    public bool IsEscapePressed()
+    {
+        return playerInputActions.Player.Escape.triggered;
+    }
 }
