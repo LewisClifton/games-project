@@ -10,6 +10,8 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     private float score;
     public float scoreMultiplier = 1;
+    public float multiplierIncreaseRequirement;
+    public float multiplierIncreaseRequirementProgress = 0;
     void Awake()
     {
         // Singleton setup
@@ -35,7 +37,13 @@ public class ScoreManager : MonoBehaviour
 
     public void AddScore(int amount)
     {
+        
         score += amount*scoreMultiplier;
+        multiplierIncreaseRequirementProgress += amount;
+        if (multiplierIncreaseRequirementProgress > multiplierIncreaseRequirement * scoreMultiplier)
+        {
+            AddMultiplier(1);
+        }
         UpdateScoreText();
     }
 
