@@ -10,7 +10,7 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     private float score;
     public float scoreMultiplier = 1;
-    public float multiplierIncreaseRequirement;
+    public float multiplierIncreaseRequirement = 1000;
     public float multiplierIncreaseRequirementProgress = 0;
     void Awake()
     {
@@ -33,6 +33,7 @@ public class ScoreManager : MonoBehaviour
     public void ResetMultiplier()
     {
         scoreMultiplier = 1;
+        multiplierIncreaseRequirementProgress = 0;
     }
 
     public void AddScore(int amount)
