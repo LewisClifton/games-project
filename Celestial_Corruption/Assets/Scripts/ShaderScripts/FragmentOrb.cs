@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class FragmentOrb : MonoBehaviour
@@ -83,5 +84,6 @@ public class FragmentOrb : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         playerRb.constraints = constraints;
         isFrozen = false;
+        SceneManager.LoadScene(2);
     }
 }
