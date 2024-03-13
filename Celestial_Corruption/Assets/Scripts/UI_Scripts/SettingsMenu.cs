@@ -53,6 +53,9 @@ public class SettingsMenu : MonoBehaviour
 
         sliderValueX.text = cameraSensitivityXaxis.ToString();
         sliderValueY.text = cameraSensitivityYaxis.ToString();
+
+        sliderX.value = cameraSensitivityXaxis / cameraSensitivityConstantX;
+        sliderY.value = cameraSensitivityYaxis / cameraSensitivityConstantY;
     }
 
     public void SetCameraSensitivityX(float sensitivity)
