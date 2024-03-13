@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] GameObject playerObject;
 
-    [SerializeField] Transform Player;
+    [SerializeField] public Transform Player;
 
     [SerializeField] Transform enemy;
 

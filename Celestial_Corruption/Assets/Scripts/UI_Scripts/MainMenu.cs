@@ -22,7 +22,7 @@ public class MainMenu : MonoBehaviour
         // SceneManager.LoadScene("MartinTestScene");
         
         // Load the first level
-        // SceneManager.LoadScene(1);
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame()
@@ -30,7 +30,7 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Quitting game...");
 
         // Don't trigger this in the editor
-        // Application.Quit();
+        Application.Quit();
     }
 
     public void OpenSettings()

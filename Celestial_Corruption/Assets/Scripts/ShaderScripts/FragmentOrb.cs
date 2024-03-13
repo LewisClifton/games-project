@@ -83,5 +83,6 @@ public class FragmentOrb : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         playerRb.constraints = constraints;
         isFrozen = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

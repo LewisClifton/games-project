@@ -124,7 +124,7 @@ public class Boss : MonoBehaviour
 
     void RandomAttack()
     {
-        int randomAttack = Random.Range(3, 4);
+        int randomAttack = Random.Range(1, 4);
         switch (randomAttack)
         {
             case 1:
