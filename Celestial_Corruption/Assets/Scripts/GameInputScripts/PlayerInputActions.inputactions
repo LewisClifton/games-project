@@ -171,21 +171,23 @@
                 },
                 {
                     "name": "",
-<<<<<<< HEAD
                     "id": "bb392ca4-c223-43dc-bfff-1c8befced929",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Escape",
-=======
+                    "isComposite": false,
+                    "isPartOfComposite": false  
+                },
+                {
+                    "name": "",
                     "id": "0cafd9d8-46d9-4c6f-935a-89aa56d45a3c",
                     "path": "<Mouse>/middleButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Lock On",
->>>>>>> develop
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
