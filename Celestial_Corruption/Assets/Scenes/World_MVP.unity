@@ -3129,7 +3129,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8903046698852571452}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: OpenSettings
         m_Mode: 1
@@ -7019,7 +7019,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8903046698852571452}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: CloseSettings
         m_Mode: 1
@@ -9244,7 +9244,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8903046698852571452}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -10373,7 +10373,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8903046698852571452}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: ResumeGame
         m_Mode: 1
@@ -13609,7 +13609,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8903046698852571451}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: Default
         m_Mode: 1
@@ -14967,7 +14967,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8903046698852571452}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: MainMenu
         m_Mode: 1
@@ -25635,12 +25635,12 @@ PrefabInstance:
     - target: {fileID: 2457312328421079960, guid: da23f3d8a9f479744aa2711f099d57e9,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000004279774
+      value: 0.000000004279777
       objectReference: {fileID: 0}
     - target: {fileID: 2457312328421079960, guid: da23f3d8a9f479744aa2711f099d57e9,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -4.327162e-10
+      value: 4.3271647e-10
       objectReference: {fileID: 0}
     - target: {fileID: 3236749874801521193, guid: da23f3d8a9f479744aa2711f099d57e9,
         type: 3}
@@ -25715,12 +25715,12 @@ PrefabInstance:
     - target: {fileID: 6564318949656024488, guid: da23f3d8a9f479744aa2711f099d57e9,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017610695
+      value: -0.000000017610695
       objectReference: {fileID: 0}
     - target: {fileID: 6564318949656024488, guid: da23f3d8a9f479744aa2711f099d57e9,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000002103965
+      value: -0.000000002103965
       objectReference: {fileID: 0}
     - target: {fileID: 7764076229187147102, guid: da23f3d8a9f479744aa2711f099d57e9,
         type: 3}
@@ -27890,7 +27890,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684602239}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.11862729, y: 0.000000035221394, z: 0.000000004207931, w: 0.9929389}
+  m_LocalRotation: {x: -0.11862729, y: -0.000000035221394, z: -0.000000004207931,
+    w: 0.9929389}
   m_LocalPosition: {x: -2462.6, y: 419, z: 3320.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
