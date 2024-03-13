@@ -62,7 +62,5 @@ public class TestBossAnimation : MonoBehaviour
         {
             animator.SetBool("IsSummoning", false);
         }
-
-
     }
 }
