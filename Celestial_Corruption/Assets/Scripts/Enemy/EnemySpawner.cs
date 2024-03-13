@@ -18,10 +18,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Awake()
     {
-        if (visualiseSpawnArea)
-        {
-            OnDrawGizmos();
-        }
+
     }
 
     private void Start()
@@ -41,20 +38,15 @@ public class EnemySpawner : MonoBehaviour
             if (currentEnemies < maxEnemies)
             {
                 Vector3 spawnPosition = CalculateSpawnPosition();
-
-                // Make a BoxCast to check if the spawn position is clear from top to bottom
                 Vector3 boxSize = new Vector3(enemyWidth / 2, 1, enemyLength / 2);
-                RaycastHit[] hits = Physics.BoxCastAll(spawnPosition, boxSize, Vector3.up, Quaternion.identity, 1);
 
-                Debug.DrawRay(spawnPosition, Vector3.up, Color.red, 1f);
-
-                if (Physics.BoxCast(boxCastStartPoint, boxSize / 2, Vector3.down, out RaycastHit hit, Quaternion.identity, Mathf.Infinity))
+                if (Physics.BoxCast(spawnPosition, boxSize / 2, Vector3.down, out RaycastHit hit, Quaternion.identity, Mathf.Infinity))
                 {
-                    Intantiate(enemyPrefab, hit.point, Quaternion.identity);
+                    Instantiate(enemyPrefab, hit.point, Quaternion.identity);
                 }
 
-                // Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-                // currentEnemies++;
+                Debug.DrawRay(spawnPosition, Vector3.down, Color.red, 10f);
+                Debug.Log("Spawn position: " + spawnPosition);
             }
             yield return new WaitForSeconds(1 / spawnRate);
         }
@@ -62,19 +54,16 @@ public class EnemySpawner : MonoBehaviour
 
     private Vector3 CalculateSpawnPosition()
     {
-        float randomWidth = Random.Range(0f, triangleWidth);
-        float ratio = randomWidth / triangleWidth;
-        float randomLength = Random.Range(positiveOffset, triangleLength * (1 - ratio) + positiveOffset);
+        float x = Random.Range(-triangleWidth / 2, triangleWidth / 2);
+        float norm = (triangleLength + triangleWidth/2) / 2;
+        float ratio = triangleLength / (triangleWidth / 2);
+        float ratio_norm = ratio / norm;
+        float y = Random.Range(1-((1-Mathf.Abs(x))/ratio)*norm, triangleLength);
 
-        // float randomWidth = Random.Range(0f, triangleWidth);
-        // float ratio = randomWidth / triangleWidth;
-        // float randomLength = Random.Range(0f, triangleLength * (1 - ratio));
-
-        // // Assuming the triangle's tip is at the GameObject's position and it extends forward
-        Vector3 widthDirection = Quaternion.Euler(0, -90, 0) * transform.forward; // Perpendicular to forward direction
-        Vector3 spawnDirection = transform.forward * randomLength + widthDirection * (randomWidth - triangleWidth / 2);
-
-        return transform.position + spawnDirection;
+        // Transform random triangle position with the player rotation
+        float w_x = this.transform.forward.x * y + this.transform.position.x;
+        float w_y = this.transform.forward.z * x + this.transform.position.z;
+        return new Vector3(w_x, 0, w_y);
     }
 
     private void OnDrawGizmos()
