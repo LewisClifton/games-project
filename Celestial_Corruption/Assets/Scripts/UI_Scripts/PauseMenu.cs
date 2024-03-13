@@ -69,7 +69,7 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("Quitting game...");
 
         // Don't trigger this in the editor
-        // Application.Quit();
+        Application.Quit();
     }
 
     public void RestartGame()
