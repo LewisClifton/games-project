@@ -6,8 +6,8 @@ public class EnemySpawner : MonoBehaviour
 {
     // [SerializeField] private GameObject enemySpawner;
     [SerializeField] private float positiveOffset = 5f;
-    [SerializeField] private float triangleLength = 10f;
-    [SerializeField] private float triangleWidth = 5f;
+    [SerializeField] private float triangleLength = 100f;
+    [SerializeField] private float triangleWidth = 50f;
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private float enemyWidth = 2f;
     [SerializeField] private float enemyLength = 2f;
@@ -42,12 +42,17 @@ public class EnemySpawner : MonoBehaviour
 
                 if (Physics.BoxCast(spawnPosition, boxSize / 2, Vector3.down, out RaycastHit hit, Quaternion.identity, Mathf.Infinity))
                 {
-                    Instantiate(enemyPrefab, hit.point, Quaternion.identity);
+                    GameObject new_enemy = Instantiate(enemyPrefab, hit.point, Quaternion.identity);
+                    Enemy enemy_script = new_enemy.GetComponent<Enemy>();
+                    // enemy_script.SetSpawner(this);
+                    // Find player in scene
+                    enemy_script.Player = GameObject.FindWithTag("Player").transform;
                 }
 
                 Debug.DrawRay(spawnPosition, Vector3.down, Color.red, 10f);
                 Debug.Log("Spawn position: " + spawnPosition);
             }
+            // Change this to a random Poisson Process with a multiplier based on the distance to an orb
             yield return new WaitForSeconds(1 / spawnRate);
         }
     }
