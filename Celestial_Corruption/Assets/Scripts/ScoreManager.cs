@@ -8,8 +8,10 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
 
     public TextMeshProUGUI scoreText;
-    private int score;
-
+    private float score;
+    public int scoreMultiplier = 1;
+    public float multiplierIncreaseRequirement = 1000;
+    public float multiplierIncreaseRequirementProgress = 0;
     void Awake()
     {
         // Singleton setup
@@ -22,25 +24,38 @@ public class ScoreManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    void Start()
+
+    public void AddMultiplier(int amount)
     {
-        
+        scoreMultiplier += amount;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ResetMultiplier()
     {
-        
+        scoreMultiplier = 1;
+        multiplierIncreaseRequirementProgress = 0;
     }
 
     public void AddScore(int amount)
     {
-        score += amount;
+        
+        score += amount*scoreMultiplier;
+        multiplierIncreaseRequirementProgress += amount;
+        if (multiplierIncreaseRequirementProgress > multiplierIncreaseRequirement * scoreMultiplier)
+        {
+            AddMultiplier(1);
+            multiplierIncreaseRequirementProgress -= multiplierIncreaseRequirement * (scoreMultiplier - 1);
+        }
         UpdateScoreText();
     }
 
     private void UpdateScoreText()
     {
         scoreText.text = "Score:" + score;
+    }
+
+    public int GetMultiplier()
+    {
+        return scoreMultiplier;
     }
 }

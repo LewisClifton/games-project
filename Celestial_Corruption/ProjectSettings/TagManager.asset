@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - TimeManager
+  - Ground
+  - Crystal
+  - tranformVFX
   layers:
   - Default
   - TransparentFX
@@ -15,7 +19,7 @@ TagManager:
   - Dashing
   - Enemy
   - Projectile
-  - 
+  - UnrenderedVFX
   - 
   - 
   - 
