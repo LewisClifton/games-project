@@ -27,7 +27,7 @@ public class FragmentOrb : MonoBehaviour
     {
         // Calculate the player's distance from the orb
         float distance = Vector3.Distance(playerTransform.position, transform.position);
-        float threshold = 10f;
+        float threshold = 30f;
 
         // If the player is within a threshold distance from the orb, send the player's position to the shader
         if (distance < threshold)
@@ -42,6 +42,7 @@ public class FragmentOrb : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Player entered the orb's trigger");
         if (other.CompareTag("Player"))
         {
             Vector3 worldCenter = transform.TransformPoint(playerCollider.center);
@@ -61,10 +62,14 @@ public class FragmentOrb : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision)
-    {   
-        Debug.Log("Collision detected");
+    {
+        // bool hasPlayerChild = collision.gameObject.GetComponentInChildren<Transform>(true).CompareTag("Player");
+        playerRb = collision.gameObject.GetComponent<Rigidbody>();
+        Collider playerCollider = collision.gameObject.GetComponentInChildren<Collider>(true);
+        
+        
         // Check if the collision is with the player
-        if (collision.gameObject.CompareTag("Player"))
+        if (playerCollider.gameObject.CompareTag("Player"))
         {
             // Make the player immovable
             if (playerRb != null && !isFrozen)
