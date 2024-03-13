@@ -4,8 +4,8 @@ using UnityEngine;
 
 public static class Settings
 {
-    public static float cameraSensitivityXaxis;
-    public static float cameraSensitivityYaxis;
+    public static float cameraSensitivityXaxis = 200f;
+    public static float cameraSensitivityYaxis = 1.3f;
     public static float cameraSensitivityConstantX = 200f;
     public static float cameraSensitivityConstantY = 1.3f;
 }

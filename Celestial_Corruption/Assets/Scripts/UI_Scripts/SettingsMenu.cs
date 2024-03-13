@@ -84,7 +84,8 @@ public class SettingsMenu : MonoBehaviour
         float value;
         if (float.TryParse(sensitivity, out value))
         {
-            if (playerCamera == null)
+            Debug.Log("Camera sensitivity X set to: " + value);
+            if (playerCamera != null)
             {
                 playerCamera.m_XAxis.m_MaxSpeed = value;
             }
@@ -100,6 +101,7 @@ public class SettingsMenu : MonoBehaviour
         float value;
         if (float.TryParse(sensitivity, out value))
         {
+            Debug.Log("Camera sensitivity Y set to: " + value);
             // If there is no player Camera assigned, then don't do anything
             if (playerCamera != null)
             {
@@ -138,8 +140,11 @@ public class SettingsMenu : MonoBehaviour
 
     public void Default()
     {
-        playerCamera.m_XAxis.m_MaxSpeed = 200f;
-        playerCamera.m_YAxis.m_MaxSpeed = 1.3f;
+        if (playerCamera != null)
+        {
+            playerCamera.m_XAxis.m_MaxSpeed = cameraSensitivityConstantX;
+            playerCamera.m_YAxis.m_MaxSpeed = cameraSensitivityConstantY;
+        }
         cameraSensitivityXaxis = playerCamera.m_XAxis.m_MaxSpeed;
         cameraSensitivityYaxis = playerCamera.m_YAxis.m_MaxSpeed;
         sliderValueX.text = playerCamera.m_XAxis.m_MaxSpeed.ToString();
