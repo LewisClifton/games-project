@@ -61,20 +61,20 @@ public class FragmentOrb : MonoBehaviour
         }
     }
 
-    // private void OnCollisionEnter(Collision collision)
-    // {
-    //     // Check if the collision is with the player
-    //     if (collision.gameObject.CompareTag("Player"))
-    //     {
-    //         // Make the player immovable
-    //         if (playerRb != null && !isFrozen)
-    //         {
-    //             Debug.Log("Player collided with the orb");
-    //             StartCoroutine(freezeCoroutine(3f));
-    //             Debug.Log("Player is frozen for 3 seconds");
-    //         }
-    //     }
-    // }
+    private void OnCollisionEnter(Collision collision)
+    {
+        // Check if the collision is with the player
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // Make the player immovable
+            if (playerRb != null && !isFrozen)
+            {
+                Debug.Log("Player collided with the orb");
+                StartCoroutine(freezeCoroutine(3f));
+                Debug.Log("Player is frozen for 3 seconds");
+            }
+        }
+    }
 
     IEnumerator freezeCoroutine(float seconds)
     {
