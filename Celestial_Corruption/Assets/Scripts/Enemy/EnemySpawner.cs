@@ -46,9 +46,14 @@ public class EnemySpawner : MonoBehaviour
                 Vector3 boxSize = new Vector3(enemyWidth / 2, 1, enemyLength / 2);
                 RaycastHit[] hits = Physics.BoxCastAll(spawnPosition, boxSize, Vector3.up, Quaternion.identity, 1);
 
+                Debug.DrawRay(spawnPosition, Vector3.up, Color.red, 1f);
 
+                if (Physics.BoxCast(boxCastStartPoint, boxSize / 2, Vector3.down, out RaycastHit hit, Quaternion.identity, Mathf.Infinity))
+                {
+                    Intantiate(enemyPrefab, hit.point, Quaternion.identity);
+                }
 
-                Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+                // Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
                 // currentEnemies++;
             }
             yield return new WaitForSeconds(1 / spawnRate);
