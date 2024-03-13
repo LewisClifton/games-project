@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17597143, g: 0.2202181, b: 0.3025462, a: 1}
+  m_IndirectSpecularColor: {r: 0.17597125, g: 0.2202178, b: 0.30254537, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!114 &3923725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,8 +160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 3923723}
   timer: 3
   dis: 0
@@ -169,10 +169,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1095908630}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!1 &6525602
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,183 +264,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1769685001}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &14229771
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 14229772}
-  m_Layer: 0
-  m_Name: Orientation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &14229772
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 14229771}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 23314529}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &23314525
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 23314529}
-  - component: {fileID: 23314528}
-  - component: {fileID: 23314527}
-  - component: {fileID: 23314526}
-  m_Layer: 0
-  m_Name: Player (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &23314526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 23314525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9b434b6dd2b68249b6e908b21ed0225, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameInput: {fileID: 367189542}
-  moveSpeed: 200
-  orientation: {fileID: 14229772}
-  walkingDrag: 5
-  jumpForce: 60
-  airDrag: 3
-  airMoveSpeed: 100
-  freeDashForce: 100
-  dashUpwardForce: 1
-  dashDuration: 1
-  attackDashForce: 3
-  detectionRange: 40
-  playerObject: {fileID: 414436994}
-  dashTime: 1
-  attackDashCooldown: 0
-  fieldOfViewAngle: 0
-  isGrounded: 1
-  isGliding: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  playerCollider: {fileID: 414436995}
-  BaseSpeed: 200
-  MaxThrustSpeed: 400
-  MinThrustSpeed: 5
-  cameraTransform: {fileID: 1684602240}
-  ThrustFactor: 80
-  upwardForce: {x: 0, y: 3, z: 0}
-  glideRunSpeed: 250
-  glidingEnabled: 1
-  lockOnCamera: {fileID: 0}
-  lockedOnDistance: 0
-  lockedOnHeight: 0
-  lockOnRange: 0
-  animator: {fileID: 349267892}
-  character: {fileID: 202942716}
---- !u!114 &23314527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 23314525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 6450528c1a7cd244897ef83ae2105c4c,
-    type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!54 &23314528
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 23314525}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 5
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 0
-  m_CollisionDetection: 1
---- !u!4 &23314529
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 23314525}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2462.6, y: 420, z: 3326.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 414436999}
-  - {fileID: 14229772}
-  - {fileID: 367189543}
-  - {fileID: 35294653}
-  - {fileID: 1151592334}
-  - {fileID: 349267893}
-  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &28334037
 PrefabInstance:
@@ -608,153 +431,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1769685001}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &35294652
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 35294653}
-  - component: {fileID: 35294654}
-  m_Layer: 0
-  m_Name: FreeLook Camera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &35294653
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 35294652}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.791504, y: 2, z: 3.9316406}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1597730951}
-  - {fileID: 1403958233}
-  - {fileID: 192562796}
-  m_Father: {fileID: 23314529}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &35294654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 35294652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 319d2fe34a804e245819465c9505ea59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ExcludedPropertiesInInspector:
-  - m_Script
-  m_LockStageInInspector: 
-  m_StreamingVersion: 20170927
-  m_Priority: 10
-  m_StandbyUpdate: 2
-  m_LookAt: {fileID: 23314529}
-  m_Follow: {fileID: 23314529}
-  m_CommonLens: 1
-  m_Lens:
-    FieldOfView: 40
-    OrthographicSize: 10
-    NearClipPlane: 0.1
-    FarClipPlane: 5000
-    Dutch: 0
-    ModeOverride: 0
-    LensShift: {x: 0, y: 0}
-    GateFit: 2
-    FocusDistance: 10
-    m_SensorSize: {x: 1, y: 1}
-    Iso: 200
-    ShutterSpeed: 0.005
-    Aperture: 16
-    BladeCount: 5
-    Curvature: {x: 2, y: 11}
-    BarrelClipping: 0.25
-    Anamorphism: 0
-  m_Transitions:
-    m_BlendHint: 0
-    m_InheritPosition: 0
-    m_OnCameraLive:
-      m_PersistentCalls:
-        m_Calls: []
-  m_LegacyBlendHint: 0
-  m_YAxis:
-    Value: 0.5
-    m_SpeedMode: 0
-    m_MaxSpeed: 1.3
-    m_AccelTime: 0.2
-    m_DecelTime: 0.1
-    m_InputAxisName: Mouse Y
-    m_InputAxisValue: 0
-    m_InvertInput: 1
-    m_MinValue: 0
-    m_MaxValue: 1
-    m_Wrap: 0
-    m_Recentering:
-      m_enabled: 0
-      m_WaitTime: 1
-      m_RecenteringTime: 2
-      m_LegacyHeadingDefinition: -1
-      m_LegacyVelocityFilterStrength: -1
-  m_YAxisRecentering:
-    m_enabled: 0
-    m_WaitTime: 1
-    m_RecenteringTime: 2
-    m_LegacyHeadingDefinition: -1
-    m_LegacyVelocityFilterStrength: -1
-  m_XAxis:
-    Value: 0
-    m_SpeedMode: 0
-    m_MaxSpeed: 200
-    m_AccelTime: 0.1
-    m_DecelTime: 0.1
-    m_InputAxisName: Mouse X
-    m_InputAxisValue: 0
-    m_InvertInput: 0
-    m_MinValue: -180
-    m_MaxValue: 180
-    m_Wrap: 1
-    m_Recentering:
-      m_enabled: 0
-      m_WaitTime: 1
-      m_RecenteringTime: 2
-      m_LegacyHeadingDefinition: -1
-      m_LegacyVelocityFilterStrength: -1
-  m_Heading:
-    m_Definition: 2
-    m_VelocityFilterStrength: 4
-    m_Bias: 0
-  m_RecenterToTargetHeading:
-    m_enabled: 0
-    m_WaitTime: 1
-    m_RecenteringTime: 2
-    m_LegacyHeadingDefinition: -1
-    m_LegacyVelocityFilterStrength: -1
-  m_BindingMode: 5
-  m_SplineCurvature: 0.2
-  m_Orbits:
-  - m_Height: 6
-    m_Radius: 3
-  - m_Height: 2
-    m_Radius: 7
-  - m_Height: -1
-    m_Radius: 5
-  m_LegacyHeadingBias: 3.4028235e+38
-  m_Rigs:
-  - {fileID: 1597730952}
-  - {fileID: 1403958234}
-  - {fileID: 192562797}
 --- !u!1001 &38558154
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -871,8 +547,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 38558157}
   timer: 3
   dis: 0
@@ -880,10 +556,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 38558156}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &38558159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -896,7 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &41223638
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,8 +873,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 59267739}
   timer: 3
   dis: 0
@@ -1206,10 +882,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 59267738}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &59267741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1222,7 +898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &72857925
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1339,8 +1015,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 72857928}
   timer: 3
   dis: 0
@@ -1348,10 +1024,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 72857927}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &72857930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1364,7 +1040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &76797978
 GameObject:
   m_ObjectHideFlags: 0
@@ -1589,133 +1265,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1769685001}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &103491382
-GameObject:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 103491383}
-  - component: {fileID: 103491386}
-  - component: {fileID: 103491385}
-  - component: {fileID: 103491384}
-  m_Layer: 0
-  m_Name: cm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &103491383
-Transform:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103491382}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1597730951}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &103491384
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103491382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
-  m_LookaheadTime: 0
-  m_LookaheadSmoothing: 0
-  m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0
-  m_VerticalDamping: 0
-  m_ScreenX: 0.5
-  m_ScreenY: 0.5
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
-  m_BiasX: 0
-  m_BiasY: 0
-  m_CenterOnActivate: 1
---- !u!114 &103491385
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103491382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 2, z: -7}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
-  m_AngularDampingMode: 0
-  m_PitchDamping: 0
-  m_YawDamping: 0
-  m_RollDamping: 0
-  m_AngularDamping: 0
-  m_Heading:
-    m_Definition: 2
-    m_VelocityFilterStrength: 4
-    m_Bias: 0
-  m_RecenterToTargetHeading:
-    m_enabled: 0
-    m_WaitTime: 1
-    m_RecenteringTime: 2
-    m_LegacyHeadingDefinition: -1
-    m_LegacyVelocityFilterStrength: -1
-  m_XAxis:
-    Value: 0
-    m_SpeedMode: 0
-    m_MaxSpeed: 300
-    m_AccelTime: 0.1
-    m_DecelTime: 0.1
-    m_InputAxisName: 
-    m_InputAxisValue: 0
-    m_InvertInput: 1
-    m_MinValue: -180
-    m_MaxValue: 180
-    m_Wrap: 1
-    m_Recentering:
-      m_enabled: 0
-      m_WaitTime: 1
-      m_RecenteringTime: 2
-      m_LegacyHeadingDefinition: -1
-      m_LegacyVelocityFilterStrength: -1
-  m_LegacyRadius: 3.4028235e+38
-  m_LegacyHeightOffset: 3.4028235e+38
-  m_LegacyHeadingBias: 3.4028235e+38
-  m_HeadingIsSlave: 1
---- !u!114 &103491386
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103491382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &103622057
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1832,8 +1381,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 103622060}
   timer: 3
   dis: 0
@@ -1841,10 +1390,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 103622059}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &103622062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1857,7 +1406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &110739036
 GameObject:
   m_ObjectHideFlags: 0
@@ -1950,133 +1499,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1769685001}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &141210327
-GameObject:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 141210328}
-  - component: {fileID: 141210331}
-  - component: {fileID: 141210330}
-  - component: {fileID: 141210329}
-  m_Layer: 0
-  m_Name: cm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &141210328
-Transform:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 141210327}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1403958233}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &141210329
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 141210327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
-  m_LookaheadTime: 0
-  m_LookaheadSmoothing: 0
-  m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0
-  m_VerticalDamping: 0
-  m_ScreenX: 0.5
-  m_ScreenY: 0.55
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
-  m_BiasX: 0
-  m_BiasY: 0
-  m_CenterOnActivate: 1
---- !u!114 &141210330
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 141210327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 2, z: -7}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
-  m_AngularDampingMode: 0
-  m_PitchDamping: 0
-  m_YawDamping: 0
-  m_RollDamping: 0
-  m_AngularDamping: 0
-  m_Heading:
-    m_Definition: 2
-    m_VelocityFilterStrength: 4
-    m_Bias: 0
-  m_RecenterToTargetHeading:
-    m_enabled: 0
-    m_WaitTime: 1
-    m_RecenteringTime: 2
-    m_LegacyHeadingDefinition: -1
-    m_LegacyVelocityFilterStrength: -1
-  m_XAxis:
-    Value: 0
-    m_SpeedMode: 0
-    m_MaxSpeed: 300
-    m_AccelTime: 0.1
-    m_DecelTime: 0.1
-    m_InputAxisName: 
-    m_InputAxisValue: 0
-    m_InvertInput: 1
-    m_MinValue: -180
-    m_MaxValue: 180
-    m_Wrap: 1
-    m_Recentering:
-      m_enabled: 0
-      m_WaitTime: 1
-      m_RecenteringTime: 2
-      m_LegacyHeadingDefinition: -1
-      m_LegacyVelocityFilterStrength: -1
-  m_LegacyRadius: 3.4028235e+38
-  m_LegacyHeightOffset: 3.4028235e+38
-  m_LegacyHeadingBias: 3.4028235e+38
-  m_HeadingIsSlave: 1
---- !u!114 &141210331
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 141210327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &155772861
 GameObject:
   m_ObjectHideFlags: 0
@@ -2169,6 +1591,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1769685001}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &164774279 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7462364166937274975, guid: da23f3d8a9f479744aa2711f099d57e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1613772273}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &184750804
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2359,8 +1787,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 186538888}
   timer: 3
   dis: 0
@@ -2368,10 +1796,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 186538887}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &186538890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2384,7 +1812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &190461108
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2471,92 +1899,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 404789292}
   m_SourcePrefab: {fileID: 100100000, guid: 6bf965a967de808498954298d7c9f74b, type: 3}
---- !u!1 &192562795
-GameObject:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 192562796}
-  - component: {fileID: 192562797}
-  m_Layer: 0
-  m_Name: BottomRig
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &192562796
-Transform:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 192562795}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.04804963, y: 0.8789812, z: -0.09069473, w: -0.46567994}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1122170438}
-  m_Father: {fileID: 35294653}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &192562797
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 192562795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ExcludedPropertiesInInspector:
-  - m_Script
-  - Header
-  - Extensions
-  - m_Priority
-  - m_Transitions
-  - m_Follow
-  - m_StandbyUpdate
-  - m_Lens
-  m_LockStageInInspector: 00000000
-  m_StreamingVersion: 20170927
-  m_Priority: 10
-  m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
-  m_Lens:
-    FieldOfView: 40
-    OrthographicSize: 10
-    NearClipPlane: 0.1
-    FarClipPlane: 5000
-    Dutch: 0
-    ModeOverride: 0
-    LensShift: {x: 0, y: 0}
-    GateFit: 2
-    FocusDistance: 10
-    m_SensorSize: {x: 1, y: 1}
-    Iso: 200
-    ShutterSpeed: 0.005
-    Aperture: 16
-    BladeCount: 5
-    Curvature: {x: 2, y: 11}
-    BarrelClipping: 0.25
-    Anamorphism: 0
-  m_Transitions:
-    m_BlendHint: 0
-    m_InheritPosition: 0
-    m_OnCameraLive:
-      m_PersistentCalls:
-        m_Calls: []
-  m_LegacyBlendHint: 0
-  m_ComponentOwner: {fileID: 1122170438}
 --- !u!1 &193779065
 GameObject:
   m_ObjectHideFlags: 0
@@ -2598,12 +1940,6 @@ Transform:
   - {fileID: 1262946294}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &202942716 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1067053214699150, guid: ffa08167d28cfd24dba0151a4c80f384,
-    type: 3}
-  m_PrefabInstance: {fileID: 677486626}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &204084589
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2720,8 +2056,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 204084592}
   timer: 3
   dis: 0
@@ -2729,10 +2065,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 204084591}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &204084594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2745,7 +2081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &220251248
 GameObject:
   m_ObjectHideFlags: 0
@@ -3414,8 +2750,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 276028642}
   timer: 3
   dis: 0
@@ -3423,10 +2759,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 276028641}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &276028644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3439,7 +2775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &280195144
 GameObject:
   m_ObjectHideFlags: 0
@@ -3734,8 +3070,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 295397749}
   timer: 3
   dis: 0
@@ -3743,10 +3079,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 295397748}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &295397751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3759,7 +3095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &299368138 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6bf965a967de808498954298d7c9f74b,
@@ -3778,8 +3114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 299368142}
   timer: 3
   dis: 0
@@ -3787,10 +3123,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1796906930}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &299368140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3803,7 +3139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!4 &299368142 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6bf965a967de808498954298d7c9f74b,
@@ -4646,8 +3982,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 326074417}
   timer: 3
   dis: 0
@@ -4655,10 +3991,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 326074416}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &326074419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4671,7 +4007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &339864454
 GameObject:
   m_ObjectHideFlags: 0
@@ -4875,18 +4211,6 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array: []
---- !u!95 &349267892 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 95663668927121952, guid: ffa08167d28cfd24dba0151a4c80f384,
-    type: 3}
-  m_PrefabInstance: {fileID: 677486626}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &349267893 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4081129071478060, guid: ffa08167d28cfd24dba0151a4c80f384,
-    type: 3}
-  m_PrefabInstance: {fileID: 677486626}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &352608601
 GameObject:
   m_ObjectHideFlags: 0
@@ -5187,8 +4511,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 362933182}
   timer: 3
   dis: 0
@@ -5196,10 +4520,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 362933181}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &362933184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5212,51 +4536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
---- !u!1 &367189541
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 367189543}
-  - component: {fileID: 367189542}
-  m_Layer: 0
-  m_Name: Game Input
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &367189542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 367189541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7255196cd4888bf9abbca6c84c1ebbf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &367189543
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 367189541}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 23314529}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  Player: {fileID: 1837462262}
 --- !u!1001 &378208906
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5373,8 +4653,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 378208909}
   timer: 3
   dis: 0
@@ -5382,10 +4662,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 378208908}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &378208911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5398,7 +4678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &390599304
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5515,8 +4795,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 390599307}
   timer: 3
   dis: 0
@@ -5524,10 +4804,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 390599306}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &390599309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5540,7 +4820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &404789291 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6bf965a967de808498954298d7c9f74b,
@@ -5559,8 +4839,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 404789295}
   timer: 3
   dis: 0
@@ -5568,10 +4848,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1728780671}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &404789293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5584,146 +4864,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!4 &404789295 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6bf965a967de808498954298d7c9f74b,
     type: 3}
   m_PrefabInstance: {fileID: 190461108}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &414436994
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 414436999}
-  - component: {fileID: 414436998}
-  - component: {fileID: 414436995}
-  - component: {fileID: 414436997}
-  - component: {fileID: 414436996}
-  m_Layer: 0
-  m_Name: PlayerObject
-  m_TagString: Player
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!136 &414436995
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 414436994}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &414436996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 414436994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 910416776eedc3d4d85cf27cf3d289c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
-  healthAmount: 100
---- !u!137 &414436997
-SkinnedMeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 414436994}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 0
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 3
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  serializedVersion: 2
-  m_Quality: 0
-  m_UpdateWhenOffscreen: 0
-  m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
-  m_Bones: []
-  m_BlendShapeWeights: []
-  m_RootBone: {fileID: 0}
-  m_AABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0.5, y: 1, z: 0.5}
-  m_DirtyAABB: 0
---- !u!33 &414436998
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 414436994}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &414436999
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 414436994}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 23314529}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &419572499
 GameObject:
   m_ObjectHideFlags: 0
@@ -6022,8 +5169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 441019880}
   timer: 3
   dis: 0
@@ -6031,10 +5178,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 441019879}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &441019882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6047,7 +5194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &451701820
 GameObject:
   m_ObjectHideFlags: 0
@@ -6348,8 +5495,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 461457759}
   timer: 3
   dis: 0
@@ -6357,10 +5504,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 461457758}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &461457761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6373,7 +5520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &469788165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6490,8 +5637,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 469788168}
   timer: 3
   dis: 0
@@ -6499,10 +5646,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 469788167}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &469788170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6515,7 +5662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &475183231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6632,8 +5779,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 475183234}
   timer: 3
   dis: 0
@@ -6641,10 +5788,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 475183233}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &475183236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6657,7 +5804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!4 &476654076 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7824753648676844136, guid: 6bf965a967de808498954298d7c9f74b,
@@ -7096,8 +6243,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 522959027}
   timer: 3
   dis: 0
@@ -7105,10 +6252,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 522959026}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &522959029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7121,7 +6268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &523396069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7238,8 +6385,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 523396072}
   timer: 3
   dis: 0
@@ -7247,10 +6394,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 523396071}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &523396074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7263,7 +6410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &531711966
 GameObject:
   m_ObjectHideFlags: 0
@@ -7656,8 +6803,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 547596605}
   timer: 3
   dis: 0
@@ -7665,10 +6812,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 547596604}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &547596607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7681,7 +6828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &555178432
 GameObject:
   m_ObjectHideFlags: 0
@@ -8074,8 +7221,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 586448015}
   timer: 3
   dis: 0
@@ -8083,10 +7230,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 586448014}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &586448017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8099,7 +7246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &608685839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8216,8 +7363,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 608685842}
   timer: 3
   dis: 0
@@ -8225,10 +7372,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 608685841}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &608685844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8241,7 +7388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &612602070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8358,8 +7505,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 612602073}
   timer: 3
   dis: 0
@@ -8367,10 +7514,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 612602072}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &612602075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8383,7 +7530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &614305047
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8500,8 +7647,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 614305050}
   timer: 3
   dis: 0
@@ -8509,10 +7656,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 614305049}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &614305052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8525,7 +7672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &633347024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8820,8 +7967,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 659437933}
   timer: 3
   dis: 0
@@ -8829,10 +7976,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 659437932}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &659437935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8845,7 +7992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &675639299 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6bf965a967de808498954298d7c9f74b,
@@ -8864,8 +8011,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 675639303}
   timer: 3
   dis: 0
@@ -8873,10 +8020,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1169286739}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &675639301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8889,75 +8036,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!4 &675639303 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6bf965a967de808498954298d7c9f74b,
     type: 3}
   m_PrefabInstance: {fileID: 1940404988}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &677486626
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 23314529}
-    m_Modifications:
-    - target: {fileID: 1067053214699150, guid: ffa08167d28cfd24dba0151a4c80f384, type: 3}
-      propertyPath: m_Name
-      value: Character_Elf
-      objectReference: {fileID: 0}
-    - target: {fileID: 4081129071478060, guid: ffa08167d28cfd24dba0151a4c80f384, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4081129071478060, guid: ffa08167d28cfd24dba0151a4c80f384, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 4081129071478060, guid: ffa08167d28cfd24dba0151a4c80f384, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4081129071478060, guid: ffa08167d28cfd24dba0151a4c80f384, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4081129071478060, guid: ffa08167d28cfd24dba0151a4c80f384, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4081129071478060, guid: ffa08167d28cfd24dba0151a4c80f384, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4081129071478060, guid: ffa08167d28cfd24dba0151a4c80f384, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4081129071478060, guid: ffa08167d28cfd24dba0151a4c80f384, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4081129071478060, guid: ffa08167d28cfd24dba0151a4c80f384, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4081129071478060, guid: ffa08167d28cfd24dba0151a4c80f384, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 95663668927121952, guid: ffa08167d28cfd24dba0151a4c80f384,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: eb79e3fd0dd669f40a90a984b92a0ccf, type: 2}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ffa08167d28cfd24dba0151a4c80f384, type: 3}
 --- !u!1001 &688564035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9074,8 +8159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 688564038}
   timer: 3
   dis: 0
@@ -9083,10 +8168,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 688564037}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &688564040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9099,7 +8184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &698769079
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9216,8 +8301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 698769082}
   timer: 3
   dis: 0
@@ -9225,10 +8310,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 698769081}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &698769084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9241,7 +8326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &703473453
 GameObject:
   m_ObjectHideFlags: 0
@@ -9542,8 +8627,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 712151138}
   timer: 3
   dis: 0
@@ -9551,10 +8636,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 712151137}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &712151140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9567,7 +8652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &717009495
 GameObject:
   m_ObjectHideFlags: 0
@@ -9850,8 +8935,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 751854631}
   timer: 3
   dis: 0
@@ -9859,10 +8944,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 751854630}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &751854633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9875,7 +8960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &766900778
 GameObject:
   m_ObjectHideFlags: 0
@@ -10176,8 +9261,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 780145745}
   timer: 3
   dis: 0
@@ -10185,10 +9270,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 780145744}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &780145747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10201,7 +9286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &782371144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10318,8 +9403,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 782371147}
   timer: 3
   dis: 0
@@ -10327,10 +9412,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 782371146}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &782371149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10343,7 +9428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &788465932
 GameObject:
   m_ObjectHideFlags: 0
@@ -10644,8 +9729,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 815714306}
   timer: 3
   dis: 0
@@ -10653,10 +9738,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 815714305}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &815714308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10669,7 +9754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &817044304
 GameObject:
   m_ObjectHideFlags: 0
@@ -10878,8 +9963,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 818612518}
   timer: 3
   dis: 0
@@ -10887,10 +9972,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 818612517}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &818612520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10903,7 +9988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &831442309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11180,8 +10265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 851580726}
   timer: 3
   dis: 0
@@ -11189,10 +10274,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 851580725}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &851580728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11205,7 +10290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &854515238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11341,8 +10426,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 854515241}
   timer: 3
   dis: 0
@@ -11350,10 +10435,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 854515240}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &854515243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11366,7 +10451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &858102626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11483,8 +10568,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 858102629}
   timer: 3
   dis: 0
@@ -11492,10 +10577,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 858102628}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &858102631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11508,7 +10593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &862311224
 GameObject:
   m_ObjectHideFlags: 0
@@ -11727,7 +10812,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: Transform
-  Target: {fileID: 414436999}
+  Target: {fileID: 0}
 --- !u!114 &871479236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11829,7 +10914,7 @@ VisualEffect:
       m_Array: []
     m_NamedObject:
       m_Array:
-      - m_Value: {fileID: 414436997}
+      - m_Value: {fileID: 0}
         m_Name: SkinnedMeshRenderer
         m_Overridden: 1
     m_Bool:
@@ -11965,8 +11050,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 871574105}
   timer: 3
   dis: 0
@@ -11974,10 +11059,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 871574104}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &871574107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11990,7 +11075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &872404203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12122,8 +11207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 872404206}
   timer: 3
   dis: 0
@@ -12131,10 +11216,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 872404205}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &872404208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12147,7 +11232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &874420012
 GameObject:
   m_ObjectHideFlags: 0
@@ -12626,8 +11711,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 911490391}
   timer: 3
   dis: 0
@@ -12635,10 +11720,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 476654076}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &911490389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12651,7 +11736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!4 &911490391 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6bf965a967de808498954298d7c9f74b,
@@ -12866,8 +11951,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 941063743}
   timer: 3
   dis: 0
@@ -12875,10 +11960,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 941063742}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &941063745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12891,7 +11976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &965882167
 GameObject:
   m_ObjectHideFlags: 0
@@ -13100,8 +12185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 971381454}
   timer: 3
   dis: 0
@@ -13109,10 +12194,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 971381453}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &971381456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13125,7 +12210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &978803792
 GameObject:
   m_ObjectHideFlags: 0
@@ -13518,8 +12603,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1039612193}
   timer: 3
   dis: 0
@@ -13527,10 +12612,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1039612192}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1039612195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13543,7 +12628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &1042351119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13660,8 +12745,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1042351122}
   timer: 3
   dis: 0
@@ -13669,10 +12754,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1042351121}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1042351124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13685,7 +12770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1075614544
 GameObject:
   m_ObjectHideFlags: 0
@@ -13894,8 +12979,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1084138127}
   timer: 3
   dis: 0
@@ -13903,10 +12988,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1084138126}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1084138129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13919,7 +13004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &1085122652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14086,133 +13171,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1107631342}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1122170437
-GameObject:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1122170438}
-  - component: {fileID: 1122170441}
-  - component: {fileID: 1122170440}
-  - component: {fileID: 1122170439}
-  m_Layer: 0
-  m_Name: cm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1122170438
-Transform:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1122170437}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 192562796}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1122170439
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1122170437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
-  m_LookaheadTime: 0
-  m_LookaheadSmoothing: 0
-  m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0
-  m_VerticalDamping: 0
-  m_ScreenX: 0.5
-  m_ScreenY: 0.6
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
-  m_BiasX: 0
-  m_BiasY: 0
-  m_CenterOnActivate: 1
---- !u!114 &1122170440
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1122170437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 2, z: -7}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
-  m_AngularDampingMode: 0
-  m_PitchDamping: 0
-  m_YawDamping: 0
-  m_RollDamping: 0
-  m_AngularDamping: 0
-  m_Heading:
-    m_Definition: 2
-    m_VelocityFilterStrength: 4
-    m_Bias: 0
-  m_RecenterToTargetHeading:
-    m_enabled: 0
-    m_WaitTime: 1
-    m_RecenteringTime: 2
-    m_LegacyHeadingDefinition: -1
-    m_LegacyVelocityFilterStrength: -1
-  m_XAxis:
-    Value: 0
-    m_SpeedMode: 0
-    m_MaxSpeed: 300
-    m_AccelTime: 0.1
-    m_DecelTime: 0.1
-    m_InputAxisName: 
-    m_InputAxisValue: 0
-    m_InvertInput: 1
-    m_MinValue: -180
-    m_MaxValue: 180
-    m_Wrap: 1
-    m_Recentering:
-      m_enabled: 0
-      m_WaitTime: 1
-      m_RecenteringTime: 2
-      m_LegacyHeadingDefinition: -1
-      m_LegacyVelocityFilterStrength: -1
-  m_LegacyRadius: 3.4028235e+38
-  m_LegacyHeightOffset: 3.4028235e+38
-  m_LegacyHeadingBias: 3.4028235e+38
-  m_HeadingIsSlave: 1
---- !u!114 &1122170441
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1122170437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1125681772
 GameObject:
   m_ObjectHideFlags: 0
@@ -14421,8 +13379,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1132167387}
   timer: 3
   dis: 0
@@ -14430,10 +13388,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1132167386}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1132167389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14446,7 +13404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &1143299144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14563,8 +13521,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1143299147}
   timer: 3
   dis: 0
@@ -14572,10 +13530,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1143299146}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1143299149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14588,7 +13546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1148524231
 GameObject:
   m_ObjectHideFlags: 0
@@ -14773,65 +13731,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1769685001}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1151592333
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1151592334}
-  - component: {fileID: 1151592336}
-  - component: {fileID: 1151592335}
-  m_Layer: 0
-  m_Name: Score
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1151592334
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1151592333}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 23314529}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1151592335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1151592333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ee0d7cf7afd5f44f9e7e765a8b03a10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerText: {fileID: 8678050413565447572}
---- !u!114 &1151592336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1151592333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5da24a020bf2a1f40b5dfdc53f355fbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 3122528273942275437}
 --- !u!1 &1160847718
 GameObject:
   m_ObjectHideFlags: 0
@@ -15040,8 +13939,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1161585805}
   timer: 3
   dis: 0
@@ -15049,10 +13948,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1161585804}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1161585807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15065,7 +13964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1161896118
 GameObject:
   m_ObjectHideFlags: 0
@@ -15464,8 +14363,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1179478344}
   timer: 3
   dis: 0
@@ -15473,10 +14372,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1179478343}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1179478346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15489,7 +14388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1190603609
 GameObject:
   m_ObjectHideFlags: 0
@@ -15830,8 +14729,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1213093373}
   timer: 3
   dis: 0
@@ -15839,10 +14738,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1213093372}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1213093375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15855,7 +14754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1220302104
 GameObject:
   m_ObjectHideFlags: 0
@@ -16248,8 +15147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1235580736}
   timer: 3
   dis: 0
@@ -16257,10 +15156,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1235580735}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1235580738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16273,7 +15172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &1239791944
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16991,8 +15890,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1265824835}
   timer: 3
   dis: 0
@@ -17000,10 +15899,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1265824834}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1265824837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17016,7 +15915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1268548351
 GameObject:
   m_ObjectHideFlags: 0
@@ -17225,8 +16124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1271350359}
   timer: 3
   dis: 0
@@ -17234,10 +16133,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1271350358}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1271350361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17250,7 +16149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1287515650
 GameObject:
   m_ObjectHideFlags: 0
@@ -17625,8 +16524,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1288090600}
   timer: 3
   dis: 0
@@ -17634,10 +16533,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1288090599}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1288090602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17650,7 +16549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &1289953586
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17767,8 +16666,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1289953589}
   timer: 3
   dis: 0
@@ -17776,10 +16675,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1289953588}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1289953591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17792,7 +16691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &1295532363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17909,8 +16808,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1295532366}
   timer: 3
   dis: 0
@@ -17918,10 +16817,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1295532365}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1295532368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17934,7 +16833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &1296469194
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18051,8 +16950,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1296469197}
   timer: 3
   dis: 0
@@ -18060,10 +16959,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1296469196}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1296469199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18076,7 +16975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1300084598
 GameObject:
   m_ObjectHideFlags: 0
@@ -18285,8 +17184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1308254857}
   timer: 3
   dis: 0
@@ -18294,10 +17193,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1308254856}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1308254859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18310,7 +17209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1322759802
 GameObject:
   m_ObjectHideFlags: 0
@@ -18611,8 +17510,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1325431277}
   timer: 3
   dis: 0
@@ -18620,10 +17519,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1325431276}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1325431279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18636,7 +17535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &1342413510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18753,8 +17652,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1342413513}
   timer: 3
   dis: 0
@@ -18762,10 +17661,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1342413512}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1342413515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18778,7 +17677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!4 &1344552654 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7824753648676844136, guid: 6bf965a967de808498954298d7c9f74b,
@@ -19533,8 +18432,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1384347184}
   timer: 3
   dis: 0
@@ -19542,10 +18441,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1384347183}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1384347186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19558,7 +18457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1387992389
 GameObject:
   m_ObjectHideFlags: 0
@@ -19783,92 +18682,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392735224}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1403958232
-GameObject:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1403958233}
-  - component: {fileID: 1403958234}
-  m_Layer: 0
-  m_Name: MiddleRig
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1403958233
-Transform:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1403958232}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.056489836, y: 0.8771912, z: -0.106625795, w: -0.46473166}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 141210328}
-  m_Father: {fileID: 35294653}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1403958234
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1403958232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ExcludedPropertiesInInspector:
-  - m_Script
-  - Header
-  - Extensions
-  - m_Priority
-  - m_Transitions
-  - m_Follow
-  - m_StandbyUpdate
-  - m_Lens
-  m_LockStageInInspector: 00000000
-  m_StreamingVersion: 20170927
-  m_Priority: 10
-  m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
-  m_Lens:
-    FieldOfView: 40
-    OrthographicSize: 10
-    NearClipPlane: 0.1
-    FarClipPlane: 5000
-    Dutch: 0
-    ModeOverride: 0
-    LensShift: {x: 0, y: 0}
-    GateFit: 2
-    FocusDistance: 10
-    m_SensorSize: {x: 1, y: 1}
-    Iso: 200
-    ShutterSpeed: 0.005
-    Aperture: 16
-    BladeCount: 5
-    Curvature: {x: 2, y: 11}
-    BarrelClipping: 0.25
-    Anamorphism: 0
-  m_Transitions:
-    m_BlendHint: 0
-    m_InheritPosition: 0
-    m_OnCameraLive:
-      m_PersistentCalls:
-        m_Calls: []
-  m_LegacyBlendHint: 0
-  m_ComponentOwner: {fileID: 141210328}
 --- !u!1 &1404635256
 GameObject:
   m_ObjectHideFlags: 0
@@ -20169,8 +18982,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1419792146}
   timer: 3
   dis: 0
@@ -20178,10 +18991,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1419792145}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1419792148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20194,7 +19007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &1434887633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20311,8 +19124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1434887636}
   timer: 3
   dis: 0
@@ -20320,10 +19133,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1434887635}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1434887638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20336,7 +19149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1434909033
 GameObject:
   m_ObjectHideFlags: 0
@@ -20677,8 +19490,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1449627356}
   timer: 3
   dis: 0
@@ -20686,10 +19499,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1449627355}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1449627358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20702,7 +19515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1456243473
 GameObject:
   m_ObjectHideFlags: 0
@@ -20911,8 +19724,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1473157681}
   timer: 3
   dis: 0
@@ -20920,10 +19733,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1473157680}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1473157683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20936,7 +19749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1476266168
 GameObject:
   m_ObjectHideFlags: 0
@@ -22261,8 +21074,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1536795162}
   timer: 3
   dis: 0
@@ -22270,10 +21083,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1536795161}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1536795164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22286,7 +21099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1536843022
 GameObject:
   m_ObjectHideFlags: 0
@@ -22495,8 +21308,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1548851427}
   timer: 3
   dis: 0
@@ -22504,10 +21317,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1548851426}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1548851429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22520,7 +21333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1563459537
 GameObject:
   m_ObjectHideFlags: 0
@@ -22729,8 +21542,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1564039267}
   timer: 3
   dis: 0
@@ -22738,10 +21551,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1564039266}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1564039269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22754,7 +21567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1570206260 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8aab065bb6518c44db8ad71f90f7826b,
@@ -22779,7 +21592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!114 &1570206264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22792,8 +21605,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1570206262}
   timer: 3
   dis: 0
@@ -22801,10 +21614,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1371145574}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!1 &1574479613
 GameObject:
   m_ObjectHideFlags: 0
@@ -23013,8 +21826,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1583098636}
   timer: 3
   dis: 0
@@ -23022,10 +21835,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1583098635}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1583098638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23038,7 +21851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &1591075212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23155,8 +21968,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1591075215}
   timer: 3
   dis: 0
@@ -23164,10 +21977,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1591075214}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1591075217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23180,93 +21993,137 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
---- !u!1 &1597730950
+  Player: {fileID: 1837462262}
+--- !u!1 &1606141868 stripped
 GameObject:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8238775212943671302, guid: da23f3d8a9f479744aa2711f099d57e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1613772273}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1597730951}
-  - component: {fileID: 1597730952}
-  m_Layer: 0
-  m_Name: TopRig
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1597730951
+--- !u!4 &1606141873 stripped
 Transform:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 7747450082287301670, guid: da23f3d8a9f479744aa2711f099d57e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1613772273}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597730950}
+--- !u!1001 &1613772273
+PrefabInstance:
+  m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_LocalRotation: {x: -0.06493372, y: 0.87510663, z: -0.12256384, w: -0.46362722}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 103491383}
-  m_Father: {fileID: 35294653}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1597730952
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597730950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ExcludedPropertiesInInspector:
-  - m_Script
-  - Header
-  - Extensions
-  - m_Priority
-  - m_Transitions
-  - m_Follow
-  - m_StandbyUpdate
-  - m_Lens
-  m_LockStageInInspector: 00000000
-  m_StreamingVersion: 20170927
-  m_Priority: 10
-  m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
-  m_Lens:
-    FieldOfView: 40
-    OrthographicSize: 10
-    NearClipPlane: 0.1
-    FarClipPlane: 5000
-    Dutch: 0
-    ModeOverride: 0
-    LensShift: {x: 0, y: 0}
-    GateFit: 2
-    FocusDistance: 10
-    m_SensorSize: {x: 1, y: 1}
-    Iso: 200
-    ShutterSpeed: 0.005
-    Aperture: 16
-    BladeCount: 5
-    Curvature: {x: 2, y: 11}
-    BarrelClipping: 0.25
-    Anamorphism: 0
-  m_Transitions:
-    m_BlendHint: 0
-    m_InheritPosition: 0
-    m_OnCameraLive:
-      m_PersistentCalls:
-        m_Calls: []
-  m_LegacyBlendHint: 0
-  m_ComponentOwner: {fileID: 103491383}
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2457312328421079960, guid: da23f3d8a9f479744aa2711f099d57e9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.000000004279774
+      objectReference: {fileID: 0}
+    - target: {fileID: 2457312328421079960, guid: da23f3d8a9f479744aa2711f099d57e9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -4.327162e-10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3236749874801521193, guid: da23f3d8a9f479744aa2711f099d57e9,
+        type: 3}
+      propertyPath: timerText
+      value: 
+      objectReference: {fileID: 8678050413565447572}
+    - target: {fileID: 3427083462071113022, guid: da23f3d8a9f479744aa2711f099d57e9,
+        type: 3}
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 1684602240}
+    - target: {fileID: 4205627490762649267, guid: da23f3d8a9f479744aa2711f099d57e9,
+        type: 3}
+      propertyPath: m_Name
+      value: Player1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500688016159198627, guid: da23f3d8a9f479744aa2711f099d57e9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2462.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500688016159198627, guid: da23f3d8a9f479744aa2711f099d57e9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 420
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500688016159198627, guid: da23f3d8a9f479744aa2711f099d57e9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3326.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500688016159198627, guid: da23f3d8a9f479744aa2711f099d57e9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500688016159198627, guid: da23f3d8a9f479744aa2711f099d57e9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500688016159198627, guid: da23f3d8a9f479744aa2711f099d57e9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500688016159198627, guid: da23f3d8a9f479744aa2711f099d57e9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500688016159198627, guid: da23f3d8a9f479744aa2711f099d57e9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500688016159198627, guid: da23f3d8a9f479744aa2711f099d57e9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500688016159198627, guid: da23f3d8a9f479744aa2711f099d57e9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5876517201718802440, guid: da23f3d8a9f479744aa2711f099d57e9,
+        type: 3}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 3122528273942275437}
+    - target: {fileID: 6564318949656024488, guid: da23f3d8a9f479744aa2711f099d57e9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.000000017610695
+      objectReference: {fileID: 0}
+    - target: {fileID: 6564318949656024488, guid: da23f3d8a9f479744aa2711f099d57e9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.000000002103965
+      objectReference: {fileID: 0}
+    - target: {fileID: 7764076229187147102, guid: da23f3d8a9f479744aa2711f099d57e9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7764076229187147102, guid: da23f3d8a9f479744aa2711f099d57e9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7764076229187147102, guid: da23f3d8a9f479744aa2711f099d57e9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: da23f3d8a9f479744aa2711f099d57e9, type: 3}
 --- !u!1 &1619895554
 GameObject:
   m_ObjectHideFlags: 0
@@ -23501,8 +22358,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1621057151}
   timer: 3
   dis: 0
@@ -23510,10 +22367,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1621057150}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1621057153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23526,7 +22383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &1623536370
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23643,8 +22500,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1623536373}
   timer: 3
   dis: 0
@@ -23652,10 +22509,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1623536372}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1623536375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23668,7 +22525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1624784172
 GameObject:
   m_ObjectHideFlags: 0
@@ -24500,8 +23357,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1662377038}
   timer: 3
   dis: 0
@@ -24509,10 +23366,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1662377037}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1662377040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24525,7 +23382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &1664443083
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24642,8 +23499,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1664443086}
   timer: 3
   dis: 0
@@ -24651,10 +23508,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1664443085}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1664443088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24667,7 +23524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1668212513
 GameObject:
   m_ObjectHideFlags: 0
@@ -24876,8 +23733,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1670415037}
   timer: 3
   dis: 0
@@ -24885,10 +23742,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1670415036}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1670415039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24901,7 +23758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1674949308
 GameObject:
   m_ObjectHideFlags: 0
@@ -25202,8 +24059,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1683207889}
   timer: 3
   dis: 0
@@ -25211,10 +24068,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1683207888}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1683207891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25227,7 +24084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1684602239
 GameObject:
   m_ObjectHideFlags: 0
@@ -25257,8 +24114,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684602239}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.056489836, y: 0.8771912, z: -0.10662581, w: -0.46473163}
-  m_LocalPosition: {x: -2456.8086, y: 422, z: 3330.6316}
+  m_LocalRotation: {x: -0.11862729, y: 0.000000035221394, z: 0.000000004207931, w: 0.9929389}
+  m_LocalPosition: {x: -2462.6, y: 419, z: 3320.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25276,10 +24133,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d6685466ddecb4c82d93c61a54bc29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orientation: {fileID: 14229772}
-  player: {fileID: 23314529}
-  playerObject: {fileID: 414436999}
-  rb: {fileID: 23314528}
+  orientation: {fileID: 164774279}
+  player: {fileID: 1837462262}
+  playerObject: {fileID: 1606141873}
+  rb: {fileID: 1837462261}
   rotationSpeed: 10
 --- !u!114 &1684602242
 MonoBehaviour:
@@ -25626,8 +24483,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1698136501}
   timer: 3
   dis: 0
@@ -25635,10 +24492,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1698136500}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1698136503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25651,7 +24508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1706882477
 GameObject:
   m_ObjectHideFlags: 0
@@ -26437,8 +25294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1778250322}
   timer: 3
   dis: 0
@@ -26446,10 +25303,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1778250321}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1778250324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26462,7 +25319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1791171919
 GameObject:
   m_ObjectHideFlags: 0
@@ -27099,8 +25956,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1812906564}
   timer: 3
   dis: 0
@@ -27108,10 +25965,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1812906563}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1812906566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27124,7 +25981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1814263834
 GameObject:
   m_ObjectHideFlags: 0
@@ -27493,6 +26350,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1769685001}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1837462261 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 7031705012156869380, guid: da23f3d8a9f479744aa2711f099d57e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1613772273}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1837462262 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4500688016159198627, guid: da23f3d8a9f479744aa2711f099d57e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1613772273}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1852366139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27609,8 +26478,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1852366142}
   timer: 3
   dis: 0
@@ -27618,10 +26487,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1852366141}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1852366144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27634,7 +26503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1859030410
 GameObject:
   m_ObjectHideFlags: 0
@@ -27843,8 +26712,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1870286780}
   timer: 3
   dis: 0
@@ -27852,10 +26721,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1870286779}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1870286782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27868,7 +26737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &1871619101
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27985,8 +26854,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1871619104}
   timer: 3
   dis: 0
@@ -27994,10 +26863,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1871619103}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1871619106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28010,7 +26879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1880450818
 GameObject:
   m_ObjectHideFlags: 0
@@ -28259,8 +27128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1886374920}
   timer: 3
   dis: 0
@@ -28268,10 +27137,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1886374919}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1886374922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28284,7 +27153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &1893317756
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28401,8 +27270,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1893317759}
   timer: 3
   dis: 0
@@ -28410,10 +27279,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1893317758}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1893317761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28426,7 +27295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &1896541826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28543,8 +27412,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1896541829}
   timer: 3
   dis: 0
@@ -28552,10 +27421,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1896541828}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1896541831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28568,7 +27437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &1901510923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28685,8 +27554,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1901510926}
   timer: 3
   dis: 0
@@ -28694,10 +27563,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1901510925}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1901510928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28710,7 +27579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &1905037405
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28827,8 +27696,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1905037408}
   timer: 3
   dis: 0
@@ -28836,10 +27705,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1905037407}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1905037410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28852,7 +27721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1911345837
 GameObject:
   m_ObjectHideFlags: 0
@@ -29147,8 +28016,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1929910943}
   timer: 3
   dis: 0
@@ -29156,10 +28025,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1929910942}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1929910945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29172,7 +28041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &1933997901
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29289,8 +28158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1933997904}
   timer: 3
   dis: 0
@@ -29298,10 +28167,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1933997903}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1933997906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29314,7 +28183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1001 &1940404988
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29609,8 +28478,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1967729366}
   timer: 3
   dis: 0
@@ -29618,10 +28487,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1967729365}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1967729368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29634,7 +28503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1974929184
 GameObject:
   m_ObjectHideFlags: 0
@@ -29949,8 +28818,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1985658346}
   timer: 3
   dis: 0
@@ -29958,10 +28827,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1985658345}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1985658348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29974,7 +28843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &1987307372
 GameObject:
   m_ObjectHideFlags: 0
@@ -30085,8 +28954,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 1992152027}
   timer: 3
   dis: 0
@@ -30094,10 +28963,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 1344552654}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &1992152025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30110,7 +28979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!4 &1992152027 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6bf965a967de808498954298d7c9f74b,
@@ -30693,8 +29562,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 2015045174}
   timer: 3
   dis: 0
@@ -30702,10 +29571,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 2015045173}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &2015045176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30718,7 +29587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &2017118371
 GameObject:
   m_ObjectHideFlags: 0
@@ -31203,8 +30072,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 2053027869}
   timer: 3
   dis: 0
@@ -31212,10 +30081,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 2053027868}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &2053027871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31228,7 +30097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &2058357697
 GameObject:
   m_ObjectHideFlags: 0
@@ -31569,8 +30438,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 2067927737}
   timer: 3
   dis: 0
@@ -31578,10 +30447,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 2067927736}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &2067927739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31594,7 +30463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &2076976700
 GameObject:
   m_ObjectHideFlags: 0
@@ -31987,8 +30856,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 2103298336}
   timer: 3
   dis: 0
@@ -31996,10 +30865,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 2103298335}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &2103298338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32012,7 +30881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &2114818776
 GameObject:
   m_ObjectHideFlags: 0
@@ -32537,8 +31406,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 2131891631}
   timer: 3
   dis: 0
@@ -32546,10 +31415,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 2131891630}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &2131891633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32562,7 +31431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!1 &2133878940
 GameObject:
   m_ObjectHideFlags: 0
@@ -32917,8 +31786,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4b901eab211649a249e3635656913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 414436994}
-  Player: {fileID: 23314529}
+  playerObject: {fileID: 1606141868}
+  Player: {fileID: 1837462262}
   enemy: {fileID: 2146063175}
   timer: 3
   dis: 0
@@ -32926,10 +31795,10 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 2146063174}
   enemySpeed: 150
-  deathDistance: 0
-  enemyHealth: 0
-  maxInvincibilityTime: 0
-  enemyXP: 0
+  deathDistance: 3
+  enemyHealth: 1
+  maxInvincibilityTime: 1
+  enemyXP: 200
 --- !u!114 &2146063177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32942,7 +31811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf23a90ea99d0489ba90758297b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 23314529}
+  Player: {fileID: 1837462262}
 --- !u!224 &1546630768866399514
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33398,13 +32267,13 @@ SceneRoots:
   - {fileID: 419572501}
   - {fileID: 324740720}
   - {fileID: 1684602240}
-  - {fileID: 23314529}
   - {fileID: 871479239}
   - {fileID: 1792149109}
   - {fileID: 1725167578}
   - {fileID: 1619895558}
   - {fileID: 2133878944}
   - {fileID: 1974929188}
+  - {fileID: 1613772273}
   - {fileID: 1546630768866399514}
   - {fileID: 1769685001}
   - {fileID: 1635824472}
