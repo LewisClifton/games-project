@@ -80,6 +80,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Lock On"",
+                    ""type"": ""Button"",
+                    ""id"": ""738a900f-551f-40c4-ae19-1377af742fc5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -184,12 +193,21 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+<<<<<<< HEAD
                     ""id"": ""bb392ca4-c223-43dc-bfff-1c8befced929"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Escape"",
+=======
+                    ""id"": ""0cafd9d8-46d9-4c6f-935a-89aa56d45a3c"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Lock On"",
+>>>>>>> develop
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -205,7 +223,11 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_WalkToggle = m_Player.FindAction("WalkToggle", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_AttackDash = m_Player.FindAction("Attack Dash", throwIfNotFound: true);
+<<<<<<< HEAD
         m_Player_Escape = m_Player.FindAction("Escape", throwIfNotFound: true);
+=======
+        m_Player_LockOn = m_Player.FindAction("Lock On", throwIfNotFound: true);
+>>>>>>> develop
     }
 
     public void Dispose()
@@ -272,7 +294,11 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_WalkToggle;
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_AttackDash;
+<<<<<<< HEAD
     private readonly InputAction m_Player_Escape;
+=======
+    private readonly InputAction m_Player_LockOn;
+>>>>>>> develop
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -282,7 +308,11 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @WalkToggle => m_Wrapper.m_Player_WalkToggle;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @AttackDash => m_Wrapper.m_Player_AttackDash;
+<<<<<<< HEAD
         public InputAction @Escape => m_Wrapper.m_Player_Escape;
+=======
+        public InputAction @LockOn => m_Wrapper.m_Player_LockOn;
+>>>>>>> develop
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -307,9 +337,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @AttackDash.started += instance.OnAttackDash;
             @AttackDash.performed += instance.OnAttackDash;
             @AttackDash.canceled += instance.OnAttackDash;
+<<<<<<< HEAD
             @Escape.started += instance.OnEscape;
             @Escape.performed += instance.OnEscape;
             @Escape.canceled += instance.OnEscape;
+=======
+            @LockOn.started += instance.OnLockOn;
+            @LockOn.performed += instance.OnLockOn;
+            @LockOn.canceled += instance.OnLockOn;
+>>>>>>> develop
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -329,9 +365,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @AttackDash.started -= instance.OnAttackDash;
             @AttackDash.performed -= instance.OnAttackDash;
             @AttackDash.canceled -= instance.OnAttackDash;
+<<<<<<< HEAD
             @Escape.started -= instance.OnEscape;
             @Escape.performed -= instance.OnEscape;
             @Escape.canceled -= instance.OnEscape;
+=======
+            @LockOn.started -= instance.OnLockOn;
+            @LockOn.performed -= instance.OnLockOn;
+            @LockOn.canceled -= instance.OnLockOn;
+>>>>>>> develop
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -356,6 +398,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnWalkToggle(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnAttackDash(InputAction.CallbackContext context);
+<<<<<<< HEAD
         void OnEscape(InputAction.CallbackContext context);
+=======
+        void OnLockOn(InputAction.CallbackContext context);
+>>>>>>> develop
     }
 }

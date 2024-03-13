@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Lock On",
+                    "type": "Button",
+                    "id": "738a900f-551f-40c4-ae19-1377af742fc5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -162,12 +171,21 @@
                 },
                 {
                     "name": "",
+<<<<<<< HEAD
                     "id": "bb392ca4-c223-43dc-bfff-1c8befced929",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Escape",
+=======
+                    "id": "0cafd9d8-46d9-4c6f-935a-89aa56d45a3c",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Lock On",
+>>>>>>> develop
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

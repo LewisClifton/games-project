@@ -41,4 +41,9 @@ public class GameInput : MonoBehaviour
     {
         return playerInputActions.Player.Escape.triggered;
     }
+    
+    public bool IsLockOnPressed()
+    {
+        return playerInputActions.Player.LockOn.triggered;
+    }
 }

@@ -35,7 +35,8 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(float Damage)
     {
         healthAmount -= Damage;
-        healthBar.fillAmount = healthAmount / 100;
+        //healthBar.fillAmount = healthAmount / 100;
+        ScoreManager.instance.ResetMultiplier();
     }
 
     public void Healing(float healPoints)
@@ -43,7 +44,7 @@ public class PlayerHealth : MonoBehaviour
         healthAmount += healPoints;
         healthAmount = Mathf.Clamp(healthAmount, 0, 100);
 
-        healthBar.fillAmount = healthAmount / 100;
+        //healthBar.fillAmount = healthAmount / 100;
     }
 
 }
