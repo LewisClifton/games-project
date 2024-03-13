@@ -29,12 +29,20 @@ public class FragmentOrb : MonoBehaviour
         float distance = Vector3.Distance(playerTransform.position, transform.position);
         float threshold = 10f;
 
+
+        if (distance < 8)
+            {
+                 SceneManager.LoadScene(2);
+            }
+
         // If the player is within a threshold distance from the orb, send the player's position to the shader
         if (distance < threshold)
         {
             // Project player position onto the collider of the orb
             Vector3 playerPositionProjection = (playerTransform.position - transform.position).normalized * radius;
             orbRenderer.material.SetVector("_PlayerPosition", playerPositionProjection);
+
+
 
         } else {
             orbRenderer.material.SetVector("_PlayerPosition", new Vector3(0, 0, 0));
