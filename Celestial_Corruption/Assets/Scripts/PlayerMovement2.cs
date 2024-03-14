@@ -37,13 +37,15 @@ public class PlayerMovement2 : MonoBehaviour
     public float freeDashForce;
     public float dashUpwardForce;
     public float dashDuration;
+    public float freeDashCooldown = 0.4f;
+    private float currentFreeDashCooldown=0;
     [Header("Attack Dash")]
     //public Transform enemy;
     public float attackDashForce;
     public float detectionRange;
     public GameObject playerObject;
     public float dashTime = 1;
-    public float attackDashCooldown = 1;
+    public float attackDashCooldown =0.2f;
     private float currentAttackDashCooldown;
     public float fieldOfViewAngle = 140;
 
@@ -125,6 +127,14 @@ public class PlayerMovement2 : MonoBehaviour
             }
         }
         
+        if (currentFreeDashCooldown != 0)
+        {
+            currentFreeDashCooldown-= Time.deltaTime;
+            if (currentFreeDashCooldown < 0) 
+            { 
+                currentFreeDashCooldown = 0;
+            }
+        }
         Shader.SetGlobalVector("_Player", transform.position);
 
         if (gameInput.IsLockOnPressed())
@@ -156,7 +166,11 @@ public class PlayerMovement2 : MonoBehaviour
         }
         if (gameInput.IsFreeDashPressed())
         {
-            FreeDash();
+            if (currentFreeDashCooldown == 0)
+            {
+                FreeDash();
+                currentFreeDashCooldown = freeDashCooldown;
+            }
         }
         Jump();
         if (!isGrounded && !isGliding)
