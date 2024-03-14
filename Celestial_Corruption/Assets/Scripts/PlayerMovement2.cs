@@ -53,6 +53,7 @@ public class PlayerMovement2 : MonoBehaviour
     public float attackDashCooldown =0.2f;
     private float currentAttackDashCooldown;
     public float fieldOfViewAngle = 140;
+    public float attackDashVerticalFactor;
 
     LayerMask originalLayer;
     [Header("Player State")]
@@ -178,7 +179,7 @@ public class PlayerMovement2 : MonoBehaviour
             }
         }
         Jump();
-        if (!isGrounded && !isGliding)
+        if (!isGrounded)
         {
             moveSpeed = airMoveSpeed;
         }
@@ -376,6 +377,7 @@ public class PlayerMovement2 : MonoBehaviour
             //vectorToEnemy= vectorToEnemy.normalized;
             forceToApply = vectorToEnemy * (attackDashForce) + vectorToEnemy.normalized * playerSpeed;
             //Debug.Log(vectorToEnemy);
+            forceToApply.y = forceToApply.y + Mathf.Abs(forceToApply.y) * attackDashVerticalFactor;
             playerBody.AddForce(forceToApply, ForceMode.Impulse);
             Invoke("setLayer", dashTime);
         }
@@ -426,14 +428,15 @@ public class PlayerMovement2 : MonoBehaviour
     }
     void AdjustCameraBasedOnPlayerPosition()
     {
-        Vector3 playerToBoss = target.transform.position - playerBody.position;
-        float angle = Vector3.SignedAngle(playerToBoss, transform.forward, Vector3.up);
+        Vector3 playerToBoss = target.transform.position - playerBody.transform.position;
+        //float angle = Vector3.SignedAngle(playerToBoss, transform.forward, Vector3.up);
         playerToBoss.Normalize();
         playerToBoss.y = 0;
         playerToBoss = playerToBoss * lockedOnDistance;
         playerToBoss.y += lockedOnHeight;
         transposer.m_FollowOffset = new Vector3(-playerToBoss.x, playerToBoss.y, -playerToBoss.z);
-        
+        lockOnCamera.LookAt = target.transform;
+        lockOnCamera.Follow = playerBody.transform;
     }
     void FindTarget()
     {
