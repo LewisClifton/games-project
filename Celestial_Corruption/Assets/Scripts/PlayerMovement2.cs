@@ -15,6 +15,9 @@ public class PlayerMovement2 : MonoBehaviour
     public float moveSpeed;
     private float runSpeed;
     private float originalRunSpeed;
+    public float currentAcceleration=0;
+    public float maxAcceleration = 5;
+    public float decelerationRate=5;
     public Dictionary<int, int> multiplierToSpeedConversions = new Dictionary<int, int>
     {
         { 1, 0 },
@@ -209,7 +212,15 @@ public class PlayerMovement2 : MonoBehaviour
     }
     private void MovePlayer()
     {
-        Vector3 playerVelocity = orientation.forward * moveInput.y * moveSpeed + orientation.right * moveInput.x * moveSpeed;
+        if (moveInput == Vector2.zero)
+        {
+            currentAcceleration = Mathf.Clamp(currentAcceleration - decelerationRate*Time.fixedDeltaTime, 0, maxAcceleration);
+        }
+        else
+        {
+            currentAcceleration = Mathf.Clamp(currentAcceleration + Time.fixedDeltaTime, 0, maxAcceleration);
+        }
+        Vector3 playerVelocity = (orientation.forward * moveInput.y * moveSpeed + orientation.right * moveInput.x * moveSpeed)*((1+(currentAcceleration/maxAcceleration))/2);
         playerBody.AddForce(playerVelocity, ForceMode.Force);
         //playerBody.velocity = transform.TransformDirection(playerVelocity);
         if (playerVelocity != Vector3.zero)
