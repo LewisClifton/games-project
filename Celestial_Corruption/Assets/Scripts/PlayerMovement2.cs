@@ -32,6 +32,7 @@ public class PlayerMovement2 : MonoBehaviour
     Rigidbody playerBody;
     Vector2 moveInput;
     public float airMoveSpeed;
+    public float extraGravity=0.5f;
     [Header("Free Dash")]
     public float freeDashForce;
     public float dashUpwardForce;
@@ -174,7 +175,10 @@ public class PlayerMovement2 : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+        if (!isGrounded)
+        {
+            playerBody.AddForce(Vector3.down * extraGravity, ForceMode.Acceleration);
+        }
         MovePlayer();
         checkGroundStatus();
         if (!isGrounded && isGliding && glidingEnabled)
