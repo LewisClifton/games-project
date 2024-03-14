@@ -697,7 +697,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4205627490762649267}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 5
   m_Drag: 5
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -760,17 +760,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameInput: {fileID: 5181467239680264270}
-  moveSpeed: 200
+  moveSpeed: 5000
+  currentAcceleration: 0
+  maxAcceleration: 5
+  decelerationRate: 5
+  slopeDetectionDistance: 3
+  playerRotation: {fileID: 8744691493705269643}
   orientation: {fileID: 7462364166937274975}
   walkingDrag: 5
-  jumpForce: 30
-  airDrag: 0
-  airMoveSpeed: 100
-  freeDashForce: 100
+  jumpForce: 1000
+  airDrag: 10
+  airMoveSpeed: 5000
+  extraGravity: 750
+  freeDashForce: 1000
   dashUpwardForce: 1
   dashDuration: 1
-  attackDashForce: 5
-  detectionRange: 40
+  freeDashCooldown: 0.4
+  attackDashForce: 75
+  detectionRange: 100
   playerObject: {fileID: 8238775212943671302}
   dashTime: 1
   attackDashCooldown: 1

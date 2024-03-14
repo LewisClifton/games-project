@@ -18,6 +18,8 @@ public class PlayerMovement2 : MonoBehaviour
     public float currentAcceleration=0;
     public float maxAcceleration = 5;
     public float decelerationRate=5;
+    public float slopeDetectionDistance = 3;
+    public Transform playerRotation;
     public Dictionary<int, int> multiplierToSpeedConversions = new Dictionary<int, int>
     {
         { 1, 0 },
@@ -221,6 +223,14 @@ public class PlayerMovement2 : MonoBehaviour
             currentAcceleration = Mathf.Clamp(currentAcceleration + Time.fixedDeltaTime, 0, maxAcceleration);
         }
         Vector3 playerVelocity = (orientation.forward * moveInput.y * moveSpeed + orientation.right * moveInput.x * moveSpeed)*((1+(currentAcceleration/maxAcceleration))/2);
+        RaycastHit hit;
+        if (Physics.Raycast(playerBody.transform.position,Vector3.down, out hit, slopeDetectionDistance))
+        {
+            Vector3 groundNormal=hit.normal;
+            float slopeAngle = Vector3.Angle(groundNormal, Vector3.up);
+            Debug.Log(slopeAngle);
+            playerVelocity = Vector3.ProjectOnPlane(playerVelocity, groundNormal);
+        }
         playerBody.AddForce(playerVelocity, ForceMode.Force);
         //playerBody.velocity = transform.TransformDirection(playerVelocity);
         if (playerVelocity != Vector3.zero)
@@ -289,8 +299,9 @@ public class PlayerMovement2 : MonoBehaviour
         groundedCheckDistance = (colliderHeight / 2) + bufferCheckDistance;
 
         Vector3 rayStart = transform.position;
-        Vector3 rayDirection = Vector3.down;
-
+        //Vector3 rayDirection = Vector3.down;
+        Vector3 rayDirection = -playerRotation.transform.up;
+        rayDirection= rayDirection.normalized;
         RaycastHit hit;
         if (Physics.Raycast(rayStart, rayDirection, out hit, groundedCheckDistance, groundLayer))
         {
