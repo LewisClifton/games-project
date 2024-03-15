@@ -229,7 +229,7 @@ public class PlayerMovement2 : MonoBehaviour
         {
             Vector3 groundNormal=hit.normal;
             float slopeAngle = Vector3.Angle(groundNormal, Vector3.up);
-            Debug.Log(slopeAngle);
+            //Debug.Log(slopeAngle);
             playerVelocity = Vector3.ProjectOnPlane(playerVelocity, groundNormal);
         }
         playerBody.AddForce(playerVelocity, ForceMode.Force);
