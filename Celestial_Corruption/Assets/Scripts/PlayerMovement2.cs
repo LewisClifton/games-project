@@ -38,6 +38,7 @@ public class PlayerMovement2 : MonoBehaviour
     Vector2 moveInput;
     public float airMoveSpeed;
     public float extraGravity=0.5f;
+    private float originalExtraGrav;
     [Header("Free Dash")]
     public float freeDashForce;
     public float dashUpwardForce;
@@ -87,7 +88,7 @@ public class PlayerMovement2 : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject character;
-
+    float preDrag;
 
     void Awake()
     {
@@ -104,6 +105,7 @@ public class PlayerMovement2 : MonoBehaviour
         runSpeed = moveSpeed;
         originalRunSpeed = runSpeed;
         transposer = lockOnCamera.GetCinemachineComponent<CinemachineTransposer>();
+        originalExtraGrav = extraGravity;
     }
 
 
@@ -179,17 +181,7 @@ public class PlayerMovement2 : MonoBehaviour
             }
         }
         Jump();
-        if (!isGrounded)
-        {
-            moveSpeed = airMoveSpeed;
-        }
-        else
-        {
-            if (isGrounded)
-            {
-                moveSpeed = runSpeed;
-            }
-        }
+        
 
     }
 
@@ -345,7 +337,7 @@ public class PlayerMovement2 : MonoBehaviour
 
     private void AttackDash()
     {
-
+        
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         float closestDistance = Mathf.Infinity;
         Transform closestEnemy = null;
@@ -367,11 +359,15 @@ public class PlayerMovement2 : MonoBehaviour
         }
         if (closestDistance < detectionRange)
         {
+            moveSpeed = 0;
+            extraGravity = -9.8f * playerBody.mass;
+            //playerBody.drag = 5;
             currentAttackDashCooldown = attackDashCooldown;
             playerObject.layer = LayerMask.NameToLayer("Dashing");
             Vector3 playerVelocity = playerBody.velocity;
             float playerSpeed = playerVelocity.magnitude;
-            playerBody.AddForce(playerVelocity * -1, ForceMode.Impulse);
+            //playerBody.AddForce(playerVelocity * -1, ForceMode.Impulse);
+            playerBody.velocity = Vector3.zero;
             Vector3 forceToApply = Vector3.zero;
             Vector3 vectorToEnemy = closestEnemy.transform.position - orientation.transform.position;
             //vectorToEnemy= vectorToEnemy.normalized;
@@ -393,6 +389,16 @@ public class PlayerMovement2 : MonoBehaviour
         playerObject.layer = originalLayer;
         multiplierToSpeedConversions.TryGetValue(ScoreManager.instance.GetMultiplier(), out int currMultAdd);
         runSpeed = originalRunSpeed + currMultAdd;
+        extraGravity = originalExtraGrav;
+        moveSpeed = runSpeed;
+        //if (isGrounded)
+        //{
+        //    playerBody.drag = walkingDrag;
+        //}
+        //else
+        //{
+        //    playerBody.drag = airDrag;
+        //}
     }
     private void GlidingMovement()
     {

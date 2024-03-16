@@ -58,15 +58,19 @@ public class Enemy : MonoBehaviour
         {
             ShootAtPlayer();
         }
+        
+        //ShootAtPlayer();
+    }
+    private void FixedUpdate()
+    {
         if (playerObject.layer == LayerMask.NameToLayer("Dashing"))
         {
-            if (dis <= deathDistance) {
+            if (dis <= deathDistance)
+            {
                 takeDamage();
             }
         }
-        //ShootAtPlayer();
     }
-
     private void takeDamage()
     {
         if (invincibilityTime == 0)
