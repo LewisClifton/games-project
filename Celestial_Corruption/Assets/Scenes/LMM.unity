@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18029143, g: 0.22572419, b: 0.30693057, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -144,7 +144,7 @@ PrefabInstance:
     - target: {fileID: 7432848004395141568, guid: a7212aa1b24b01f1385170ba196910bf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.67
       objectReference: {fileID: 0}
     - target: {fileID: 7432848004395141568, guid: a7212aa1b24b01f1385170ba196910bf,
         type: 3}
@@ -154,7 +154,7 @@ PrefabInstance:
     - target: {fileID: 7432848004395141568, guid: a7212aa1b24b01f1385170ba196910bf,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 3.77
       objectReference: {fileID: 0}
     - target: {fileID: 7432848004395141568, guid: a7212aa1b24b01f1385170ba196910bf,
         type: 3}
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stepperActive: 1
-  lmmEnabled: 0
+  lmmEnabled: 1
   modelOutput: []
   projectorModelAsset: {fileID: 5022602860645237092, guid: 77ad5afe5dcfd1648b38e67b202065b3,
     type: 3}

@@ -1,14 +1,15 @@
 {
   "dependencies": {
     "com.unity.barracuda": {
-      "version": "file:C:/Users/lewis/Downloads/barracuda-release-3.0.0/barracuda-release-3.0.0",
+      "version": "3.0.0",
       "depth": 0,
-      "source": "local",
+      "source": "registry",
       "dependencies": {
         "com.unity.burst": "1.6.0",
         "com.unity.modules.jsonserialize": "1.0.0",
         "com.unity.modules.imageconversion": "1.0.0"
-      }
+      },
+      "url": "https://packages.unity.com"
     },
     "com.unity.burst": {
       "version": "1.8.7",
