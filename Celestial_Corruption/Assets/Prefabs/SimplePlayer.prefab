@@ -530,26 +530,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3959536423204770851}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b65b80c1e437fa07a2cf501af26d897, type: 3}
+  m_Script: {fileID: 11500000, guid: 1326e413a3f297c4b8dbef4cf125ff96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameInput: {fileID: 2432094801642311022}
-  cameraTransform: {fileID: 0}
-  playerBody: {fileID: 5645606208790265347}
-  playerCollider: {fileID: 993939348493746711}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  runningSpeed: 15
-  walkingSpeed: 5
-  jumpForce: 5
-  rotationSpeed: 5
-  BaseSpeed: 30
-  MaxThrustSpeed: 400
-  MinThrustSpeed: 10
-  ThrustFactor: 80
-  isGliding: 0
-  isGrounded: 0
+  moveSpeed: 7
 --- !u!114 &4903856375289645348
 MonoBehaviour:
   m_ObjectHideFlags: 0
