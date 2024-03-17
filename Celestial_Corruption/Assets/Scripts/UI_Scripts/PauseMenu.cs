@@ -6,13 +6,15 @@ using UnityEngine.UI;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameInput gameInput;
+    [SerializeField] private GameObject background;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject settingsMenu;
     private bool isPaused = false;
 
-    void Start()
+    void Awake()
     {
         PauseMenuDeactivate();
+        background.GetComponent<RawImage>().enabled = false;
         settingsMenu.SetActive(false);
     }
 
@@ -40,8 +42,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     private void PauseMenuDeactivate()
-    {
-        pauseMenu.GetComponent<Image>().enabled = false;
+    {   
         // Loop over all the children of the pauseMenu and disable them
         foreach (Transform child in pauseMenu.transform)
         {
@@ -51,7 +52,8 @@ public class PauseMenu : MonoBehaviour
 
     private void PauseMenuActivate()
     {
-        pauseMenu.GetComponent<Image>().enabled = true;
+        background.GetComponent<RawImage>().enabled = true;
+
         // Loop over all the children of the pauseMenu and enable them
         foreach (Transform child in pauseMenu.transform)
         {
@@ -71,6 +73,8 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
+        background.GetComponent<RawImage>().enabled = false;
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
