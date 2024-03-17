@@ -46,7 +46,8 @@ public class SkeletonController : MonoBehaviour
         jointRestRotations = new List<Quaternion>{};
 
         // Get transforms of important joints in skeleton
-        Transform modelHipsTransform = FindDeepChild(transform, "Model:Hips");
+        Transform modelHipsTransform = transform.Find("Model:Hips");
+
         if (modelHipsTransform != null)
         {
             GetJointTransforms(modelHipsTransform);
