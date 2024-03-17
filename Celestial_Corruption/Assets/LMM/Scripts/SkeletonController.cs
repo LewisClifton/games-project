@@ -106,7 +106,6 @@ public class SkeletonController : MonoBehaviour
             Transform childJoint = currentJoint.GetChild(i);
             if (JointIsValid(childJoint))
             {
-                jointsCount++;
                 GetJointTransforms(childJoint);
             }
         }
