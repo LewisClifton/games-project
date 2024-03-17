@@ -20,13 +20,13 @@ public class PlayerMovement2 : MonoBehaviour
     public float decelerationRate=5;
     public float slopeDetectionDistance = 3;
     public Transform playerRotation;
-    public Dictionary<int, int> multiplierToSpeedConversions = new Dictionary<int, int>
+    public Dictionary<int, float> multiplierToSpeedConversions = new Dictionary<int, float>
     {
-        { 1, 0 },
-        { 2, 20 },
-        { 3, 50 },
-        { 4, 100 },
-        { 5, 150 }
+        { 1, 1 },
+        { 2, 1.2f },
+        { 3, 1.5f },
+        { 4, 2 },
+        { 5, 2.5f }
     };
 
     public Transform orientation;
@@ -391,8 +391,8 @@ public class PlayerMovement2 : MonoBehaviour
     private void setLayer()
     {
         playerObject.layer = originalLayer;
-        multiplierToSpeedConversions.TryGetValue(ScoreManager.instance.GetMultiplier(), out int currMultAdd);
-        runSpeed = originalRunSpeed + currMultAdd;
+        multiplierToSpeedConversions.TryGetValue(ScoreManager.instance.GetMultiplier(), out float currSpeedMult);
+        runSpeed = originalRunSpeed * currSpeedMult;
         extraGravity = originalExtraGrav;
         moveSpeed = runSpeed;
         //if (isGrounded)
