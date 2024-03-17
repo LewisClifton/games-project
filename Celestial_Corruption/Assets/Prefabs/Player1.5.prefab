@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 780148177117139681}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.100594394, y: 0.000000004279777, z: 4.3271647e-10, w: 0.9949275}
+  m_LocalRotation: {x: -0.100594394, y: -0.000000004279774, z: -4.327162e-10, w: 0.9949275}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -457,8 +457,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3434163705553504816}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.11862727, y: -0.000000017610695, z: -0.000000002103965,
-    w: 0.9929389}
+  m_LocalRotation: {x: -0.11862727, y: 0.000000017610695, z: 0.000000002103965, w: 0.9929389}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -697,7 +696,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4205627490762649267}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 5
   m_Drag: 5
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -760,21 +759,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameInput: {fileID: 5181467239680264270}
-  moveSpeed: 200
+  moveSpeed: 5000
+  currentAcceleration: 0
+  maxAcceleration: 5
+  decelerationRate: 5
+  slopeDetectionDistance: 3
+  playerRotation: {fileID: 8744691493705269643}
   orientation: {fileID: 7462364166937274975}
   walkingDrag: 5
-  jumpForce: 30
-  airDrag: 0
-  airMoveSpeed: 100
-  freeDashForce: 100
+  slopeAngleLimit: 60
+  jumpForce: 1000
+  airDrag: 10
+  airMoveSpeed: 5000
+  extraGravity: 1250
+  terminalVelocityTime: 5
+  currentTerminalVelocityTime: 0
+  freeDashForce: 1000
   dashUpwardForce: 1
   dashDuration: 1
-  attackDashForce: 5
-  detectionRange: 40
+  freeDashCooldown: 0.4
+  attackDashForce: 75
+  detectionRange: 100
   playerObject: {fileID: 8238775212943671302}
-  dashTime: 1
-  attackDashCooldown: 1
+  dashTime: 0.2
+  attackDashCooldown: 0.3
   fieldOfViewAngle: 140
+  attackDashVerticalFactor: 0
   isGrounded: 1
   isGliding: 0
   groundLayer:

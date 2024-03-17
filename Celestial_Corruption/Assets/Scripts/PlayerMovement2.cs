@@ -15,36 +15,49 @@ public class PlayerMovement2 : MonoBehaviour
     public float moveSpeed;
     private float runSpeed;
     private float originalRunSpeed;
-    public Dictionary<int, int> multiplierToSpeedConversions = new Dictionary<int, int>
+    public float currentAcceleration=0;
+    public float maxAcceleration = 5;
+    public float decelerationRate=5;
+    public float slopeDetectionDistance = 3;
+    public Transform playerRotation;
+    public Dictionary<int, float> multiplierToSpeedConversions = new Dictionary<int, float>
     {
-        { 1, 0 },
-        { 2, 20 },
-        { 3, 50 },
-        { 4, 100 },
-        { 5, 150 }
+        { 1, 1 },
+        { 2, 1.2f },
+        { 3, 1.5f },
+        { 4, 2 },
+        { 5, 2.5f }
     };
 
     public Transform orientation;
     public int walkingDrag;
+    public float slopeAngleLimit;
     [Header("Jumping")]
     [SerializeField] private float jumpForce = 5f;
     public int airDrag;
     Rigidbody playerBody;
     Vector2 moveInput;
     public float airMoveSpeed;
+    public float extraGravity=0.5f;
+    private float originalExtraGrav;
+    public float terminalVelocityTime;
+    public float currentTerminalVelocityTime = 0;
     [Header("Free Dash")]
     public float freeDashForce;
     public float dashUpwardForce;
     public float dashDuration;
+    public float freeDashCooldown = 0.4f;
+    private float currentFreeDashCooldown=0;
     [Header("Attack Dash")]
     //public Transform enemy;
     public float attackDashForce;
     public float detectionRange;
     public GameObject playerObject;
     public float dashTime = 1;
-    public float attackDashCooldown = 1;
+    public float attackDashCooldown =0.2f;
     private float currentAttackDashCooldown;
     public float fieldOfViewAngle = 140;
+    public float attackDashVerticalFactor;
 
     LayerMask originalLayer;
     [Header("Player State")]
@@ -78,7 +91,7 @@ public class PlayerMovement2 : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject character;
-
+    float preDrag;
 
     void Awake()
     {
@@ -95,6 +108,7 @@ public class PlayerMovement2 : MonoBehaviour
         runSpeed = moveSpeed;
         originalRunSpeed = runSpeed;
         transposer = lockOnCamera.GetCinemachineComponent<CinemachineTransposer>();
+        originalExtraGrav = extraGravity;
     }
 
 
@@ -124,6 +138,14 @@ public class PlayerMovement2 : MonoBehaviour
             }
         }
         
+        if (currentFreeDashCooldown != 0)
+        {
+            currentFreeDashCooldown-= Time.deltaTime;
+            if (currentFreeDashCooldown < 0) 
+            { 
+                currentFreeDashCooldown = 0;
+            }
+        }
         Shader.SetGlobalVector("_Player", transform.position);
 
         if (gameInput.IsLockOnPressed())
@@ -155,26 +177,25 @@ public class PlayerMovement2 : MonoBehaviour
         }
         if (gameInput.IsFreeDashPressed())
         {
-            FreeDash();
-        }
-        Jump();
-        if (!isGrounded && !isGliding)
-        {
-            moveSpeed = airMoveSpeed;
-        }
-        else
-        {
-            if (isGrounded)
+            if (currentFreeDashCooldown == 0)
             {
-                moveSpeed = runSpeed;
+                FreeDash();
+                currentFreeDashCooldown = freeDashCooldown;
             }
         }
+        Jump();
+        
 
     }
 
     private void FixedUpdate()
     {
-        
+        if (!isGrounded)
+        {
+            currentTerminalVelocityTime = Mathf.Clamp(currentTerminalVelocityTime + Time.fixedDeltaTime, 0, terminalVelocityTime);
+            Vector3 dynamicExtraGravity = Vector3.down * ((extraGravity / 2) + ((extraGravity / terminalVelocityTime) * currentTerminalVelocityTime));
+            playerBody.AddForce(dynamicExtraGravity, ForceMode.Acceleration);
+        }
         MovePlayer();
         checkGroundStatus();
         if (!isGrounded && isGliding && glidingEnabled)
@@ -191,7 +212,26 @@ public class PlayerMovement2 : MonoBehaviour
     }
     private void MovePlayer()
     {
-        Vector3 playerVelocity = orientation.forward * moveInput.y * moveSpeed + orientation.right * moveInput.x * moveSpeed;
+        if (moveInput == Vector2.zero)
+        {
+            currentAcceleration = Mathf.Clamp(currentAcceleration - decelerationRate*Time.fixedDeltaTime, 0, maxAcceleration);
+        }
+        else
+        {
+            currentAcceleration = Mathf.Clamp(currentAcceleration + Time.fixedDeltaTime, 0, maxAcceleration);
+        }
+        Vector3 playerVelocity = (orientation.forward * moveInput.y * moveSpeed + orientation.right * moveInput.x * moveSpeed)*((1+(currentAcceleration/maxAcceleration))/2);
+        RaycastHit hit;
+        if (Physics.Raycast(playerBody.transform.position,Vector3.down, out hit, slopeDetectionDistance))
+        {
+            Vector3 groundNormal=hit.normal;
+            float slopeAngle = Vector3.Angle(groundNormal, Vector3.up);
+            if (slopeAngle <= slopeAngleLimit)
+            {
+                playerVelocity = Vector3.ProjectOnPlane(playerVelocity, groundNormal);
+            }
+            Debug.Log(slopeAngle);
+        }
         playerBody.AddForce(playerVelocity, ForceMode.Force);
         //playerBody.velocity = transform.TransformDirection(playerVelocity);
         if (playerVelocity != Vector3.zero)
@@ -240,7 +280,7 @@ public class PlayerMovement2 : MonoBehaviour
         // Makes player stand up
         transform.rotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, cameraTransform.eulerAngles.z);
         isGliding = false;
-
+        currentTerminalVelocityTime= 0;
         // Reset the drag to 0
         // playerBody.drag = 0;
         // Reset the movement speed to running speed
@@ -260,8 +300,9 @@ public class PlayerMovement2 : MonoBehaviour
         groundedCheckDistance = (colliderHeight / 2) + bufferCheckDistance;
 
         Vector3 rayStart = transform.position;
-        Vector3 rayDirection = Vector3.down;
-
+        //Vector3 rayDirection = Vector3.down;
+        Vector3 rayDirection = -playerRotation.transform.up;
+        rayDirection= rayDirection.normalized;
         RaycastHit hit;
         if (Physics.Raycast(rayStart, rayDirection, out hit, groundedCheckDistance, groundLayer))
         {
@@ -304,7 +345,7 @@ public class PlayerMovement2 : MonoBehaviour
 
     private void AttackDash()
     {
-
+        
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         float closestDistance = Mathf.Infinity;
         Transform closestEnemy = null;
@@ -326,16 +367,21 @@ public class PlayerMovement2 : MonoBehaviour
         }
         if (closestDistance < detectionRange)
         {
+            moveSpeed = 0;
+            extraGravity = -9.8f * playerBody.mass;
+            //playerBody.drag = 5;
             currentAttackDashCooldown = attackDashCooldown;
             playerObject.layer = LayerMask.NameToLayer("Dashing");
             Vector3 playerVelocity = playerBody.velocity;
             float playerSpeed = playerVelocity.magnitude;
-            playerBody.AddForce(playerVelocity * -1, ForceMode.Impulse);
+            //playerBody.AddForce(playerVelocity * -1, ForceMode.Impulse);
+            playerBody.velocity = Vector3.zero;
             Vector3 forceToApply = Vector3.zero;
             Vector3 vectorToEnemy = closestEnemy.transform.position - orientation.transform.position;
             //vectorToEnemy= vectorToEnemy.normalized;
             forceToApply = vectorToEnemy * (attackDashForce) + vectorToEnemy.normalized * playerSpeed;
             //Debug.Log(vectorToEnemy);
+            forceToApply.y = forceToApply.y + Mathf.Abs(forceToApply.y) * attackDashVerticalFactor;
             playerBody.AddForce(forceToApply, ForceMode.Impulse);
             Invoke("setLayer", dashTime);
         }
@@ -349,8 +395,18 @@ public class PlayerMovement2 : MonoBehaviour
     private void setLayer()
     {
         playerObject.layer = originalLayer;
-        multiplierToSpeedConversions.TryGetValue(ScoreManager.instance.GetMultiplier(), out int currMultAdd);
-        runSpeed = originalRunSpeed + currMultAdd;
+        multiplierToSpeedConversions.TryGetValue(ScoreManager.instance.GetMultiplier(), out float currSpeedMult);
+        runSpeed = originalRunSpeed * currSpeedMult;
+        extraGravity = originalExtraGrav;
+        moveSpeed = runSpeed;
+        //if (isGrounded)
+        //{
+        //    playerBody.drag = walkingDrag;
+        //}
+        //else
+        //{
+        //    playerBody.drag = airDrag;
+        //}
     }
     private void GlidingMovement()
     {
@@ -386,14 +442,15 @@ public class PlayerMovement2 : MonoBehaviour
     }
     void AdjustCameraBasedOnPlayerPosition()
     {
-        Vector3 playerToBoss = target.transform.position - playerBody.position;
-        float angle = Vector3.SignedAngle(playerToBoss, transform.forward, Vector3.up);
+        Vector3 playerToBoss = target.transform.position - playerBody.transform.position;
+        //float angle = Vector3.SignedAngle(playerToBoss, transform.forward, Vector3.up);
         playerToBoss.Normalize();
         playerToBoss.y = 0;
         playerToBoss = playerToBoss * lockedOnDistance;
         playerToBoss.y += lockedOnHeight;
         transposer.m_FollowOffset = new Vector3(-playerToBoss.x, playerToBoss.y, -playerToBoss.z);
-        
+        lockOnCamera.LookAt = target.transform;
+        lockOnCamera.Follow = playerBody.transform;
     }
     void FindTarget()
     {
