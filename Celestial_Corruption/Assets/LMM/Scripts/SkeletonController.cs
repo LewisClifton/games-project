@@ -68,7 +68,7 @@ public class SkeletonController : MonoBehaviour
 
     private void GetJointTransforms(Transform currentJoint)
     {
-        
+        jointsCount++;
         Debug.Log(currentJoint.gameObject.name);
 
         jointRestPositions.Add(currentJoint.localPosition);
@@ -98,7 +98,6 @@ public class SkeletonController : MonoBehaviour
             Transform childJoint = currentJoint.GetChild(i);
             if (JointIsValid(childJoint))
             {
-                jointsCount++;
                 GetJointTransforms(childJoint);
             }
         }
