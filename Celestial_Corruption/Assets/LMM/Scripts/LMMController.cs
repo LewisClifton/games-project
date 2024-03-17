@@ -155,19 +155,17 @@ public class LMMController : MonoBehaviour
 
     private void CreateInputVector()
     {
-        Vector3 leftFootPosition = skeleton.GetLeftFootPosition();
-        Vector3 rightFootPosition = skeleton.GetRightFootPosition();
 
         // Get model input from the skeleton
         modelInput = new List<float>() {
 
-            leftFootPosition.x,
-            leftFootPosition.y,
-            leftFootPosition.z,
+            skeleton.leftFootPosition.x,
+            skeleton.leftFootPosition.y,
+            skeleton.leftFootPosition.z,
 
-            rightFootPosition.x,
-            rightFootPosition.y,
-            rightFootPosition.z,
+            skeleton.rightFootPosition.x,
+            skeleton.rightFootPosition.y,
+            skeleton.rightFootPosition.z,
 
             skeleton.leftFootVelocity.x,
             skeleton.leftFootVelocity.y,
@@ -276,12 +274,12 @@ public class LMMController : MonoBehaviour
         }
         offset += (skeleton.jointsCount - 1) * 6;
 
-        Vector3 root_velocity = quat_mul_vec3(skeleton.GetCurrentDirection(), new Vector3(
+        Vector3 root_velocity = quat_mul_vec3(skeleton.GetRootRotation(), new Vector3(
             decompressorOutput[offset + 0],
             decompressorOutput[offset + 1],
             decompressorOutput[offset + 2]));
 
-        Vector3 root_angular_velocity = quat_mul_vec3(skeleton.GetCurrentDirection(), new Vector3(
+        Vector3 root_angular_velocity = quat_mul_vec3(skeleton.GetRootRotation(), new Vector3(
             decompressorOutput[offset + 3],
             decompressorOutput[offset + 4],
             decompressorOutput[offset + 5]));
