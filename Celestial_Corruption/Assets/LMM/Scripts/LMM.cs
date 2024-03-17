@@ -108,10 +108,10 @@ public class LMM
         projectorOutput = projectorWorker.CopyOutput("output").DeepCopy();
 
         // De-normalise output in-place
-        for (int i = 0; i < projectorOutput.length; i++)
-        {
-            projectorOutput[0, 0, i, 0] = projectorOutput[0, 0, i, 0] * projectorOutputStd[i] + projectorOutputMean[i];
-        }
+        // for (int i = 0; i < projectorOutput.length; i++)
+        // {
+        //     projectorOutput[0, 0, i, 0] = projectorOutput[0, 0, i, 0] * projectorOutputStd[i] + projectorOutputMean[i];
+        // }
 
         // Worker input has to be passed by value so dispose inside this function
         projectorInput.Dispose();
@@ -121,10 +121,10 @@ public class LMM
     public void ExecuteStepper(Tensor stepperInput, ref Tensor stepperOutput, float dt)
     {
         // Normalise input in-place
-        for (int i = 0; i < stepperInput.length; i++)
-        {
-            stepperInput[0, 0, i, 0] =  (stepperInput[i] - stepperInputMean[i]) / (stepperInputStd[i]+1f);
-        }
+        // for (int i = 0; i < stepperInput.length; i++)
+        // {
+        //     stepperInput[0, 0, i, 0] =  (stepperInput[i] - stepperInputMean[i]) / (stepperInputStd[i]+1f);
+        // }
 
         // Run the stepper
         stepperWorker.Execute(stepperInput);
@@ -133,7 +133,7 @@ public class LMM
         // De-Normalise output in-place
         for (int i = 0; i < stepperOutput.length; i++)
         {
-            stepperInput[0, 0, i, 0] += ((stepperOutput[0, 0, i, 0] * stepperOutputStd[i]) + stepperOutputMean[i]) * dt;
+            stepperInput[0, 0, i, 0] += stepperOutput[0, 0, i, 0] * dt;//+= ((stepperOutput[0, 0, i, 0] * stepperOutputStd[i]) + stepperOutputMean[i]) * dt;
         }
 
         stepperOutput = stepperInput.DeepCopy();
@@ -145,17 +145,17 @@ public class LMM
 
     public void ExecuteDecompressor(Tensor decompressorInput, ref Tensor decompressorOutput)
     {   
-        for (int i = 0; i < decompressorInput.length; i++)
-			decompressorInput[0, 0, i, 0] = (decompressorInput[i] - decompressorInputMean[i]) / decompressorInputStd[i];
-        // Does above cause issues?
+        // for (int i = 0; i < decompressorInput.length; i++)
+		// 	decompressorInput[0, 0, i, 0] = (decompressorInput[i] - decompressorInputMean[i]) / decompressorInputStd[i];
+        // // Does above cause issues?
 
         // Run the decompressor
         decompressorWorker.Execute(decompressorInput);
         decompressorOutput = decompressorWorker.CopyOutput("output").DeepCopy();
 
-        // De-normalise output in-place
-        for (int i = 0; i < decompressorOutput.length; i++)
-            decompressorOutput[0, 0, i, 0] = (decompressorOutput[0, 0, i, 0] * (decompressorOutputStd[i])) + decompressorOutputMean[i];
+        // // De-normalise output in-place
+        // for (int i = 0; i < decompressorOutput.length; i++)
+        //     decompressorOutput[0, 0, i, 0] = (decompressorOutput[0, 0, i, 0] * (decompressorOutputStd[i])) + decompressorOutputMean[i];
 
         // Worker input has to be passed by value so dispose inside this function
         decompressorInput.Dispose();

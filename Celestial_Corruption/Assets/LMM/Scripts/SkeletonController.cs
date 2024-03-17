@@ -6,6 +6,8 @@ using static Quat.QuatFuncs;
 public class SkeletonController : MonoBehaviour
 {
     // Features to be used by LMM
+    public Vector3 leftFootPosition;
+    public Vector3 rightFootPosition;
     public Vector3 leftFootVelocity;
     public Vector3 rightFootVelocity;
     public Vector3 hipsVelocity;
@@ -61,19 +63,19 @@ public class SkeletonController : MonoBehaviour
         GetTrajectories();
     }
 
-    [HideInInspector]
+    [SerializeField]
     public int jointsCount = 0;
 
     private void GetJointTransforms(Transform currentJoint)
     {
-        jointsCount++;
+        
+        Debug.Log(currentJoint.gameObject.name);
 
         jointRestPositions.Add(currentJoint.localPosition);
         jointRestRotations.Add(currentJoint.localRotation);
         
         if (currentJoint.name.Contains("Spine2"))
         {
-         
             positionRootJoint = currentJoint;
         }
         if (currentJoint.name.Contains("Hip"))
@@ -96,6 +98,7 @@ public class SkeletonController : MonoBehaviour
             Transform childJoint = currentJoint.GetChild(i);
             if (JointIsValid(childJoint))
             {
+                jointsCount++;
                 GetJointTransforms(childJoint);
             }
         }
@@ -118,7 +121,10 @@ public class SkeletonController : MonoBehaviour
     }
 
     public void GetCurrentPose()
-    {   
+    {
+        leftFootPosition = GetLocalSpace(leftFootJoint);
+        rightFootPosition = GetLocalSpace(rightFootJoint);
+
         GetTrajectories();
         CalculateVelocities();
     }
@@ -166,9 +172,9 @@ public class SkeletonController : MonoBehaviour
         rightFootVelocity = (GetLocalSpace(rightFootJoint) - prevRightFootPosition) * 60.0f;
     }
 
-    public Vector3 GetLeftFootPosition(){ return leftFootJoint.localPosition; }
-    public Vector3 GetRightFootPosition(){ return rightFootJoint.localPosition; }
-    public Vector3 GetRootPosition(){ return positionRootJoint.position; }
+    public Vector3 GetLeftFootPosition(){ return GetLocalSpace(leftFootJoint); }
+    public Vector3 GetRightFootPosition(){ return GetLocalSpace(rightFootJoint); }
+    public Vector3 GetRootPosition(){ return positionRootJoint.localPosition; }
     public Quaternion GetRootRotation() { return rotationRootJoint.rotation; }
     public Quaternion GetCurrentDirection() { return playerBody.rotation;}
 
@@ -178,6 +184,9 @@ public class SkeletonController : MonoBehaviour
     [SerializeField]
     private List<Quaternion> newRotations;
     private int jointIndex;
+
+    [SerializeField]
+    
 
     public void UpdatePose(List<Vector3> newPostions, List<Quaternion> newRotations)
     {
@@ -193,19 +202,18 @@ public class SkeletonController : MonoBehaviour
     private void MoveJoints(Transform currentJoint)
     {
         jointIndex++;
-        
-        // Position relative to Spine2
-        // Rotation relative to hips
 
-        // currentJoint.localPosition = newPositions[jointIndex];
-        // currentJoint.localRotation = newRotations[jointIndex];
-        
-        if (jointIndex == 0)
+        if (currentJoint.gameObject.name.Contains("Spine2"))
         {
-            currentJoint.localPosition = new Vector3(newPositions[0].x, 0.439f, newPositions[0].z); //+ positionRootJoint.position;
-            currentJoint.localRotation = newRotations[0];// * rotationRootJoint.rotation;
-
-        } else {
+            currentJoint.localPosition = newPositions[0];
+            currentJoint.localRotation = newRotations[jointIndex];
+        }
+        else if (currentJoint.gameObject.name.Contains("Hip"))
+        {
+            currentJoint.localPosition = newPositions[jointIndex];
+            currentJoint.localRotation = newRotations[0];
+        } else
+        {
             currentJoint.localPosition = newPositions[jointIndex];
             currentJoint.localRotation = newRotations[jointIndex];
         }
@@ -227,7 +235,8 @@ public class SkeletonController : MonoBehaviour
     { 
         return !joint.gameObject.name.Contains("ToeEnd") && 
                 !joint.gameObject.name.Contains("InHand") && 
-                !joint.gameObject.name.Contains("Thumb");
+                !joint.gameObject.name.Contains("Thumb") &&
+                !joint.gameObject.name.Contains("Mesh");
     }
 
     private void UpdatePrevious()
