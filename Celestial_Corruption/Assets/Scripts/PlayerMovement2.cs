@@ -31,6 +31,7 @@ public class PlayerMovement2 : MonoBehaviour
 
     public Transform orientation;
     public int walkingDrag;
+    public float slopeAngleLimit;
     [Header("Jumping")]
     [SerializeField] private float jumpForce = 5f;
     public int airDrag;
@@ -225,8 +226,11 @@ public class PlayerMovement2 : MonoBehaviour
         {
             Vector3 groundNormal=hit.normal;
             float slopeAngle = Vector3.Angle(groundNormal, Vector3.up);
-            //Debug.Log(slopeAngle);
-            playerVelocity = Vector3.ProjectOnPlane(playerVelocity, groundNormal);
+            if (slopeAngle <= slopeAngleLimit)
+            {
+                playerVelocity = Vector3.ProjectOnPlane(playerVelocity, groundNormal);
+            }
+            Debug.Log(slopeAngle);
         }
         playerBody.AddForce(playerVelocity, ForceMode.Force);
         //playerBody.velocity = transform.TransformDirection(playerVelocity);
