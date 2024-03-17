@@ -39,6 +39,8 @@ public class PlayerMovement2 : MonoBehaviour
     public float airMoveSpeed;
     public float extraGravity=0.5f;
     private float originalExtraGrav;
+    public float terminalVelocityTime;
+    public float currentTerminalVelocityTime = 0;
     [Header("Free Dash")]
     public float freeDashForce;
     public float dashUpwardForce;
@@ -189,7 +191,9 @@ public class PlayerMovement2 : MonoBehaviour
     {
         if (!isGrounded)
         {
-            playerBody.AddForce(Vector3.down * extraGravity, ForceMode.Acceleration);
+            currentTerminalVelocityTime = Mathf.Clamp(currentTerminalVelocityTime + Time.fixedDeltaTime, 0, terminalVelocityTime);
+            Vector3 dynamicExtraGravity = Vector3.down * ((extraGravity / 2) + ((extraGravity / terminalVelocityTime) * currentTerminalVelocityTime));
+            playerBody.AddForce(dynamicExtraGravity, ForceMode.Acceleration);
         }
         MovePlayer();
         checkGroundStatus();
@@ -272,7 +276,7 @@ public class PlayerMovement2 : MonoBehaviour
         // Makes player stand up
         transform.rotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, cameraTransform.eulerAngles.z);
         isGliding = false;
-
+        currentTerminalVelocityTime= 0;
         // Reset the drag to 0
         // playerBody.drag = 0;
         // Reset the movement speed to running speed
