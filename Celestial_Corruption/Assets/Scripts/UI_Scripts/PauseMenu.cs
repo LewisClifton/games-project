@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
-        pauseMenu.SetActive(false);
+        PauseMenuDeactivate();
         settingsMenu.SetActive(false);
     }
 
@@ -24,7 +25,7 @@ public class PauseMenu : MonoBehaviour
                 if (settingsMenu.activeSelf)
                 {
                     settingsMenu.SetActive(false);
-                    pauseMenu.SetActive(true);
+                    PauseMenuActivate();
                 }
                 else
                 {
@@ -38,13 +39,33 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    private void PauseMenuDeactivate()
+    {
+        pauseMenu.GetComponent<Image>().enabled = false;
+        // Loop over all the children of the pauseMenu and disable them
+        foreach (Transform child in pauseMenu.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+    }
+
+    private void PauseMenuActivate()
+    {
+        pauseMenu.GetComponent<Image>().enabled = true;
+        // Loop over all the children of the pauseMenu and enable them
+        foreach (Transform child in pauseMenu.transform)
+        {
+            child.gameObject.SetActive(true);
+        }
+    }
+
     private void PauseGame()
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
         Time.timeScale = 0;
-        pauseMenu.SetActive(true);
+        PauseMenuActivate();
         isPaused = true;
     }
 
@@ -54,7 +75,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         Time.timeScale = 1;
-        pauseMenu.SetActive(false);
+        PauseMenuDeactivate();
         isPaused = false;
     }
 
@@ -83,13 +104,13 @@ public class PauseMenu : MonoBehaviour
 
     public void OpenSettings()
     {
-        pauseMenu.SetActive(false);
+        PauseMenuDeactivate();
         settingsMenu.SetActive(true);
     }
 
     public void CloseSettings()
     {
         settingsMenu.SetActive(false);
-        pauseMenu.SetActive(true);
+        PauseMenuActivate();
     }
 }
