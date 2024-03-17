@@ -32,6 +32,9 @@ public class Enemy : MonoBehaviour
     private float invincibilityTime;
     public float maxInvincibilityTime;
 
+    public delegate void EnemyKilled(Enemy enemy);
+    public static event EnemyKilled OnEnemyKilled;
+
     public int enemyXP;
     // Start is called before the first frame update
     void Start()
@@ -84,6 +87,7 @@ public class Enemy : MonoBehaviour
 
             ScoreManager.instance.AddScore(enemyXP);
             Debug.Log("Died!");
+            OnEnemyKilled?.Invoke(this);
             Destroy(gameObject);
         }
     }

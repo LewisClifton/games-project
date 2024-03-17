@@ -63,6 +63,9 @@ public class PlayerMovement2 : MonoBehaviour
     private CinemachineBasicMultiChannelPerlin screenShakeMid;
     private CinemachineBasicMultiChannelPerlin screenShakeBot;
     LayerMask originalLayer;
+    public float screenShakeFrequency;
+    public float screenShakeAmplitude;
+    public float screenShakeTime;
     [Header("Player State")]
     public bool isGrounded = false;
     public bool isGliding = false;
@@ -215,6 +218,16 @@ public class PlayerMovement2 : MonoBehaviour
     private void LateUpdate()
     {
         
+    }
+
+    private void OnEnable()
+    {
+        Enemy.OnEnemyKilled += EnemyKilledHandler;
+    }
+
+    private void OnDisable()
+    {
+        Enemy.OnEnemyKilled -= EnemyKilledHandler;
     }
     private void MovePlayer()
     {
@@ -378,7 +391,7 @@ public class PlayerMovement2 : MonoBehaviour
             //Debug.Log(vectorToEnemy);
             forceToApply.y = forceToApply.y + Mathf.Abs(forceToApply.y) * attackDashVerticalFactor;
             playerBody.AddForce(forceToApply, ForceMode.Impulse);
-            StartCoroutine(shakeScreen());
+            //StartCoroutine(shakeScreen());
             Invoke("setLayer", dashTime);
         }
         else
@@ -390,15 +403,15 @@ public class PlayerMovement2 : MonoBehaviour
 
     private IEnumerator shakeScreen()
     {
-        yield return new WaitForSeconds(0.1f);
+        //yield return new WaitForSeconds(0.1f);
 
-        screenShakeTop.m_FrequencyGain = 2;
-        screenShakeTop.m_AmplitudeGain = 2;
-        screenShakeMid.m_FrequencyGain = 2;
-        screenShakeMid.m_AmplitudeGain = 2;
-        screenShakeBot.m_FrequencyGain = 2;
-        screenShakeBot.m_AmplitudeGain = 2;
-        yield return new WaitForSeconds(0.2f);
+        screenShakeTop.m_FrequencyGain = screenShakeFrequency;
+        screenShakeTop.m_AmplitudeGain = screenShakeAmplitude;
+        screenShakeMid.m_FrequencyGain = screenShakeFrequency;
+        screenShakeMid.m_AmplitudeGain = screenShakeAmplitude;
+        screenShakeBot.m_FrequencyGain = screenShakeFrequency;
+        screenShakeBot.m_AmplitudeGain = screenShakeAmplitude;
+        yield return new WaitForSeconds(screenShakeTime);
         screenShakeTop.m_FrequencyGain = 0;
         screenShakeTop.m_AmplitudeGain = 0;
         screenShakeMid.m_FrequencyGain = 0;
@@ -498,4 +511,12 @@ public class PlayerMovement2 : MonoBehaviour
             target = null;
         }
     }
+
+    private void EnemyKilledHandler(Enemy enemy)
+    {
+        
+        Debug.Log($"Enemy killed: {enemy.name}");
+        StartCoroutine(shakeScreen());
+    }
+
 }
