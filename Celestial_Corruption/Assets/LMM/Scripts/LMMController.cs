@@ -121,7 +121,6 @@ public class LMMController : MonoBehaviour
         } else {
             steps = 0;
 
-            skeleton.GetCurrentPose();
             CreateInputVector();
             LMM();
 
@@ -273,6 +272,10 @@ public class LMMController : MonoBehaviour
                      decompressorOutput[offset + i * 6 + 5]));
         }
         offset += (skeleton.jointsCount - 1) * 6;
+
+        offset += (skeleton.jointsCount - 1) * 3;
+
+        offset += (skeleton.jointsCount - 1) * 3;
 
         Vector3 root_velocity = quat_mul_vec3(skeleton.GetRootRotation(), new Vector3(
             decompressorOutput[offset + 0],
