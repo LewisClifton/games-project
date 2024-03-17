@@ -265,18 +265,7 @@ public class PlayerMovement2 : MonoBehaviour
                 playerBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 animator.SetBool("inAir", true);
             }
-            else
-            {
-                if (isGliding)
-                {
-                    moveSpeed = runSpeed;
-                }
-                else
-                {
-                    moveSpeed = glideRunSpeed;
-                }
-                isGliding = !isGliding;
-            }
+            
         }
     }
 
@@ -389,12 +378,7 @@ public class PlayerMovement2 : MonoBehaviour
             //Debug.Log(vectorToEnemy);
             forceToApply.y = forceToApply.y + Mathf.Abs(forceToApply.y) * attackDashVerticalFactor;
             playerBody.AddForce(forceToApply, ForceMode.Impulse);
-            screenShakeTop.m_FrequencyGain = 2;
-            screenShakeTop.m_AmplitudeGain = 2;
-            screenShakeMid.m_FrequencyGain = 2;
-            screenShakeMid.m_AmplitudeGain = 2;
-            screenShakeBot.m_FrequencyGain = 2;
-            screenShakeBot.m_AmplitudeGain = 2;
+            StartCoroutine(shakeScreen());
             Invoke("setLayer", dashTime);
         }
         else
@@ -404,14 +388,28 @@ public class PlayerMovement2 : MonoBehaviour
 
     }
 
-    private void setLayer()
+    private IEnumerator shakeScreen()
     {
+        yield return new WaitForSeconds(0.1f);
+
+        screenShakeTop.m_FrequencyGain = 2;
+        screenShakeTop.m_AmplitudeGain = 2;
+        screenShakeMid.m_FrequencyGain = 2;
+        screenShakeMid.m_AmplitudeGain = 2;
+        screenShakeBot.m_FrequencyGain = 2;
+        screenShakeBot.m_AmplitudeGain = 2;
+        yield return new WaitForSeconds(0.2f);
         screenShakeTop.m_FrequencyGain = 0;
         screenShakeTop.m_AmplitudeGain = 0;
         screenShakeMid.m_FrequencyGain = 0;
         screenShakeMid.m_AmplitudeGain = 0;
         screenShakeBot.m_FrequencyGain = 0;
         screenShakeBot.m_AmplitudeGain = 0;
+    }
+
+    private void setLayer()
+    {
+        
         playerObject.layer = originalLayer;
         multiplierToSpeedConversions.TryGetValue(ScoreManager.instance.GetMultiplier(), out float currSpeedMult);
         runSpeed = originalRunSpeed * currSpeedMult;
