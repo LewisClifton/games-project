@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 780148177117139681}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.100594394, y: 0.000000004279777, z: 4.3271647e-10, w: 0.9949275}
+  m_LocalRotation: {x: -0.100594394, y: -0.000000004279774, z: -4.327162e-10, w: 0.9949275}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -457,8 +457,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3434163705553504816}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.11862727, y: -0.000000017610695, z: -0.000000002103965,
-    w: 0.9929389}
+  m_LocalRotation: {x: -0.11862727, y: 0.000000017610695, z: 0.000000002103965, w: 0.9929389}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -768,6 +767,7 @@ MonoBehaviour:
   playerRotation: {fileID: 8744691493705269643}
   orientation: {fileID: 7462364166937274975}
   walkingDrag: 5
+  slopeAngleLimit: 60
   jumpForce: 1000
   airDrag: 10
   airMoveSpeed: 5000
