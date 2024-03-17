@@ -58,7 +58,10 @@ public class PlayerMovement2 : MonoBehaviour
     private float currentAttackDashCooldown;
     public float fieldOfViewAngle = 140;
     public float attackDashVerticalFactor;
-
+    public CinemachineFreeLook freelookCamera;
+    private CinemachineBasicMultiChannelPerlin screenShakeTop;
+    private CinemachineBasicMultiChannelPerlin screenShakeMid;
+    private CinemachineBasicMultiChannelPerlin screenShakeBot;
     LayerMask originalLayer;
     [Header("Player State")]
     public bool isGrounded = false;
@@ -101,6 +104,9 @@ public class PlayerMovement2 : MonoBehaviour
 
     void Start()
     {
+        screenShakeTop=freelookCamera.GetRig(0).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        screenShakeMid=freelookCamera.GetRig(1).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        screenShakeBot=freelookCamera.GetRig(2).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         originalLayer = playerObject.layer;
         playerBody = GetComponent<Rigidbody>();
         playerBody.freezeRotation = true;
@@ -230,7 +236,7 @@ public class PlayerMovement2 : MonoBehaviour
             {
                 playerVelocity = Vector3.ProjectOnPlane(playerVelocity, groundNormal);
             }
-            Debug.Log(slopeAngle);
+            //Debug.Log(slopeAngle);
         }
         playerBody.AddForce(playerVelocity, ForceMode.Force);
         //playerBody.velocity = transform.TransformDirection(playerVelocity);
@@ -383,6 +389,12 @@ public class PlayerMovement2 : MonoBehaviour
             //Debug.Log(vectorToEnemy);
             forceToApply.y = forceToApply.y + Mathf.Abs(forceToApply.y) * attackDashVerticalFactor;
             playerBody.AddForce(forceToApply, ForceMode.Impulse);
+            screenShakeTop.m_FrequencyGain = 2;
+            screenShakeTop.m_AmplitudeGain = 2;
+            screenShakeMid.m_FrequencyGain = 2;
+            screenShakeMid.m_AmplitudeGain = 2;
+            screenShakeBot.m_FrequencyGain = 2;
+            screenShakeBot.m_AmplitudeGain = 2;
             Invoke("setLayer", dashTime);
         }
         else
@@ -394,6 +406,12 @@ public class PlayerMovement2 : MonoBehaviour
 
     private void setLayer()
     {
+        screenShakeTop.m_FrequencyGain = 0;
+        screenShakeTop.m_AmplitudeGain = 0;
+        screenShakeMid.m_FrequencyGain = 0;
+        screenShakeMid.m_AmplitudeGain = 0;
+        screenShakeBot.m_FrequencyGain = 0;
+        screenShakeBot.m_AmplitudeGain = 0;
         playerObject.layer = originalLayer;
         multiplierToSpeedConversions.TryGetValue(ScoreManager.instance.GetMultiplier(), out float currSpeedMult);
         runSpeed = originalRunSpeed * currSpeedMult;
