@@ -58,8 +58,14 @@ public class PlayerMovement2 : MonoBehaviour
     private float currentAttackDashCooldown;
     public float fieldOfViewAngle = 140;
     public float attackDashVerticalFactor;
-
+    public CinemachineFreeLook freelookCamera;
+    private CinemachineBasicMultiChannelPerlin screenShakeTop;
+    private CinemachineBasicMultiChannelPerlin screenShakeMid;
+    private CinemachineBasicMultiChannelPerlin screenShakeBot;
     LayerMask originalLayer;
+    public float screenShakeFrequency;
+    public float screenShakeAmplitude;
+    public float screenShakeTime;
     [Header("Player State")]
     public bool isGrounded = false;
     public bool isGliding = false;
@@ -101,6 +107,9 @@ public class PlayerMovement2 : MonoBehaviour
 
     void Start()
     {
+        screenShakeTop=freelookCamera.GetRig(0).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        screenShakeMid=freelookCamera.GetRig(1).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        screenShakeBot=freelookCamera.GetRig(2).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         originalLayer = playerObject.layer;
         playerBody = GetComponent<Rigidbody>();
         playerBody.freezeRotation = true;
@@ -210,6 +219,16 @@ public class PlayerMovement2 : MonoBehaviour
     {
         
     }
+
+    private void OnEnable()
+    {
+        Enemy.OnEnemyKilled += EnemyKilledHandler;
+    }
+
+    private void OnDisable()
+    {
+        Enemy.OnEnemyKilled -= EnemyKilledHandler;
+    }
     private void MovePlayer()
     {
         if (moveInput == Vector2.zero)
@@ -230,7 +249,7 @@ public class PlayerMovement2 : MonoBehaviour
             {
                 playerVelocity = Vector3.ProjectOnPlane(playerVelocity, groundNormal);
             }
-            Debug.Log(slopeAngle);
+            //Debug.Log(slopeAngle);
         }
         playerBody.AddForce(playerVelocity, ForceMode.Force);
         //playerBody.velocity = transform.TransformDirection(playerVelocity);
@@ -259,18 +278,7 @@ public class PlayerMovement2 : MonoBehaviour
                 playerBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 animator.SetBool("inAir", true);
             }
-            else
-            {
-                if (isGliding)
-                {
-                    moveSpeed = runSpeed;
-                }
-                else
-                {
-                    moveSpeed = glideRunSpeed;
-                }
-                isGliding = !isGliding;
-            }
+            
         }
     }
 
@@ -383,6 +391,7 @@ public class PlayerMovement2 : MonoBehaviour
             //Debug.Log(vectorToEnemy);
             forceToApply.y = forceToApply.y + Mathf.Abs(forceToApply.y) * attackDashVerticalFactor;
             playerBody.AddForce(forceToApply, ForceMode.Impulse);
+            //StartCoroutine(shakeScreen());
             Invoke("setLayer", dashTime);
         }
         else
@@ -392,8 +401,28 @@ public class PlayerMovement2 : MonoBehaviour
 
     }
 
+    private IEnumerator shakeScreen()
+    {
+        //yield return new WaitForSeconds(0.1f);
+
+        screenShakeTop.m_FrequencyGain = screenShakeFrequency;
+        screenShakeTop.m_AmplitudeGain = screenShakeAmplitude;
+        screenShakeMid.m_FrequencyGain = screenShakeFrequency;
+        screenShakeMid.m_AmplitudeGain = screenShakeAmplitude;
+        screenShakeBot.m_FrequencyGain = screenShakeFrequency;
+        screenShakeBot.m_AmplitudeGain = screenShakeAmplitude;
+        yield return new WaitForSeconds(screenShakeTime);
+        screenShakeTop.m_FrequencyGain = 0;
+        screenShakeTop.m_AmplitudeGain = 0;
+        screenShakeMid.m_FrequencyGain = 0;
+        screenShakeMid.m_AmplitudeGain = 0;
+        screenShakeBot.m_FrequencyGain = 0;
+        screenShakeBot.m_AmplitudeGain = 0;
+    }
+
     private void setLayer()
     {
+        
         playerObject.layer = originalLayer;
         multiplierToSpeedConversions.TryGetValue(ScoreManager.instance.GetMultiplier(), out float currSpeedMult);
         runSpeed = originalRunSpeed * currSpeedMult;
@@ -482,4 +511,12 @@ public class PlayerMovement2 : MonoBehaviour
             target = null;
         }
     }
+
+    private void EnemyKilledHandler(Enemy enemy)
+    {
+        
+        Debug.Log($"Enemy killed: {enemy.name}");
+        StartCoroutine(shakeScreen());
+    }
+
 }
