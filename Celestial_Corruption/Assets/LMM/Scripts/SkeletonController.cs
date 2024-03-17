@@ -60,7 +60,13 @@ public class SkeletonController : MonoBehaviour
 
     void Update()
     {
+        
+        leftFootPosition = GetLocalSpace(leftFootJoint);
+        rightFootPosition = GetLocalSpace(rightFootJoint);
+
         GetTrajectories();
+        CalculateVelocities();
+        UpdatePrevious();
     }
 
     [SerializeField]
@@ -68,7 +74,9 @@ public class SkeletonController : MonoBehaviour
 
     private void GetJointTransforms(Transform currentJoint)
     {
+
         jointsCount++;
+
         Debug.Log(currentJoint.gameObject.name);
 
         jointRestPositions.Add(currentJoint.localPosition);
@@ -98,6 +106,7 @@ public class SkeletonController : MonoBehaviour
             Transform childJoint = currentJoint.GetChild(i);
             if (JointIsValid(childJoint))
             {
+                jointsCount++;
                 GetJointTransforms(childJoint);
             }
         }
@@ -117,15 +126,6 @@ public class SkeletonController : MonoBehaviour
         Gizmos.DrawWireSphere(leftFootJoint.position, 0.1f);
         Gizmos.DrawWireSphere(rightFootJoint.position, 0.1f);
     
-    }
-
-    public void GetCurrentPose()
-    {
-        leftFootPosition = GetLocalSpace(leftFootJoint);
-        rightFootPosition = GetLocalSpace(rightFootJoint);
-
-        GetTrajectories();
-        CalculateVelocities();
     }
 
     private void GetTrajectories()
