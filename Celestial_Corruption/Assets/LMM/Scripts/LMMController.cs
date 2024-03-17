@@ -207,8 +207,6 @@ public class LMMController : MonoBehaviour
 
     private void LMM()
     {   
-        
-
         // Execute projector
         lmm.ExecuteProjector(projectorInput, ref projectorOutput);
 
