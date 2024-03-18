@@ -237,6 +237,13 @@ public class LMMController : MonoBehaviour
         // Transform the model output to update the pose
         ReconstructPose(ref newPositions, ref newRotations);
 
+        // Update skeleton position using new positions and rotations 
+        // Normalise the rotations
+        for (int i = 0; i < newRotations.Count; i++)
+        {
+            newRotations[i] = new Quaternion(-newRotations[i].x, newRotations[i].y, newRotations[i].z, -newRotations[i].w);
+        }
+
         // Move the skeleton
         skeleton.UpdatePose(newPositions, newRotations);
     }
