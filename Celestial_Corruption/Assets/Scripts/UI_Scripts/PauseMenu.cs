@@ -14,7 +14,10 @@ public class PauseMenu : MonoBehaviour
     void Awake()
     {
         PauseMenuDeactivate();
+<<<<<<< HEAD
         background.GetComponent<RawImage>().enabled = false;
+=======
+>>>>>>> fd77eae (added uncommited changes to PauseMenu)
         settingsMenu.SetActive(false);
     }
 
@@ -42,7 +45,12 @@ public class PauseMenu : MonoBehaviour
     }
 
     private void PauseMenuDeactivate()
+<<<<<<< HEAD
     {   
+=======
+    {
+        pauseMenu.GetComponent<Image>().enabled = false;
+>>>>>>> fd77eae (added uncommited changes to PauseMenu)
         // Loop over all the children of the pauseMenu and disable them
         foreach (Transform child in pauseMenu.transform)
         {
@@ -52,8 +60,12 @@ public class PauseMenu : MonoBehaviour
 
     private void PauseMenuActivate()
     {
+<<<<<<< HEAD
         background.GetComponent<RawImage>().enabled = true;
 
+=======
+        pauseMenu.GetComponent<Image>().enabled = true;
+>>>>>>> fd77eae (added uncommited changes to PauseMenu)
         // Loop over all the children of the pauseMenu and enable them
         foreach (Transform child in pauseMenu.transform)
         {
