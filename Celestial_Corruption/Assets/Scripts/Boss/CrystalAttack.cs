@@ -94,7 +94,7 @@ public class CrystalAttack : MonoBehaviour
 
     public void ApplyFallSpeed()
     {
-        GameObject[] crystals = GameObject.FindGameObjectsWithTag("Crystal"); // Find all crystals in the scene
+        GameObject[] crystals = GameObject.FindGameObjectsWithTag("Crystal"); 
         foreach (GameObject crystal in crystals)
         {
             // Add downward velocity to the crystal

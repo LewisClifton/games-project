@@ -254,8 +254,9 @@ public class Boss : MonoBehaviour
         animator.SetBool("IsSpinning", false);
     }
 
-    void SkyCrystalAttack()
+    void SkyCrystalAttack()  // here is where add the code 
     {
+
         Debug.Log("From the sky");
         Invoke("StopSummoning", 1f);
 
@@ -263,6 +264,9 @@ public class Boss : MonoBehaviour
 
     void GroundCrystalAttack()
     {
+        CrystalAttack crystalAttack = GetComponent<CrystalAttack>();
+        crystalAttack.SpawnCrystals();
+        crystalAttack.ApplyFallSpeed();
         Debug.Log("From the ground");
         Invoke("StopSummoning", 1f);
     }
