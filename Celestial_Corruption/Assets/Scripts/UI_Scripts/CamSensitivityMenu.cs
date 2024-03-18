@@ -109,7 +109,7 @@ public class CamSensitivityMenu : MonoBehaviour
         }
     }
 
-    // Not Used
+    // Not yet Used
     public void Save()
     {
         cameraSensitivityXaxis = playerCamera.m_XAxis.m_MaxSpeed;
@@ -124,7 +124,7 @@ public class CamSensitivityMenu : MonoBehaviour
         Settings.cameraSensitivityYaxis = cameraSensitivityYaxis;
     }
 
-    // Not Used
+    // Not yet Used
     public void Cancel()
     {
         playerCamera.m_XAxis.m_MaxSpeed = cameraSensitivityXaxis;

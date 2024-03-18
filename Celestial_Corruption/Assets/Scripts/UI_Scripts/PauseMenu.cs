@@ -42,8 +42,7 @@ public class PauseMenu : MonoBehaviour
 
     private void PauseMenuDeactivate()
     {
-        // pauseMenu.GetComponent<Image>().enabled = false;
-        background.GetComponent<RawImage>().enabled = false;
+        // background.GetComponent<RawImage>().enabled = false;
 
         // Loop over all the children of the pauseMenu and disable them
         foreach (Transform child in pauseMenu.transform)
@@ -53,7 +52,6 @@ public class PauseMenu : MonoBehaviour
 
         foreach (Transform child in settingsMenu.transform)
         {
-            Debug.Log(child.gameObject.name);
             child.gameObject.SetActive(false);
         }
     }
@@ -118,6 +116,7 @@ public class PauseMenu : MonoBehaviour
     {
         PauseMenuDeactivate();
         settingsMenu.SetActive(true);
+        settingsMenu.GetComponent<SettingsMenu>().OpenSettingsMenu();
     }
 
     public void CloseSettings()
