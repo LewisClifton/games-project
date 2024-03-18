@@ -11,7 +11,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject settingsMenu;
     private bool isPaused = false;
 
-    void Awake()
+    void Start()
     {
         PauseMenuDeactivate();
         background.GetComponent<RawImage>().enabled = false;
@@ -43,9 +43,17 @@ public class PauseMenu : MonoBehaviour
     private void PauseMenuDeactivate()
     {
         // pauseMenu.GetComponent<Image>().enabled = false;
+        background.GetComponent<RawImage>().enabled = false;
+
         // Loop over all the children of the pauseMenu and disable them
         foreach (Transform child in pauseMenu.transform)
         {
+            child.gameObject.SetActive(false);
+        }
+
+        foreach (Transform child in settingsMenu.transform)
+        {
+            Debug.Log(child.gameObject.name);
             child.gameObject.SetActive(false);
         }
     }

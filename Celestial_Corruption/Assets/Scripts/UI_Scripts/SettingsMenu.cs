@@ -67,7 +67,7 @@ public class SettingsMenu : MonoBehaviour
     //     sliderY.value = cameraSensitivityYaxis / cameraSensitivityConstantY;
     // }
 
-    void Start()
+    void Awake()
     {
         CamSensitivityMenu.SetActive(true);
         KeybindsMenu.SetActive(false);
