@@ -136,19 +136,24 @@ public class Boss : MonoBehaviour
         }
     }
 
+    // Here need to modify to achieve random attack
     void HealthCheck(float healthPercent)
     {
-        if (healthPercent <= 0.75f && healthPercent > 0.5f)
+        if (healthPercent <= 0.8f && healthPercent > 0.6f)
         {
             currentPhase = 2;
         }
-        else if(healthPercent <= 0.5f && healthPercent > 0.25f)
+        else if(healthPercent <= 0.6f && healthPercent > 0.4f)
         {
             currentPhase = 3;
         }
-        else if(healthPercent <= 0.25f)
+        else if(healthPercent <= 0.4f && healthPercent > 0.2f)
         {
             currentPhase = 4;
+        }
+        else if (healthPercent <= 0.2f && healthPercent > 0f)
+        {
+            currentPhase = 5;
         }
     }
 
@@ -166,45 +171,51 @@ public class Boss : MonoBehaviour
                 Invoke("CurvedProjectileAttack", 1f);
                 break;
             case 3:
-                StompAttack();
+                animator.SetBool("IsStomping", true);
+                Invoke("StompAttack", 1.8f);
+                Invoke("StopStomping", 1f);
                 break;
             case 4:
-                SkyCrystalAttack();
+                animator.SetBool("IsSummoning", true);
+                Invoke("SkyCrystalAttack", 1f);
                 break;
             case 5:
-                GroundCrystalAttack();
+                animator.SetBool("IsSummoning", true);
+                Invoke("GroundCrystalAttack", 1f);
+                break;
+            case 6:
+                UniqueAttack();
                 break;
         }
     }
 
-    /*void UniqueAttack()
+    void UniqueAttack()
     {
         switch(currentPhase)
         {
             case 1:
                 animator.SetBool("IsStomping", true);
-                Debug.Log("stomp");
+                Debug.Log("un stomp");
                 Invoke("StompAttack", 1.8f);//animation is done just needs unique attack
                 Invoke("StopStomping", 1f);
                 break;
             case 2:
                 animator.SetBool("IsSpinning", true);
-                Debug.Log("spin");
+                Debug.Log("un spin");
                 Invoke("SpinAttack", 1f);//animation is done just needs unique attack
                 break;
             case 3:
                 animator.SetBool("IsSummoning", true);
-                Debug.Log("crystalAttack");
+                Debug.Log("un crystalAttack");
                 Invoke("SkyCrystalAttack", 1f);//animation is done just needs unique attack
                 break;
             case 4:
                 animator.SetBool("IsSummoning", true);
-                Debug.Log("ground");
+                Debug.Log("un ground");
                 Invoke("GroundCrystalAttack", 1f);//animation is done just needs unique attack
                 break;
-
         }
-    }*/
+    }
 
     void PlayerPos()
     {
