@@ -27,7 +27,7 @@ public class KeybindsMenu : MonoBehaviour
         for (int i = 0; i < MoveKeybindButtons.Length; i++)
         {
             MoveKeybindButtons[i].transform.Find("KeybindText").GetComponent<TextMeshProUGUI>().text = actionAsset.FindAction("Move").bindings[i+1].path.Split('/')[1];
-            Debug.Log($"Move Keybind {i+1}: {actionAsset.FindAction("Move").bindings[i+1].effectivePath}");
+            Debug.Log($"Button text after update: {MoveKeybindButtons[i].transform.Find("KeybindText").GetComponent<TextMeshProUGUI>().text}");
         }
 
         // Set text for other keybinds
@@ -45,10 +45,8 @@ public class KeybindsMenu : MonoBehaviour
             .WithCancelingThrough("<Keyboard>/escape") // Cancel rebind if Escape is pressed
             .OnMatchWaitForAnother(0.1f) // Wait for a short period to avoid accidental inputs
             .OnComplete(operation => FinishRebinding(operation, actionToRebind, bindingId))
-            .OnCancel(operation => CancelRebinding(operation))
+            .OnCancel(operation => CancelRebinding(operation, actionToRebind))
             .Start();
-    
-        actionToRebind.Enable();
     }
 
     public void DefaultRebind()
@@ -56,25 +54,48 @@ public class KeybindsMenu : MonoBehaviour
         Debug.Log($"Rebinding to default");
     }
 
-    private void FinishRebinding(InputActionRebindingExtensions.RebindingOperation operation, InputAction actionToRebind, int bindingId)
+    private void FinishRebinding(InputActionRebindingExtensions.RebindingOperation operation, InputAction actionToRebind, int bindingIndex)
     {
         operation.Dispose();
 
-        // Here you can update your UI to reflect the new binding
-        Debug.Log($"Rebind Complete: {actionToRebind.bindings[bindingId].effectivePath}");
-    }
+        // Extract the new binding path
+        string newBindingPath = actionToRebind.bindings[bindingIndex].effectivePath;
+        
+        // Update the static Settings class with the new binding
+        switch (actionToRebind.name)
+        {
+            case "MoveUp":
+                Settings.moveUp = newBindingPath;
+                break;
+            case "MoveDown":
+                Settings.moveDown = newBindingPath;
+                break;
+            case "MoveLeft":
+                Settings.moveLeft = newBindingPath;
+                break;
+            case "MoveRight":
+                Settings.moveRight = newBindingPath;
+                break;
+            case "Jump":
+                Settings.jump = newBindingPath;
+                break;
+            default:
+                Debug.LogWarning($"Unknown action rebind: {actionToRebind.name}");
+                break;
+        }
 
-    private void CancelRebinding(InputActionRebindingExtensions.RebindingOperation operation)
+        UpdateButtonText();
+
+        actionToRebind.Enable();
+}
+
+    private void CancelRebinding(InputActionRebindingExtensions.RebindingOperation operation, InputAction actionToRebind)
     {
+        actionToRebind.Enable();
         operation.Dispose();
         Debug.Log("Rebinding Cancelled");
 
         // Restore the original bindings if needed or update UI to reflect the cancellation
-    }
-
-    private void ChangeButtonText(Button button, string newText)
-    {
-        button.transform.Find("KeybindText").GetComponent<TextMeshProUGUI>().text = newText;
     }
 
     #region Main Buttons for Keybinds
@@ -86,9 +107,6 @@ public class KeybindsMenu : MonoBehaviour
         int bindingIndex = 1;
 
         StartRebinding(actionAsset.FindAction(action), bindingIndex);
-        
-        UpdateButtonText();
-        Debug.Log($"New binding: {actionAsset.FindAction("Move").bindings[1].effectivePath}");
     }
 
     public void ChangeMoveDownBinding()
@@ -97,9 +115,6 @@ public class KeybindsMenu : MonoBehaviour
         int bindingIndex = 2;
 
         StartRebinding(actionAsset.FindAction(action), bindingIndex);
-        
-        UpdateButtonText();
-        Debug.Log($"New binding: {actionAsset.FindAction("Move").bindings[2].effectivePath}");
     }
     public void ChangeMoveLeftBinding()
     {
@@ -107,9 +122,6 @@ public class KeybindsMenu : MonoBehaviour
         int bindingIndex = 3;
 
         StartRebinding(actionAsset.FindAction(action), bindingIndex);
-        
-        UpdateButtonText();
-        Debug.Log($"New binding: {actionAsset.FindAction("Move").bindings[3].effectivePath}");
     }
 
     public void ChangeMoveRightBinding()
@@ -118,9 +130,6 @@ public class KeybindsMenu : MonoBehaviour
         int bindingIndex = 4;
 
         StartRebinding(actionAsset.FindAction(action), bindingIndex);
-        
-        UpdateButtonText();
-        Debug.Log($"New binding: {actionAsset.FindAction("Move").bindings[1].effectivePath}");
     }
 
     #endregion
