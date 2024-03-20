@@ -8,9 +8,21 @@ public class KeybindsMenu : MonoBehaviour
 {
     [SerializeField] private InputActionAsset actionAsset; // Assign this in the editor
 
-    [SerializeField] private Button moveUpButton;
+    [SerializeField] private Button[] MoveKeybindButtons;
+    // [SerializeField] private Button[] OtherKeybindButtons;
 
     private InputActionRebindingExtensions.RebindingOperation rebindingOperation;
+
+    void Start()
+    {
+        // Set text for Move keybinds
+        for (int i = 0; i < MoveKeybindButtons.Length; i++)
+        {   
+            MoveKeybindButtons[i].transform.Find("KeybindText").GetComponent<Text>().text = actionAsset.FindAction("Move").bindings[i+1].path;
+        }
+
+        // Set text for other keybinds
+    }
 
     // Call this method when the rebind button is clicked, passing the action to rebind
     public void StartRebinding(InputAction actionToRebind, int bindingId)
@@ -51,50 +63,11 @@ public class KeybindsMenu : MonoBehaviour
         // Restore the original bindings if needed or update UI to reflect the cancellation
     }
 
-    // Call this method to change the binding of an action
-    // Input example: actionName = "Move", newBinding = "WASD/Up"
-    // private void ChangeBinding(string actionName, Button specificButton, string bindingName, int bindingIndex = -1)
-    // {
-    //     Debug.Log($"Changing binding for {actionName} to {bindingName}");
-
-    //     var split_actionName = actionName.Split('/');
-    //     var found_action = actionAsset.FindAction(split_actionName[0]);
-    //     if (split_actionName.Length > 1)
-    //     {
-    //         int subAcionts = found_action.actionMap.actions.Count;
-    //         for (int i = 0; i < subAcionts; i++)
-    //         {
-    //             if (found_action.actionMap.actions[i].name == split_actionName[1])
-    //             {
-    //                 found_action = found_action.actionMap.actions[i];
-    //                 break;
-    //             }
-    //         }
-    //     }
-
-    //     int bindingIntex = -1;
-    //     for (int i = 0; i < found_action.bindings.Count; i++)
-    //     {
-    //         if (found_action.bindings[i].name == bindingName)
-    //         {
-    //             bindingIndex = i;
-    //             break;
-    //         }
-    //     }
-    //     Debug.Log($"found_action: {found_action}");
-    //     Debug.Log($"Binding index: {bindingIndex}");
-    //     string newBinding = StartRebinding(found_action, bindingIndex);
-    //     Debug.Log($"New binding: {newBinding}");
-    // }
-
     #region Main Buttons for Keybinds
     
+    // Movement Rebinding Functions
     public void ChangeMoveUpBinding()
-    {
-        Debug.Log("Move Up button clicked");
-        Debug.Log($"Current binding2: {actionAsset.FindAction("Move").bindings[2].effectivePath}");
-        Debug.Log($"Current binding3: {actionAsset.FindAction("Move").bindings[3].effectivePath}");
-        
+    {   
         string action = "Move";
         int bindingIndex = 1;
 
@@ -104,22 +77,28 @@ public class KeybindsMenu : MonoBehaviour
 
     public void ChangeMoveDownBinding()
     {
-        var currentBinding = actionAsset.FindAction("Move").bindings[2].effectivePath;
-        // var moveAction = actionAsset.FindAction("Move");
-        // ChangeBinding("Move", moveUpButton, "Keyboard/w", -1);
+        string action = "Move";
+        int bindingIndex = 2;
+
+        StartRebinding(actionAsset.FindAction(action), bindingIndex);
+        Debug.Log($"New binding: {actionAsset.FindAction("Move").bindings[2].effectivePath}");
     }
     public void ChangeMoveLeftBinding()
     {
-        var currentBinding = actionAsset.FindAction("Move").bindings[3].effectivePath;
-        // var moveAction = actionAsset.FindAction("Move");
-        // ChangeBinding("Move", moveUpButton, "Keyboard/w", -1);
+        string action = "Move";
+        int bindingIndex = 3;
+
+        StartRebinding(actionAsset.FindAction(action), bindingIndex);
+        Debug.Log($"New binding: {actionAsset.FindAction("Move").bindings[3].effectivePath}");
     }
 
     public void ChangeMoveRightBinding()
     {
-        var currentBinding = actionAsset.FindAction("Move").bindings[4].effectivePath;
-        // var moveAction = actionAsset.FindAction("Move");
-        // ChangeBinding("Move", moveUpButton, "Keyboard/w", -1);
+        string action = "Move";
+        int bindingIndex = 4;
+
+        StartRebinding(actionAsset.FindAction(action), bindingIndex);
+        Debug.Log($"New binding: {actionAsset.FindAction("Move").bindings[1].effectivePath}");
     }
 
     #endregion
