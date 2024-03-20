@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class KeybindsMenu : MonoBehaviour
 {
@@ -13,12 +15,19 @@ public class KeybindsMenu : MonoBehaviour
 
     private InputActionRebindingExtensions.RebindingOperation rebindingOperation;
 
-    void Start()
+    // On set active
+    void OnEnable() 
+    {
+        UpdateButtonText();
+    }
+
+    private void UpdateButtonText()
     {
         // Set text for Move keybinds
         for (int i = 0; i < MoveKeybindButtons.Length; i++)
-        {   
-            MoveKeybindButtons[i].transform.Find("KeybindText").GetComponent<Text>().text = actionAsset.FindAction("Move").bindings[i+1].path;
+        {
+            MoveKeybindButtons[i].transform.Find("KeybindText").GetComponent<TextMeshProUGUI>().text = actionAsset.FindAction("Move").bindings[i+1].path.Split('/')[1];
+            Debug.Log($"Move Keybind {i+1}: {actionAsset.FindAction("Move").bindings[i+1].effectivePath}");
         }
 
         // Set text for other keybinds
@@ -63,6 +72,11 @@ public class KeybindsMenu : MonoBehaviour
         // Restore the original bindings if needed or update UI to reflect the cancellation
     }
 
+    private void ChangeButtonText(Button button, string newText)
+    {
+        button.transform.Find("KeybindText").GetComponent<TextMeshProUGUI>().text = newText;
+    }
+
     #region Main Buttons for Keybinds
     
     // Movement Rebinding Functions
@@ -72,6 +86,8 @@ public class KeybindsMenu : MonoBehaviour
         int bindingIndex = 1;
 
         StartRebinding(actionAsset.FindAction(action), bindingIndex);
+        
+        UpdateButtonText();
         Debug.Log($"New binding: {actionAsset.FindAction("Move").bindings[1].effectivePath}");
     }
 
@@ -81,6 +97,8 @@ public class KeybindsMenu : MonoBehaviour
         int bindingIndex = 2;
 
         StartRebinding(actionAsset.FindAction(action), bindingIndex);
+        
+        UpdateButtonText();
         Debug.Log($"New binding: {actionAsset.FindAction("Move").bindings[2].effectivePath}");
     }
     public void ChangeMoveLeftBinding()
@@ -89,6 +107,8 @@ public class KeybindsMenu : MonoBehaviour
         int bindingIndex = 3;
 
         StartRebinding(actionAsset.FindAction(action), bindingIndex);
+        
+        UpdateButtonText();
         Debug.Log($"New binding: {actionAsset.FindAction("Move").bindings[3].effectivePath}");
     }
 
@@ -98,6 +118,8 @@ public class KeybindsMenu : MonoBehaviour
         int bindingIndex = 4;
 
         StartRebinding(actionAsset.FindAction(action), bindingIndex);
+        
+        UpdateButtonText();
         Debug.Log($"New binding: {actionAsset.FindAction("Move").bindings[1].effectivePath}");
     }
 
