@@ -10,6 +10,8 @@ public class KeybindsMenu : MonoBehaviour
 {
     [SerializeField] private InputActionAsset actionAsset; // Assign this in the editor
 
+    [SerializeField] private GameObject RebindingIndicatorText;
+
     [SerializeField] private Button[] MoveKeybindButtons;
     // [SerializeField] private Button[] OtherKeybindButtons;
 
@@ -18,6 +20,7 @@ public class KeybindsMenu : MonoBehaviour
     // On set active
     void OnEnable() 
     {
+        RebindingIndicatorText.SetActive(false);
         UpdateButtonText();
     }
 
@@ -44,6 +47,7 @@ public class KeybindsMenu : MonoBehaviour
     public void StartRebinding(InputAction actionToRebind, int bindingId)
     {
         actionToRebind.Disable();
+        RebindingIndicatorText.SetActive(true);
 
         // Cancel any existing rebind operation
         rebindingOperation?.Cancel();
@@ -92,14 +96,15 @@ public class KeybindsMenu : MonoBehaviour
         }
 
         UpdateButtonText();
-
+        RebindingIndicatorText.SetActive(false);
         actionToRebind.Enable();
 }
 
     private void CancelRebinding(InputActionRebindingExtensions.RebindingOperation operation, InputAction actionToRebind)
     {
-        actionToRebind.Enable();
         operation.Dispose();
+        RebindingIndicatorText.SetActive(false);
+        actionToRebind.Enable();
         Debug.Log("Rebinding Cancelled");
 
         // Restore the original bindings if needed or update UI to reflect the cancellation
