@@ -93,6 +93,28 @@ public class KeybindsMenu : MonoBehaviour
                     Debug.LogWarning($"Unknown action rebind: {actionToRebind.name}");
                     break;
             }
+        } else {
+            switch (actionToRebind.name)
+            {
+                case "Jump":
+                    Settings.jump = newBindingPath;
+                    break;
+                case "WalkToggle":
+                    Settings.WalkToggle = newBindingPath;
+                    break;
+                case "Dash":
+                    Settings.dash = newBindingPath;
+                    break;
+                case "AttackDash":
+                    Settings.AttackDash = newBindingPath;
+                    break;
+                case "LockOn":
+                    Settings.LockOn = newBindingPath;
+                    break;
+                default:
+                    Debug.LogWarning($"Unknown action rebind: {actionToRebind.name}");
+                    break;
+            }
         }
 
         UpdateButtonText();
@@ -179,6 +201,7 @@ public class KeybindsMenu : MonoBehaviour
 
     public void ChangeLockOnBinding()
     {
+        Debug.Log($"Current Lock On binding from ActionAsset: {actionAsset.FindAction("LockOn").bindings[0].effectivePath}");
         string action = "LockOn";
         int bindingIndex = 0;
 
