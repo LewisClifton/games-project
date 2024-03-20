@@ -24,10 +24,17 @@ public class KeybindsMenu : MonoBehaviour
     private void UpdateButtonText()
     {
         // Set text for Move keybinds
-        for (int i = 0; i < MoveKeybindButtons.Length; i++)
+        if (MoveKeybindButtons.Length >= 4)
         {
-            MoveKeybindButtons[i].transform.Find("KeybindText").GetComponent<TextMeshProUGUI>().text = actionAsset.FindAction("Move").bindings[i+1].path.Split('/')[1];
-            Debug.Log($"Button text after update: {MoveKeybindButtons[i].transform.Find("KeybindText").GetComponent<TextMeshProUGUI>().text}");
+            MoveKeybindButtons[0].transform.Find("KeybindText").GetComponent<TextMeshProUGUI>().text = Settings.moveUp.Split('/')[1];
+            MoveKeybindButtons[1].transform.Find("KeybindText").GetComponent<TextMeshProUGUI>().text = Settings.moveDown.Split('/')[1];
+            MoveKeybindButtons[2].transform.Find("KeybindText").GetComponent<TextMeshProUGUI>().text = Settings.moveLeft.Split('/')[1];
+            MoveKeybindButtons[3].transform.Find("KeybindText").GetComponent<TextMeshProUGUI>().text = Settings.moveRight.Split('/')[1];
+            // Similarly, update for other keybind buttons like Jump
+        }
+        else
+        {
+            Debug.LogError("MoveKeybindButtons does not have enough elements.");
         }
 
         // Set text for other keybinds
@@ -62,26 +69,26 @@ public class KeybindsMenu : MonoBehaviour
         string newBindingPath = actionToRebind.bindings[bindingIndex].effectivePath;
         
         // Update the static Settings class with the new binding
-        switch (actionToRebind.name)
+        if (actionToRebind.name == "Move")
         {
-            case "MoveUp":
-                Settings.moveUp = newBindingPath;
-                break;
-            case "MoveDown":
-                Settings.moveDown = newBindingPath;
-                break;
-            case "MoveLeft":
-                Settings.moveLeft = newBindingPath;
-                break;
-            case "MoveRight":
-                Settings.moveRight = newBindingPath;
-                break;
-            case "Jump":
-                Settings.jump = newBindingPath;
-                break;
-            default:
-                Debug.LogWarning($"Unknown action rebind: {actionToRebind.name}");
-                break;
+            switch (bindingIndex)
+            {
+                case 1:
+                    Settings.moveUp = newBindingPath;
+                    break;
+                case 2:
+                    Settings.moveDown = newBindingPath;
+                    break;
+                case 3:
+                    Settings.moveLeft = newBindingPath;
+                    break;
+                case 4:
+                    Settings.moveRight = newBindingPath;
+                    break;
+                default:
+                    Debug.LogWarning($"Unknown action rebind: {actionToRebind.name}");
+                    break;
+            }
         }
 
         UpdateButtonText();
