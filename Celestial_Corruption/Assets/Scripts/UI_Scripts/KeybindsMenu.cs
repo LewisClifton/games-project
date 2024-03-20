@@ -144,5 +144,46 @@ public class KeybindsMenu : MonoBehaviour
         StartRebinding(actionAsset.FindAction(action), bindingIndex);
     }
 
+    // Similarly, add functions for other keybinds
+    public void ChangeJumpBinding()
+    {
+        string action = "Jump";
+        int bindingIndex = 0;
+
+        StartRebinding(actionAsset.FindAction(action), bindingIndex);
+    }
+
+    public void ChangeWalkToggleBinding()
+    {
+        string action = "WalkToggle";
+        int bindingIndex = 0;
+
+        StartRebinding(actionAsset.FindAction(action), bindingIndex);
+    }
+
+    public void ChangeDashBinding()
+    {
+        string action = "Dash";
+        int bindingIndex = 0;
+
+        StartRebinding(actionAsset.FindAction(action), bindingIndex);
+    }
+
+    public void ChangeAttackDashBinding()
+    {
+        string action = "AttackDash";
+        int bindingIndex = 0;
+
+        StartRebinding(actionAsset.FindAction(action), bindingIndex);
+    }
+
+    public void ChangeLockOnBinding()
+    {
+        string action = "LockOn";
+        int bindingIndex = 0;
+
+        StartRebinding(actionAsset.FindAction(action), bindingIndex);
+    }
+
     #endregion
 }
