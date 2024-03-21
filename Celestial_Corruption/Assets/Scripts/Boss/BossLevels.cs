@@ -1,12 +1,11 @@
-using sc.terrain.vegetationspawner;
 using System.Collections;
 using System.Collections.Generic;
-using System.Net;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem.EnhancedTouch;
 
-public class Boss : MonoBehaviour
+/*
+This script is to generate attack mainly based on player location
+*/
+public class BossLevels : MonoBehaviour
 {
     public int maxHealth = 40;
     private int currentHealth;
@@ -33,10 +32,13 @@ public class Boss : MonoBehaviour
     private GameObject lineRendererObject;
     private CapsuleCollider playerCollider;
     private MeshCollider lineCollider;
+
     private Vector3 playerPos;
     private Animator animator;
+
     private bool playerCD = false;
-    PlayerHealth playerHealth;
+
+    PlayerHealth playerHealth; // get Player health
 
     [Header("SkyCrystalAttack")]
 
@@ -115,12 +117,8 @@ public class Boss : MonoBehaviour
             }
         }
     }
-    void CDOver()
-    {
-        playerCD = false;
-    }
 
-    private void takeDamage()
+    private void takeDamage()   // Not sure whether need this in the level design 
     {
         if (invincibilityTime == 0)
         {
@@ -138,18 +136,17 @@ public class Boss : MonoBehaviour
         }
     }
 
-    // Here need to modify to achieve random attack
-    void HealthCheck(float healthPercent)
+    void HealthCheck(float healthPercent) // Not sure whether need this in the level design
     {
         if (healthPercent <= 0.8f && healthPercent > 0.6f)
         {
             currentPhase = 2;
         }
-        else if(healthPercent <= 0.6f && healthPercent > 0.4f)
+        else if (healthPercent <= 0.6f && healthPercent > 0.4f)
         {
             currentPhase = 3;
         }
-        else if(healthPercent <= 0.4f && healthPercent > 0.2f)
+        else if (healthPercent <= 0.4f && healthPercent > 0.2f)
         {
             currentPhase = 4;
         }
@@ -157,154 +154,6 @@ public class Boss : MonoBehaviour
         {
             currentPhase = 5;
         }
-    }
-
-    void RandomAttack()
-    {
-        int randomAttack = Random.Range(1, 6);
-        switch (randomAttack)
-        {
-            case 1:
-                animator.SetBool("IsCrouching", true);//needs unique animation
-                Invoke("BeamAttack", 1f);
-                break;
-            case 2:
-                animator.SetBool("IsAiming", true);//needs unique animation
-                Invoke("CurvedProjectileAttack", 1f);
-                break;
-            case 3:
-                animator.SetBool("IsStomping", true);
-                Invoke("StompAttack", 1.8f);
-                Invoke("StopStomping", 1f);
-                break;
-            case 4:
-                animator.SetBool("IsSummoning", true);
-                Invoke("SkyCrystalAttack", 1f);
-                break;
-            case 5:
-                animator.SetBool("IsSummoning", true);
-                Invoke("GroundCrystalAttack", 1f);
-                break;
-            case 6:
-                UniqueAttack();
-                break;
-        }
-    }
-
-    void UniqueAttack()
-    {
-        switch(currentPhase)
-        {
-            case 1:
-                animator.SetBool("IsStomping", true);
-                Debug.Log("un stomp");
-                Invoke("StompAttack", 1.8f);//animation is done just needs unique attack
-                Invoke("StopStomping", 1f);
-                break;
-            case 2:
-                animator.SetBool("IsSpinning", true);
-                Debug.Log("un spin");
-                Invoke("SpinAttack", 1f);//animation is done just needs unique attack
-                break;
-            case 3:
-                animator.SetBool("IsSummoning", true);
-                Debug.Log("un crystalAttack");
-                Invoke("SkyCrystalAttack", 1f);//animation is done just needs unique attack
-                break;
-            case 4:
-                animator.SetBool("IsSummoning", true);
-                Debug.Log("un ground");
-                Invoke("GroundCrystalAttack", 1f);//animation is done just needs unique attack
-                break;
-        }
-    }
-
-    void PlayerPos()
-    {
-        playerPos = player.position;
-    }
-
-    void BeamAttack()
-    {
-        lineRendererObject = new GameObject("LineRendererObject");
-        LineRenderer lineRenderer = lineRendererObject.AddComponent<LineRenderer>();
-        lineRenderer.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
-        lineRenderer.startWidth = 1f;
-        lineRenderer.endWidth = 0.2f;
-        Gradient gradient = new Gradient();
-        gradient.SetKeys(
-            new GradientColorKey[] { new GradientColorKey(Color.blue, 0.0f), new GradientColorKey(Color.red, 1.0f)},
-            new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(1.0f, 1.0f)}
-            );
-        lineRenderer.colorGradient = gradient;
-        lineRenderer.transform.parent = transform;
-        lineRenderer.SetPosition(0, AttackPos.position);
-        lineRenderer.SetPosition(1, playerPos);
-
-        
-        lineCollider = lineRenderer.AddComponent<MeshCollider>();
-        Mesh mesh = new Mesh();
-        lineRenderer.BakeMesh(mesh);
-        lineCollider.sharedMesh = mesh;
-
-        lineCollider.transform.position = lineRenderer.transform.position;
-        lineCollider.transform.localScale = lineRenderer.transform.localScale; 
-
-        Destroy(lineRendererObject, 2f);
-
-        Invoke("StopCrouching", 1f);
-    } 
-    void StopCrouching()
-    {
-        animator.SetBool("IsCrouching", false);
-    }
-
-    public void CurvedProjectileAttack()
-    {
-        StartCoroutine(SpawnCurvedProjectiles());
-        Invoke("StopAiming", 1f);
-    }
-
-    IEnumerator SpawnCurvedProjectiles()
-    {
-        for (int i = 0; i < 10; i++)
-        {
-            GameObject projectile = Instantiate(curveAttackObj, AttackPos.position + (Random.insideUnitSphere * 20f), Quaternion.identity);
-            CurvedProjectile curvedScript = projectile.GetComponent<CurvedProjectile>();
-            curvedScript.player = player;
-            curvedScript.playerHealth = playerHealth;
-
-            yield return new WaitForSeconds(0.2f);
-        }
-    }
-    void StopAiming()
-    {
-        animator.SetBool("IsAiming", false);
-    }
-
-    void StompAttack()
-    {
-        Debug.Log("STOOOOMP");
-        Vector3 footPos = new Vector3(FootPos.position.x, FootPos.position.y - 0.7f, FootPos.position.z);
-        GameObject wave = Instantiate(stompAttackObj, footPos, Quaternion.identity);
-        wave.transform.Rotate(90f, 0f, 0f);
-        StompWave stompScript = wave.GetComponent<StompWave>();
-        stompScript.player = player;
-    }
-    void StopStomping()
-    {
-        animator.SetBool("IsStomping", false);
-    }
-
-    void SpinAttack()
-    {
-        Debug.Log("SPiiiiiiiinnnnnn");
-        StartCoroutine(SpawnCurvedProjectiles());//DELETE THIS LINE AFTER MVP
-        Invoke("StopSpinning", 1f);
-    }
-    void StopSpinning()
-    {
-        animator.SetBool("IsSpinning", false);
     }
 
     // this is where implement the crystal attack script
@@ -318,19 +167,18 @@ public class Boss : MonoBehaviour
 
     public void SpawnCrystals()
     {
-        int crystalNumber = Random.Range(minCrystalNumber, maxCrystalNumber + 1); // Randomize the number of crystals to spawn within the range
+        int crystalNumber = Random.Range(minCrystalNumber, maxCrystalNumber + 1); 
 
         for (int i = 0; i < crystalNumber; i++)
         {
-            Vector3 randomDirection = Random.insideUnitSphere; // Get a random direction
-            randomDirection.y = 0; // Ensure it's on the same plane as boss (2D)
-            randomDirection.Normalize(); // Normalize it to have a magnitude of 1
-            float randomDistance = Random.Range(minSpawnRadius, maxSpawnRadius); // Random distance within range
-            Vector3 spawnPosition = boss.transform.position + randomDirection * randomDistance; // Calculate spawn position
-            spawnPosition.y = height; // Set the height of the crystal
+            Vector3 randomDirection = Random.insideUnitSphere; 
+            randomDirection.y = 0; 
+            randomDirection.Normalize(); 
+            float randomDistance = Random.Range(minSpawnRadius, maxSpawnRadius); 
+            Vector3 spawnPosition = playerPos + randomDirection * randomDistance; // Calculate spawn position, here change to Player location
+            spawnPosition.y = height; 
 
-            // Check if there's any crystal too close to the spawn position
-            Collider[] colliders = Physics.OverlapSphere(spawnPosition, crystaldistance); // Adjust the radius as needed
+            Collider[] colliders = Physics.OverlapSphere(spawnPosition, crystaldistance); 
             bool hasCloseCrystal = false;
             foreach (var collider in colliders)
             {
@@ -341,20 +189,20 @@ public class Boss : MonoBehaviour
                 }
             }
 
-            // If there's a crystal too close, skip this iteration
+            
             if (hasCloseCrystal)
             {
                 continue;
             }
 
-            // Instantiate crystal at spawn position
+            
             GameObject crystal = Instantiate(CrystalPrefab, spawnPosition, Quaternion.identity) as GameObject;
-            crystal.SetActive(true); // Ensure the instance is set to active
+            crystal.SetActive(true); 
 
-            // Instantiate circle
+            
             GameObject circle = Instantiate(MagicCirclePrefab, new Vector3(crystal.transform.position.x, circleY, crystal.transform.position.z), Quaternion.identity);
             circle.SetActive(true);
-            // here add the code to disable the gravity and enable it after hovertime
+            
             HoverCrystal(crystal);
             Destroy(crystal, crystalDestoryTime); // Destroy the crystal after a certain time
             Destroy(circle, crystalDestoryTime); // Destory the crystal after a certain time
@@ -409,16 +257,16 @@ public class Boss : MonoBehaviour
         }
     }
 
-    Vector3 GenerateRandomTrapPosition()
+    Vector3 GenerateRandomTrapPosition()  // Change to generate based on Player position
     {
-        float bossX = boss.transform.position.x;
-        float bossZ = boss.transform.position.z;
+        float playerX = playerPos.x;
+        float playerZ = playerPos.z;
         Vector3 trapPosition = Vector3.zero;
         bool positionFound = false;
 
         while (!positionFound)
         {
-            trapPosition = new Vector3(Random.Range(bossX - maxX, bossX + maxX), 0f, Random.Range(bossZ - maxZ, bossZ + maxZ));
+            trapPosition = new Vector3(Random.Range(playerX - maxX, playerX + maxX), 0f, Random.Range(playerZ - maxZ, playerZ + maxZ));
             positionFound = true;
 
             foreach (Vector3 existingTrapPosition in trapPositions)
