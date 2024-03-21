@@ -24,7 +24,7 @@ public class Crystal : MonoBehaviour
         if (collision.gameObject.name.Equals("Player"))
         {
             PlayerHealth.TakeDamage(damage);
-
+            Debug.Log("Crystal damage");
             Destroy(gameObject);
         }
     }

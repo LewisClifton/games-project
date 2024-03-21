@@ -38,6 +38,36 @@ public class Boss : MonoBehaviour
     private bool playerCD = false;
     PlayerHealth playerHealth;
 
+    [Header("SkyCrystalAttack")]
+
+    [SerializeField] GameObject CrystalPrefab;
+    [SerializeField] GameObject MagicCirclePrefab; // Prefab for circle
+    [SerializeField] GameObject boss;
+    [SerializeField] float height; // the height of the crystal
+    [SerializeField] float circleY; // this is to ensure the circle Y location in case some problems
+    [SerializeField] float crystaldistance; // the distance use to avoid crystals collision problem
+    [SerializeField] int minCrystalNumber; // minimum number of crystals to spawn
+    [SerializeField] int maxCrystalNumber; // maximum number of crystals to spawn
+    [SerializeField] float minSpawnRadius; // Minimum crystal distance from boss
+    [SerializeField] float maxSpawnRadius; // Maximum crystal distance from boss
+    [SerializeField] float spawnCooldown; // Cooldown time between each crystal spawn
+    [SerializeField] float crystalDestoryTime; // The time for crystal to destroy
+    [SerializeField] float fallSpeed; // Fall speed of the crystals
+    [SerializeField] float hovertime; // The time for crystal to hover before falling
+
+    [Header("GroundCrystalAttack")]
+
+    [SerializeField] GameObject bossprefab;
+    [SerializeField] GameObject trapPrefab; // the circle show the trap
+    [SerializeField] GameObject beamPrefab; // the beam gonna do damage
+    [SerializeField] float maxX;
+    [SerializeField] float maxZ;
+    [SerializeField] float spawndistance; // distance between each of them
+    [SerializeField] int number; // how many of these
+    [SerializeField] float trapDuration; // the duration of the trap
+    [SerializeField] float beamDuration; // the duration of the beam
+    [SerializeField] float beamHeight; // the height of the beam
+    private List<Vector3> trapPositions = new List<Vector3>(); // Keep track of trap positions
     // Start is called before the first frame update
     void Start()
     {
@@ -106,25 +136,30 @@ public class Boss : MonoBehaviour
         }
     }
 
+    // Here need to modify to achieve random attack
     void HealthCheck(float healthPercent)
     {
-        if (healthPercent <= 0.75f && healthPercent > 0.5f)
+        if (healthPercent <= 0.8f && healthPercent > 0.6f)
         {
             currentPhase = 2;
         }
-        else if(healthPercent <= 0.5f && healthPercent > 0.25f)
+        else if(healthPercent <= 0.6f && healthPercent > 0.4f)
         {
             currentPhase = 3;
         }
-        else if(healthPercent <= 0.25f)
+        else if(healthPercent <= 0.4f && healthPercent > 0.2f)
         {
             currentPhase = 4;
+        }
+        else if (healthPercent <= 0.2f && healthPercent > 0f)
+        {
+            currentPhase = 5;
         }
     }
 
     void RandomAttack()
     {
-        int randomAttack = Random.Range(1, 4);
+        int randomAttack = Random.Range(1, 6);
         switch (randomAttack)
         {
             case 1:
@@ -136,6 +171,19 @@ public class Boss : MonoBehaviour
                 Invoke("CurvedProjectileAttack", 1f);
                 break;
             case 3:
+                animator.SetBool("IsStomping", true);
+                Invoke("StompAttack", 1.8f);
+                Invoke("StopStomping", 1f);
+                break;
+            case 4:
+                animator.SetBool("IsSummoning", true);
+                Invoke("SkyCrystalAttack", 1f);
+                break;
+            case 5:
+                animator.SetBool("IsSummoning", true);
+                Invoke("GroundCrystalAttack", 1f);
+                break;
+            case 6:
                 UniqueAttack();
                 break;
         }
@@ -147,22 +195,25 @@ public class Boss : MonoBehaviour
         {
             case 1:
                 animator.SetBool("IsStomping", true);
+                Debug.Log("un stomp");
                 Invoke("StompAttack", 1.8f);//animation is done just needs unique attack
                 Invoke("StopStomping", 1f);
                 break;
             case 2:
                 animator.SetBool("IsSpinning", true);
+                Debug.Log("un spin");
                 Invoke("SpinAttack", 1f);//animation is done just needs unique attack
                 break;
             case 3:
                 animator.SetBool("IsSummoning", true);
+                Debug.Log("un crystalAttack");
                 Invoke("SkyCrystalAttack", 1f);//animation is done just needs unique attack
                 break;
             case 4:
                 animator.SetBool("IsSummoning", true);
+                Debug.Log("un ground");
                 Invoke("GroundCrystalAttack", 1f);//animation is done just needs unique attack
                 break;
-
         }
     }
 
@@ -254,18 +305,147 @@ public class Boss : MonoBehaviour
         animator.SetBool("IsSpinning", false);
     }
 
+    // this is where implement the crystal attack script
     void SkyCrystalAttack()
     {
+        SpawnCrystals();
         Debug.Log("From the sky");
         Invoke("StopSummoning", 1f);
 
     }
 
+    public void SpawnCrystals()
+    {
+        int crystalNumber = Random.Range(minCrystalNumber, maxCrystalNumber + 1); // Randomize the number of crystals to spawn within the range
+
+        for (int i = 0; i < crystalNumber; i++)
+        {
+            Vector3 randomDirection = Random.insideUnitSphere; // Get a random direction
+            randomDirection.y = 0; // Ensure it's on the same plane as boss (2D)
+            randomDirection.Normalize(); // Normalize it to have a magnitude of 1
+            float randomDistance = Random.Range(minSpawnRadius, maxSpawnRadius); // Random distance within range
+            Vector3 spawnPosition = boss.transform.position + randomDirection * randomDistance; // Calculate spawn position
+            spawnPosition.y = height; // Set the height of the crystal
+
+            // Check if there's any crystal too close to the spawn position
+            Collider[] colliders = Physics.OverlapSphere(spawnPosition, crystaldistance); // Adjust the radius as needed
+            bool hasCloseCrystal = false;
+            foreach (var collider in colliders)
+            {
+                if (collider.CompareTag("Crystal"))
+                {
+                    hasCloseCrystal = true;
+                    break;
+                }
+            }
+
+            // If there's a crystal too close, skip this iteration
+            if (hasCloseCrystal)
+            {
+                continue;
+            }
+
+            // Instantiate crystal at spawn position
+            GameObject crystal = Instantiate(CrystalPrefab, spawnPosition, Quaternion.identity) as GameObject;
+            crystal.SetActive(true); // Ensure the instance is set to active
+
+            // Instantiate circle
+            GameObject circle = Instantiate(MagicCirclePrefab, new Vector3(crystal.transform.position.x, circleY, crystal.transform.position.z), Quaternion.identity);
+            circle.SetActive(true);
+            // here add the code to disable the gravity and enable it after hovertime
+            HoverCrystal(crystal);
+            Destroy(crystal, crystalDestoryTime); // Destroy the crystal after a certain time
+            Destroy(circle, crystalDestoryTime); // Destory the crystal after a certain time
+        }
+    }
+
+    public void HoverCrystal(GameObject crystal)
+    {
+        Rigidbody crystalRigidbody = crystal.GetComponent<Rigidbody>();
+        if (crystalRigidbody != null)
+        {
+            crystalRigidbody.useGravity = false; //Disable gravity for the crystal
+            // Invoke method to restore gravity after hover time
+            Invoke("ApplyFallSpeed", hovertime);
+        }
+    }
+
+    public void ApplyFallSpeed()
+    {
+        GameObject[] crystals = GameObject.FindGameObjectsWithTag("Crystal");
+        foreach (GameObject crystal in crystals)
+        {
+            // Add downward velocity to the crystal
+            Rigidbody crystalRigidbody = crystal.GetComponent<Rigidbody>();
+            if (crystalRigidbody != null)
+            {
+                crystalRigidbody.useGravity = true;
+                crystalRigidbody.velocity = new Vector3(0, -fallSpeed, 0); // Apply falling velocity
+            }
+        }
+    }
+
+    // this is where implement the beam atatck script
     void GroundCrystalAttack()
     {
+        Generatetrap();
         Debug.Log("From the ground");
         Invoke("StopSummoning", 1f);
     }
+
+    public void Generatetrap()
+    {
+        for (int i = 0; i < number; i++)
+        {
+            Vector3 trapPosition = GenerateRandomTrapPosition();
+            GameObject newTrap = Instantiate(trapPrefab, trapPosition, Quaternion.identity) as GameObject;
+            newTrap.SetActive(true);
+            Destroy(newTrap, trapDuration); // Destroy trap after trapDuration
+
+            // Generate beamObject after trap disappears
+            StartCoroutine(GenerateBeamAfterTrapDisappears(trapPosition));
+        }
+    }
+
+    Vector3 GenerateRandomTrapPosition()
+    {
+        float bossX = boss.transform.position.x;
+        float bossZ = boss.transform.position.z;
+        Vector3 trapPosition = Vector3.zero;
+        bool positionFound = false;
+
+        while (!positionFound)
+        {
+            trapPosition = new Vector3(Random.Range(bossX - maxX, bossX + maxX), 0f, Random.Range(bossZ - maxZ, bossZ + maxZ));
+            positionFound = true;
+
+            foreach (Vector3 existingTrapPosition in trapPositions)
+            {
+                if (Vector3.Distance(trapPosition, existingTrapPosition) < spawndistance)
+                {
+                    positionFound = false;
+                    break;
+                }
+            }
+        }
+
+        trapPositions.Add(trapPosition);
+        return trapPosition;
+    }
+
+    IEnumerator GenerateBeamAfterTrapDisappears(Vector3 trapPosition)
+    {
+        yield return new WaitForSeconds(trapDuration);
+
+        // Generate beamObject at the position of newTrap
+        GameObject newBeam = Instantiate(beamPrefab, trapPosition, Quaternion.identity) as GameObject;
+        newBeam.SetActive(true);
+        // Scale the beam to match beamHeight
+        newBeam.transform.localScale = new Vector3(newBeam.transform.localScale.x, beamHeight, newBeam.transform.localScale.z);
+        Destroy(newBeam, beamDuration); // Destroy beamObject after beamDuration
+    }
+
+
     void StopSummoning()
     {
         animator.SetBool("IsSummoning", false);
