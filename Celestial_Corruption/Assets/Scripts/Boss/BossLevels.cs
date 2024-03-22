@@ -156,6 +156,30 @@ public class BossLevels : MonoBehaviour
         }
     }
 
+    // No need to change this
+    public void CurvedProjectileAttack()
+    {
+        StartCoroutine(SpawnCurvedProjectiles());
+        Invoke("StopAiming", 1f);
+    }
+
+    IEnumerator SpawnCurvedProjectiles()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            GameObject projectile = Instantiate(curveAttackObj, AttackPos.position + (Random.insideUnitSphere * 20f), Quaternion.identity);
+            CurvedProjectile curvedScript = projectile.GetComponent<CurvedProjectile>();
+            curvedScript.player = player;
+            curvedScript.playerHealth = playerHealth;
+
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+    void StopAiming()
+    {
+        animator.SetBool("IsAiming", false);
+    }
+
     // this is where implement the crystal attack script
     void SkyCrystalAttack()
     {
