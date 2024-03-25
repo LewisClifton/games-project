@@ -58,6 +58,8 @@ public class KeybindsMenu : MonoBehaviour
             .OnComplete(operation => FinishRebinding(operation, actionToRebind, bindingId))
             .OnCancel(operation => CancelRebinding(operation, actionToRebind))
             .Start();
+            
+        Debug.Log($"Rebinding {actionToRebind.name} binding {bindingId}");
     }
 
     public void DefaultRebind()
@@ -72,6 +74,9 @@ public class KeybindsMenu : MonoBehaviour
         // Extract the new binding path
         string newBindingPath = actionToRebind.bindings[bindingIndex].effectivePath;
         
+        Debug.Log($"Rebinding finished. New binding path: {newBindingPath}");
+        Debug.Log($"action name: {actionToRebind.name} binding index: {bindingIndex}");
+
         // Update the static Settings class with the new binding
         if (actionToRebind.name == "Move")
         {
@@ -169,6 +174,7 @@ public class KeybindsMenu : MonoBehaviour
     // Similarly, add functions for other keybinds
     public void ChangeJumpBinding()
     {
+        Debug.Log($"Current Jump binding from ActionAsset: {actionAsset.FindAction("Jump").bindings[0].effectivePath}");
         string action = "Jump";
         int bindingIndex = 0;
 
@@ -177,6 +183,7 @@ public class KeybindsMenu : MonoBehaviour
 
     public void ChangeWalkToggleBinding()
     {
+        Debug.Log($"Current Walk Toggle binding from ActionAsset: {actionAsset.FindAction("WalkToggle").bindings[0].effectivePath}");
         string action = "WalkToggle";
         int bindingIndex = 0;
 
@@ -185,6 +192,7 @@ public class KeybindsMenu : MonoBehaviour
 
     public void ChangeDashBinding()
     {
+        Debug.Log($"Current Dash binding from ActionAsset: {actionAsset.FindAction("Dash").bindings[0].effectivePath}");
         string action = "Dash";
         int bindingIndex = 0;
 
@@ -193,6 +201,7 @@ public class KeybindsMenu : MonoBehaviour
 
     public void ChangeAttackDashBinding()
     {
+        Debug.Log($"Current Attack Dash binding from ActionAsset: {actionAsset.FindAction("AttackDash").bindings[0].effectivePath}");
         string action = "AttackDash";
         int bindingIndex = 0;
 
