@@ -22,6 +22,7 @@ public class GameInput : MonoBehaviour
 
     public bool IsJumpPressed()
     {
+        Debug.Log($"Jump input is set to {actionAsset.FindAction("Jump").bindings[0].effectivePath}");
         return actionAsset.FindAction("Jump").triggered;
         // return playerInputActions.Player.Jump.triggered;
     }
@@ -40,7 +41,7 @@ public class GameInput : MonoBehaviour
 
     public bool IsAttackDashPressed()
     {
-        return actionAsset.FindAction("AttackDash").triggered;
+        return actionAsset.FindAction("Attack Dash").triggered;
         // return playerInputActions.Player.AttackDash.triggered;
     }
 
@@ -52,7 +53,7 @@ public class GameInput : MonoBehaviour
     
     public bool IsLockOnPressed()
     {
-        return actionAsset.FindAction("LockOn").triggered;
+        return actionAsset.FindAction("Lock On").triggered;
         // return playerInputActions.Player.LockOn.triggered;
     }
 }
