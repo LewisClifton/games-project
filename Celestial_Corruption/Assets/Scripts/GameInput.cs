@@ -22,34 +22,37 @@ public class GameInput : MonoBehaviour
 
     public bool IsJumpPressed()
     {
-        Debug.Log($"Jump input is set to {playerInputActions.Player.Jump.bindings[0].effectivePath}");
-        Debug.Log($"Jump input is set to2 {actionAsset.FindAction("Jump").bindings[0].effectivePath}");
         return actionAsset.FindAction("Jump").triggered;
         // return playerInputActions.Player.Jump.triggered;
     }
 
     public bool IsWalkTogglePressed()
     {
-        return playerInputActions.Player.WalkToggle.triggered;
+        return actionAsset.FindAction("WalkToggle").triggered;
+        // return playerInputActions.Player.WalkToggle.triggered;
     }
 
     public bool IsFreeDashPressed()
     {
         return playerInputActions.Player.Dash.triggered;
+        // return playerInputActions.Player.Dash.triggered;
     }
 
     public bool IsAttackDashPressed()
     {
-        return playerInputActions.Player.AttackDash.triggered;
+        return actionAsset.FindAction("AttackDash").triggered;
+        // return playerInputActions.Player.AttackDash.triggered;
     }
 
     public bool IsEscapePressed()
     {
-        return playerInputActions.Player.Escape.triggered;
+        return actionAsset.FindAction("Escape").triggered;
+        // return playerInputActions.Player.Escape.triggered;
     }
     
     public bool IsLockOnPressed()
     {
-        return playerInputActions.Player.LockOn.triggered;
+        return actionAsset.FindAction("LockOn").triggered;
+        // return playerInputActions.Player.LockOn.triggered;
     }
 }

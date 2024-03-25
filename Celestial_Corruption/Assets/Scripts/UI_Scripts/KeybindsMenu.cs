@@ -34,6 +34,11 @@ public class KeybindsMenu : MonoBehaviour
             MoveKeybindButtons[2].transform.Find("KeybindText").GetComponent<TextMeshProUGUI>().text = Settings.moveLeft.Split('/')[1];
             MoveKeybindButtons[3].transform.Find("KeybindText").GetComponent<TextMeshProUGUI>().text = Settings.moveRight.Split('/')[1];
             // Similarly, update for other keybind buttons like Jump
+            MoveKeybindButtons[4].transform.Find("Jump").GetComponent<TextMeshProUGUI>().text = Settings.jump.Split('/')[1];
+            MoveKeybindButtons[5].transform.Find("WalkToggle").GetComponent<TextMeshProUGUI>().text = Settings.WalkToggle.Split('/')[1];
+            MoveKeybindButtons[6].transform.Find("Dash").GetComponent<TextMeshProUGUI>().text = Settings.dash.Split('/')[1];
+            MoveKeybindButtons[7].transform.Find("AttackDash").GetComponent<TextMeshProUGUI>().text = Settings.AttackDash.Split('/')[1];
+            MoveKeybindButtons[8].transform.Find("LockOn").GetComponent<TextMeshProUGUI>().text = Settings.LockOn.Split('/')[1];
         }
         else
         {
