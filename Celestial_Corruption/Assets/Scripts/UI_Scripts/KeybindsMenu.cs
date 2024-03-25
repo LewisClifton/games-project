@@ -60,6 +60,7 @@ public class KeybindsMenu : MonoBehaviour
             .Start();
             
         Debug.Log($"Rebinding {actionToRebind.name} binding {bindingId}");
+        Debug.Log($"Current binding path after execution1: {actionToRebind.bindings[bindingId].effectivePath}");
     }
 
     public void DefaultRebind()
@@ -76,6 +77,7 @@ public class KeybindsMenu : MonoBehaviour
         
         Debug.Log($"Rebinding finished. New binding path: {newBindingPath}");
         Debug.Log($"action name: {actionToRebind.name} binding index: {bindingIndex}");
+        Debug.Log($"Current binding path after execution2: {actionToRebind.bindings[bindingIndex].effectivePath}");
 
         // Update the static Settings class with the new binding
         if (actionToRebind.name == "Move")
@@ -125,6 +127,8 @@ public class KeybindsMenu : MonoBehaviour
         UpdateButtonText();
         RebindingIndicatorText.SetActive(false);
         actionToRebind.Enable();
+        Debug.Log($"current binding path after execution3: {actionToRebind.bindings[bindingIndex].effectivePath}");
+        Debug.Log($"Settings.Jump: {Settings.jump}");
 }
 
     private void CancelRebinding(InputActionRebindingExtensions.RebindingOperation operation, InputAction actionToRebind)

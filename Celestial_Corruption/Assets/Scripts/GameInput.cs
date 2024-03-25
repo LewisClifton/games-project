@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameInput : MonoBehaviour
 {
     private PlayerInputActions playerInputActions;
+    public InputActionAsset actionAsset;
 
     private void Awake()
     {
@@ -14,12 +16,16 @@ public class GameInput : MonoBehaviour
 
     public Vector2 GetMovementVectorNormalized()
     {
+        Debug.Log($"Move input is set to {playerInputActions.Player.Move.bindings[0].effectivePath}");
         return playerInputActions.Player.Move.ReadValue<Vector2>().normalized;
     }
 
     public bool IsJumpPressed()
     {
-        return playerInputActions.Player.Jump.triggered;
+        Debug.Log($"Jump input is set to {playerInputActions.Player.Jump.bindings[0].effectivePath}");
+        Debug.Log($"Jump input is set to2 {actionAsset.FindAction("Jump").bindings[0].effectivePath}");
+        return actionAsset.FindAction("Jump").triggered;
+        // return playerInputActions.Player.Jump.triggered;
     }
 
     public bool IsWalkTogglePressed()
