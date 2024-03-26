@@ -35,7 +35,7 @@ public class GameInput : MonoBehaviour
 
     public bool IsFreeDashPressed()
     {
-        return playerInputActions.Player.Dash.triggered;
+        return actionAsset.FindAction("Dash").triggered;
         // return playerInputActions.Player.Dash.triggered;
     }
 

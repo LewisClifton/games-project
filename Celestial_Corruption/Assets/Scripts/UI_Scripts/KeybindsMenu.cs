@@ -63,9 +63,6 @@ public class KeybindsMenu : MonoBehaviour
             .OnComplete(operation => FinishRebinding(operation, actionToRebind, bindingId))
             .OnCancel(operation => CancelRebinding(operation, actionToRebind))
             .Start();
-            
-        Debug.Log($"Rebinding {actionToRebind.name} binding {bindingId}");
-        Debug.Log($"Current binding path after execution1: {actionToRebind.bindings[bindingId].effectivePath}");
     }
 
     public void DefaultRebind()
@@ -80,9 +77,9 @@ public class KeybindsMenu : MonoBehaviour
         // Extract the new binding path
         string newBindingPath = actionToRebind.bindings[bindingIndex].effectivePath;
         
-        Debug.Log($"Rebinding finished. New binding path: {newBindingPath}");
-        Debug.Log($"action name: {actionToRebind.name} binding index: {bindingIndex}");
-        Debug.Log($"Current binding path after execution2: {actionToRebind.bindings[bindingIndex].effectivePath}");
+        // Debug.Log($"Rebinding finished. New binding path: {newBindingPath}");
+        // Debug.Log($"action name: {actionToRebind.name} binding index: {bindingIndex}");
+        // Debug.Log($"Current binding path after execution2: {actionToRebind.bindings[bindingIndex].effectivePath}");
 
         // Update the static Settings class with the new binding
         if (actionToRebind.name == "Move")
@@ -117,10 +114,10 @@ public class KeybindsMenu : MonoBehaviour
                 case "Dash":
                     Settings.dash = newBindingPath;
                     break;
-                case "AttackDash":
+                case "Attack Dash":
                     Settings.AttackDash = newBindingPath;
                     break;
-                case "LockOn":
+                case "Lock On":
                     Settings.LockOn = newBindingPath;
                     break;
                 default:
@@ -132,8 +129,8 @@ public class KeybindsMenu : MonoBehaviour
         UpdateButtonText();
         RebindingIndicatorText.SetActive(false);
         actionToRebind.Enable();
-        Debug.Log($"current binding path after execution3: {actionToRebind.bindings[bindingIndex].effectivePath}");
-        Debug.Log($"Settings.Jump: {Settings.jump}");
+        // Debug.Log($"current binding path after execution3: {actionToRebind.bindings[bindingIndex].effectivePath}");
+        // Debug.Log($"Settings.Jump: {Settings.jump}");
 }
 
     private void CancelRebinding(InputActionRebindingExtensions.RebindingOperation operation, InputAction actionToRebind)
@@ -183,7 +180,6 @@ public class KeybindsMenu : MonoBehaviour
     // Similarly, add functions for other keybinds
     public void ChangeJumpBinding()
     {
-        Debug.Log($"Current Jump binding from ActionAsset: {actionAsset.FindAction("Jump").bindings[0].effectivePath}");
         string action = "Jump";
         int bindingIndex = 0;
 
@@ -192,7 +188,6 @@ public class KeybindsMenu : MonoBehaviour
 
     public void ChangeWalkToggleBinding()
     {
-        Debug.Log($"Current Walk Toggle binding from ActionAsset: {actionAsset.FindAction("WalkToggle").bindings[0].effectivePath}");
         string action = "WalkToggle";
         int bindingIndex = 0;
 
@@ -201,7 +196,6 @@ public class KeybindsMenu : MonoBehaviour
 
     public void ChangeDashBinding()
     {
-        Debug.Log($"Current Dash binding from ActionAsset: {actionAsset.FindAction("Dash").bindings[0].effectivePath}");
         string action = "Dash";
         int bindingIndex = 0;
 
@@ -210,8 +204,7 @@ public class KeybindsMenu : MonoBehaviour
 
     public void ChangeAttackDashBinding()
     {
-        Debug.Log($"Current Attack Dash binding from ActionAsset: {actionAsset.FindAction("AttackDash").bindings[0].effectivePath}");
-        string action = "AttackDash";
+        string action = "Attack Dash";
         int bindingIndex = 0;
 
         StartRebinding(actionAsset.FindAction(action), bindingIndex);
@@ -219,8 +212,7 @@ public class KeybindsMenu : MonoBehaviour
 
     public void ChangeLockOnBinding()
     {
-        Debug.Log($"Current Lock On binding from ActionAsset: {actionAsset.FindAction("LockOn").bindings[0].effectivePath}");
-        string action = "LockOn";
+        string action = "Lock On";
         int bindingIndex = 0;
 
         StartRebinding(actionAsset.FindAction(action), bindingIndex);
