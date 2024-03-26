@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameInput : MonoBehaviour
 {
     private PlayerInputActions playerInputActions;
+    public InputActionAsset actionAsset;
 
     private void Awake()
     {
@@ -14,36 +16,44 @@ public class GameInput : MonoBehaviour
 
     public Vector2 GetMovementVectorNormalized()
     {
+        Debug.Log($"Move input is set to {playerInputActions.Player.Move.bindings[0].effectivePath}");
         return playerInputActions.Player.Move.ReadValue<Vector2>().normalized;
     }
 
     public bool IsJumpPressed()
     {
-        return playerInputActions.Player.Jump.triggered;
+        Debug.Log($"Jump input is set to {actionAsset.FindAction("Jump").bindings[0].effectivePath}");
+        return actionAsset.FindAction("Jump").triggered;
+        // return playerInputActions.Player.Jump.triggered;
     }
 
     public bool IsWalkTogglePressed()
     {
-        return playerInputActions.Player.WalkToggle.triggered;
+        return actionAsset.FindAction("WalkToggle").triggered;
+        // return playerInputActions.Player.WalkToggle.triggered;
     }
 
     public bool IsFreeDashPressed()
     {
-        return playerInputActions.Player.Dash.triggered;
+        return actionAsset.FindAction("Dash").triggered;
+        // return playerInputActions.Player.Dash.triggered;
     }
 
     public bool IsAttackDashPressed()
     {
-        return playerInputActions.Player.AttackDash.triggered;
+        return actionAsset.FindAction("Attack Dash").triggered;
+        // return playerInputActions.Player.AttackDash.triggered;
     }
 
     public bool IsEscapePressed()
     {
-        return playerInputActions.Player.Escape.triggered;
+        return actionAsset.FindAction("Escape").triggered;
+        // return playerInputActions.Player.Escape.triggered;
     }
     
     public bool IsLockOnPressed()
     {
-        return playerInputActions.Player.LockOn.triggered;
+        return actionAsset.FindAction("Lock On").triggered;
+        // return playerInputActions.Player.LockOn.triggered;
     }
 }

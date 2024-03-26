@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameInput gameInput;
+    [SerializeField] private GameObject background;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject settingsMenu;
     private bool isPaused = false;
 
     void Start()
     {
-        pauseMenu.SetActive(false);
-        settingsMenu.SetActive(false);
+        PauseMenuDeactivate();
+        background.GetComponent<RawImage>().enabled = false;
     }
 
     void Update()
@@ -24,7 +26,7 @@ public class PauseMenu : MonoBehaviour
                 if (settingsMenu.activeSelf)
                 {
                     settingsMenu.SetActive(false);
-                    pauseMenu.SetActive(true);
+                    PauseMenuActivate();
                 }
                 else
                 {
@@ -38,23 +40,52 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    private void PauseMenuDeactivate()
+    {
+        // background.GetComponent<RawImage>().enabled = false;
+
+        // Loop over all the children of the pauseMenu and disable them
+        foreach (Transform child in pauseMenu.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+
+        foreach (Transform child in settingsMenu.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+    }
+
+    private void PauseMenuActivate()
+    {
+        background.GetComponent<RawImage>().enabled = true;
+
+        // Loop over all the children of the pauseMenu and enable them
+        foreach (Transform child in pauseMenu.transform)
+        {
+            child.gameObject.SetActive(true);
+        }
+    }
+
     private void PauseGame()
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
         Time.timeScale = 0;
-        pauseMenu.SetActive(true);
+        PauseMenuActivate();
         isPaused = true;
     }
 
     public void ResumeGame()
     {
+        background.GetComponent<RawImage>().enabled = false;
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
         Time.timeScale = 1;
-        pauseMenu.SetActive(false);
+        PauseMenuDeactivate();
         isPaused = false;
     }
 
@@ -83,13 +114,14 @@ public class PauseMenu : MonoBehaviour
 
     public void OpenSettings()
     {
-        pauseMenu.SetActive(false);
+        PauseMenuDeactivate();
         settingsMenu.SetActive(true);
+        settingsMenu.GetComponent<SettingsMenu>().OpenSettingsMenu();
     }
 
     public void CloseSettings()
     {
         settingsMenu.SetActive(false);
-        pauseMenu.SetActive(true);
+        PauseMenuActivate();
     }
 }

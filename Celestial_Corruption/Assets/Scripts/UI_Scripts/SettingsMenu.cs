@@ -2,159 +2,79 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 using Cinemachine;
 using TMPro;
 
 public class SettingsMenu : MonoBehaviour
 {
 
+    [SerializeField] private GameInput gameInput;
+    [SerializeField] private InputActionAsset inputActionAsset;
+
+    [SerializeField] private GameObject CamSensitivityMenu;
+    [SerializeField] private GameObject KeybindsMenu;
+
     [SerializeField] private GameObject settingsMenu;
-    [SerializeField] private Cinemachine.CinemachineFreeLook playerCamera;
-    [SerializeField] private Slider sensitivitySliderX;
-    [SerializeField] private Slider sensitivitySliderY;
+    [SerializeField] private GameObject LeftArrow;
+    [SerializeField] private GameObject RightArrow;
+    [SerializeField] private GameObject[] settingsWindows;
+    [SerializeField] private GameObject[] settingsButtons;
+    private int currentSettingsWindow = 0;
 
-    private Slider sliderX;
-    private Slider sliderY;
-    private TMP_InputField sliderValueX;
-    private TMP_InputField sliderValueY;
-
-    private float cameraSensitivityXaxis;
-    private float cameraSensitivityYaxis;
-    private float cameraSensitivityConstantX;
-    private float cameraSensitivityConstantY;
-
-    void Awake()
+    void Awake()    
     {
-        sliderX = sensitivitySliderX;
-        sliderY = sensitivitySliderY;
-        sliderValueX = sensitivitySliderX.GetComponentInChildren<TMP_InputField>();
-        sliderValueY = sensitivitySliderY.GetComponentInChildren<TMP_InputField>();
+        // CamSensitivityMenu.SetActive(true);
+        // KeybindsMenu.SetActive(false);
     }
 
-    void Start()
+    public void OpenSettingsMenu()
     {
-        cameraSensitivityXaxis = Settings.cameraSensitivityXaxis;
-        cameraSensitivityYaxis = Settings.cameraSensitivityYaxis;
-
-        cameraSensitivityConstantX = Settings.cameraSensitivityConstantX;
-        cameraSensitivityConstantY = Settings.cameraSensitivityConstantY;
-
-        if (playerCamera != null)
+        // Activates buttons
+        LeftArrow.SetActive(true);
+        RightArrow.SetActive(true);
+        for (int i = 0; i < settingsButtons.Length; i++)
         {
-            playerCamera.m_XAxis.m_MaxSpeed = cameraSensitivityXaxis;
-            playerCamera.m_YAxis.m_MaxSpeed = cameraSensitivityYaxis;
+            settingsButtons[i].SetActive(true);
         }
 
-        // cameraSensitivityXaxis = playerCamera.m_XAxis.m_MaxSpeed;
-        // cameraSensitivityYaxis = playerCamera.m_YAxis.m_MaxSpeed;
-
-        // cameraSensitivityConstantX = cameraSensitivityXaxis;
-        // cameraSensitivityConstantY = cameraSensitivityYaxis;
-
-        sliderValueX.text = cameraSensitivityXaxis.ToString();
-        sliderValueY.text = cameraSensitivityYaxis.ToString();
-
-        sliderX.value = cameraSensitivityXaxis / cameraSensitivityConstantX;
-        sliderY.value = cameraSensitivityYaxis / cameraSensitivityConstantY;
+        SetSettingsWindow(0);
     }
 
-    public void SetCameraSensitivityX(float sensitivity)
+    public void SetSettingsWindow(int window)
     {
-        Debug.Log("Camera sensitivity X set to: " + sensitivity);
-        if (playerCamera != null)
-        {
-            playerCamera.m_XAxis.m_MaxSpeed = sensitivity * cameraSensitivityConstantX;
-        }
-        sliderValueX.text = (sensitivity * cameraSensitivityConstantX).ToString();
-        cameraSensitivityXaxis = sensitivity * cameraSensitivityConstantX;
-        Settings.cameraSensitivityXaxis = cameraSensitivityXaxis;
+        Debug.Log("Setting window to " + window);
+        settingsWindows[currentSettingsWindow].SetActive(false);
+
+        settingsWindows[window].SetActive(true);
+        currentSettingsWindow = window;
     }
 
-    public void SetCameraSensitivityY(float sensitivity)
+    public void rightArrow()
     {
-        Debug.Log("Camera sensitivity Y set to: " + sensitivity);
-        if (playerCamera != null)
-        {
-            playerCamera.m_YAxis.m_MaxSpeed = sensitivity * cameraSensitivityConstantY;
-        }
-        sliderValueY.text = (sensitivity * cameraSensitivityConstantY).ToString();
-        cameraSensitivityYaxis = sensitivity * cameraSensitivityConstantY;
-        Settings.cameraSensitivityYaxis = cameraSensitivityYaxis;
+        settingsWindows[currentSettingsWindow].SetActive(false);
+        currentSettingsWindow = (currentSettingsWindow + 1) % settingsWindows.Length;
+        settingsWindows[currentSettingsWindow].SetActive(true);
     }
 
-    public void SetCameraSensitivityX(string sensitivity)
+    public void leftArrow()
     {
-        float value;
-        if (float.TryParse(sensitivity, out value))
-        {
-            Debug.Log("Camera sensitivity X set to: " + value);
-            if (playerCamera != null)
-            {
-                playerCamera.m_XAxis.m_MaxSpeed = value;
-            }
-            sliderValueX.text = value.ToString();
-            sliderX.value = value / cameraSensitivityConstantX;
-            cameraSensitivityXaxis = value;
-            Settings.cameraSensitivityXaxis = cameraSensitivityXaxis;
-        }
+        settingsWindows[currentSettingsWindow].SetActive(false);
+        currentSettingsWindow = (currentSettingsWindow - 1 + settingsWindows.Length) % settingsWindows.Length;
+        settingsWindows[currentSettingsWindow].SetActive(true);
     }
 
-    public void SetCameraSensitivityY(string sensitivity)
+    public void ChangeToCamSensitivityMenu()
     {
-        float value;
-        if (float.TryParse(sensitivity, out value))
-        {
-            Debug.Log("Camera sensitivity Y set to: " + value);
-            // If there is no player Camera assigned, then don't do anything
-            if (playerCamera != null)
-            {
-                playerCamera.m_YAxis.m_MaxSpeed = value;
-            }
-            sliderValueY.text = value.ToString();
-            sliderY.value = value / cameraSensitivityConstantY;
-            cameraSensitivityYaxis = value;
-            Settings.cameraSensitivityYaxis = cameraSensitivityYaxis;
-        }
+        settingsWindows[currentSettingsWindow].SetActive(false);
+        currentSettingsWindow = 0;
+        settingsWindows[currentSettingsWindow].SetActive(true);
     }
 
-    // public void SetSensitivityX(float sensitivity)
-    // {
-    //     playerCamera.m_XAxis.m_MaxSpeed = sensitivity;
-    // }
-
-    // Not Used
-    public void Save()
+    public void ChangeToKeybindsMenu()
     {
-        cameraSensitivityXaxis = playerCamera.m_XAxis.m_MaxSpeed;
-        cameraSensitivityYaxis = playerCamera.m_YAxis.m_MaxSpeed; 
-    }
-
-    // Not Used
-    public void Cancel()
-    {
-        playerCamera.m_XAxis.m_MaxSpeed = cameraSensitivityXaxis;
-        playerCamera.m_YAxis.m_MaxSpeed = cameraSensitivityYaxis;
-    }
-
-    public void InitialSettings()
-    {
-
-    }
-
-    public void Default()
-    {
-        if (playerCamera != null)
-        {
-            playerCamera.m_XAxis.m_MaxSpeed = cameraSensitivityConstantX;
-            playerCamera.m_YAxis.m_MaxSpeed = cameraSensitivityConstantY;
-        }
-        cameraSensitivityXaxis = playerCamera.m_XAxis.m_MaxSpeed;
-        cameraSensitivityYaxis = playerCamera.m_YAxis.m_MaxSpeed;
-        sliderValueX.text = playerCamera.m_XAxis.m_MaxSpeed.ToString();
-        sliderValueY.text = playerCamera.m_YAxis.m_MaxSpeed.ToString();
-        sliderX.value = 1;
-        sliderY.value = 1;
-        Settings.cameraSensitivityXaxis = cameraSensitivityXaxis;
-        Settings.cameraSensitivityYaxis = cameraSensitivityYaxis;
+        settingsWindows[currentSettingsWindow].SetActive(false);
+        currentSettingsWindow = 1;
+        settingsWindows[currentSettingsWindow].SetActive(true);
     }
 }
